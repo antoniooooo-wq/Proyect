@@ -53,7 +53,7 @@ if (isset($_SESSION['usuario'])) {
       }
     </style>
 
-
+<!--Probando :v-->
   </head>
 
   <body id="bodyprinci" style="background-image: url(images/);height: 1080px; overflow-x: hidden; overflow-y: hidden; ">
