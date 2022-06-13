@@ -8,7 +8,7 @@ if (isset($_SESSION['usuario'])) {
 ?>
   <!doctype html>
   <html lang="en">
-
+<!--BIENVENIDO A LOS PODA PATAS O ALGO ASÍ NO SE QUE SIGNIFICA PODOLOGIA-->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
