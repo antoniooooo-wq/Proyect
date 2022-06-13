@@ -8,6 +8,6 @@ direccion='" . $_POST['direccion'] . "',fecha_nac='" . $_POST['fecha_nac'] . "',
 
     mysqli_query(conexion(), $sql);
 
-    header("Location:../login/Login.php");
+    header("Location:../login/index.php");
 
     ?>
