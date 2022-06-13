@@ -2,8 +2,8 @@
  <?php
 if(isset($_REQUEST['errorEmail'])){ ?>
          <div class="alert show showAlert" style="color:#f44336;">
-               <strong> Ops.! </strong>
-               El Correo no Existe, por favor Verifique.
+               <strong> Ops... </strong>
+               El Correo no Existe, Por favor Comuniquese con el Profesional.
         </div>
 <?php }
 

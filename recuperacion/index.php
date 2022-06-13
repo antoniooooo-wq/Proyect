@@ -31,6 +31,9 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 				<form class="login100-form validate-form" action="tokenUser.php" method="post">
+					<?php
+					include('msjs.php');
+					?>
 					<span class="login100-form-title">
 						Recuperación de Contraseña
 					</span>
@@ -54,10 +57,10 @@
 							Volver -
 						</a>
 					</div>
-					
+
 					<div class="text-center p-t-136">
-								<a class="txt2"></a>
-							</div>
+						<a class="txt2"></a>
+					</div>
 				</form>
 			</div>
 			<div style="padding-top: 50px;"></div>
