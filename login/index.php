@@ -65,7 +65,7 @@
 								<span class="txt1">
 									Olvidaste
 								</span>
-								<a class="txt2" id="olvidar" href="#">
+								<a class="txt2"  href="../recuperacion/index.php">
 									Tu contraseña?
 								</a>
 							</div>
