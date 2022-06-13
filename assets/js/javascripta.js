@@ -24,7 +24,7 @@ $(document).ready(function() {
  
  function Ingresar(accion) {
 
-    document.formFechas.accion.value = accion;
+
     if ((accion=="Ingresar")) {
         if (document.formFechas.fecha.value == "") {
             alert("Debe Ingresar una dia");
