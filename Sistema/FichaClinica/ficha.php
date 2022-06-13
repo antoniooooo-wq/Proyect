@@ -36,7 +36,6 @@ if (isset($_SESSION['usuario'])) {
         <link href="assets/css/features.css" rel="stylesheet">
         <link href="assets/css/sidebars.css" rel="stylesheet">
 
-
         <style>
             .bd-placeholder-img {
                 font-size: 1.125rem;
@@ -52,10 +51,28 @@ if (isset($_SESSION['usuario'])) {
                 }
             }
         </style>
+        <style type="text/css">
+            #global {
+                height: auto;
+                width: auto;
+                border: 1px solid #ddd;
+                background: #f1f1f1;
+                overflow-y: scroll;
+            }
+
+            #mensajes {
+                height: auto;
+            }
+
+            .texto {
+                padding: 4px;
+                background: #fff;
+            }
+        </style>
 
     </head>
 
-    <body id="bodyprinci" style="background-image: url(images/);" class="overflow-scroll">
+    <body id="bodyprinci" style="background-image: url(images/); ">
         <main>
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="users" viewBox="0 0 16 16">
@@ -84,6 +101,7 @@ if (isset($_SESSION['usuario'])) {
             if ($_SESSION['tipo'] == "2") //Profesional
             {
             ?>
+
                 <!-- Inicio SlideBar-->
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -95,19 +113,11 @@ if (isset($_SESSION['usuario'])) {
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="../Profesional/profesionalprincipal.php" class="nav-link text-white" aria-current="page">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#add" />
-                                </svg>
-                                Ingresar Paciente
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="../Profesional/administrarpacientes.php" class="nav-link text-white">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#users" />
                                 </svg>
-                                Administrar Pacientes
+                                Volver
                             </a>
                         </li>
                         <li>
@@ -136,12 +146,13 @@ if (isset($_SESSION['usuario'])) {
                 <!-- Fin SlideBar-->
 
                 <!--Inicio Body-->
-                <div class="container px-4 py-5" id="featured-3">
+                <div class="container px-4 py-5" id="global">
                     <!--ojitooo-->
                     <div id="formulario_usuario">
                         <div class="container p-3 my-1 border">
                             <h4> Paciente:</h4>
                             <form action="#" method="post" name="form_ficha">
+
                                 <table>
                                     <?php
                                     $sql = "SELECT
@@ -181,6 +192,7 @@ if (isset($_SESSION['usuario'])) {
 
                                 </table>
                                 <h6>id paciente: <?php echo $_GET['idusu']; ?></h6>
+                                <h6>id paciente datos : <?php echo $datosusu['Id']; ?></h6>
 
                                 <div class="row g-3">
                                     <div class="col">
@@ -249,40 +261,60 @@ if (isset($_SESSION['usuario'])) {
                                         </label>
                                     </div>
                                     <div class="col">
+                                        <label for="telefono">Telefono</label>
                                         <input type="number" class="form-control" id="telefono" name="telefono" aria-label="Telefono" placeholder="Telefono" value="<?php echo $datosusu['telefono'] ?>" disabled>
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group">
-                                    <label for="textarea1">Example textarea</label>
-                                    <textarea class="form-control" id="textarea1" rows="3"></textarea>
+
+                                <br>
+                                <hr>
+                                <br>
+                                <h2>Enfermedades, Medicamentos e Intervenciones</h2>
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label for="enfermedades">Enfermedades</label>
+                                        <input type="checkbox" class="form-check-input" id="checkbox" name="enfermedades" value="Diabetes">
+                                        <label class="form-check-label" for="checkbox">
+                                            Diabetes
+                                        </label>
+                                        <input type="checkbox" class="form-check-input" id="checkbox" name="enfermedades" value="HTA">
+                                        <label class="form-check-label" for="checkbox">
+                                            HTA
+                                        </label>
+                                    </div>
+                                    <div class="row g-3">
+                                        <label for="sick_otros">Otros</label>
+                                        <textarea></textarea>
+                                    </div>
                                 </div>
-                                <!--
+
                                 <div class="row">
                                     <div class="col-12">
                                         <hr>
                                         <center>
                                             <?php
-                                            if (!isset($_GET['idusu'])) {
+                                            if (isset($_GET['idusu'])) {
                                             ?>
-                                                <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarpaciente(this.value);">
+                                                <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarficha(this.value);">
                                             <?php
                                             } else {
                                             ?>
-                                                <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning" onclick="validarpaciente(this.value);">
-                                                <input id="btnEliminar" type="button" value="Eliminar" class="btn btn-danger" onclick="validarpaciente(this.value);">
+                                                <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning" onclick="validarficha(this.value);">
                                             <?php
                                             }
                                             ?>
-                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger" onclick="validarpaciente(this.value);">
+                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger" onclick="validarficha(this.value);">
+                                            
                                             <input type="hidden" id="accion" name="accion">
                                             <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
                                         </center>
                                     </div>
                                 </div>
-                                        -->
-                                     
                             </form>
+                            <a href="preingreso.php?Id=<?php echo $datosusu['Id']; ?>">
+                                <button class="btn btn-success">Pre-Ingreso</button>
+                            </a>
                         </div>
                     </div>
                 </div>
