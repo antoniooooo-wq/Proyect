@@ -32,18 +32,17 @@ include("../functions/setup.php");
         <label for="job-1__start">Seleccione el dia</label>
         <input type="date" name="fecha" id="fecha">
       </div>
+      <br>
       <div class="modal-body">
-        <label>Seleccione la hora de su cita: </label><label id="dia" name="info" class="ml-14"></label><br>
-        <label for="hora">Hora</label> 
-        <select class="form-control" name="hora" id="horas">
+        <label>Seleccione la hora de su cita: </label><label id="info" name="info" class="ml-14"></label><br>
+        <label for="hora">Hora</label>
+        <select class="form-control" name="hora" id="hora">
         </select><br>
       </div>
     </div>
     <div class="line-break"></div>
-    
+
     <input id="btningresar" class="btn btn-primary" type="button" value="Ingresar" onclick=" Ingresar(this.value);">
-    <button type="button" class="btn btn-success" onclick=" Ingresar(this.value);">Ingresar</button>
-    <input type="submit" value="Ingresar">
 
   </form>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
