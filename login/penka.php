@@ -13,12 +13,6 @@
 
 <body class="fondo-boody" style="background-image: url(images/error.jpg);">
 
-  <div class="ratio ratio-4x3">
-    <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" ></iframe>
-  </div>
-  
-
-
   <h1><p class="text-danger">SIN PERMISOS -ERROR-</p></h1>
   <div>
     <h4><p class="text-danger">ERROR CRÍTICO - Problemas con el usuario y/o Contraseña<br>
