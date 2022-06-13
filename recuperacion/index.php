@@ -20,73 +20,41 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script src="js/validarRUT.js"></script>
 	<!--===============================================================================================-->
 </head>
 
 <body>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
-				<div class="form">
-					<div id="signup">
-						<form class="login100-form validate-form" action="procesalogin.php" method="post">
-							<span class="login100-form-title">
-								Inicio de Sesión
-							</span>
-
-							<div class="wrap-input100 validate-input" data-validate="Rut Requerido">
-								<input class="input100" type="text" id="frmusuario" oninput="checkRut(this)" minlength="9" maxlength="10" name="frmusuario" placeholder="Rut">
-								<span class="focus-input100"></span>
-								<span class="symbol-input100">
-									<i class="fa fa-clock" aria-hidden="true"></i>
-								</span>
-							</div>
-
-							<div class="wrap-input100 validate-input" data-validate="Contraseña Requerida">
-								<input class="input100" type="password" id="frmclave" name="pass" ame="frmclave" placeholder="Contraseña">
-								<span class="focus-input100"></span>
-								<span class="symbol-input100">
-									<i class="fa fa-lock" aria-hidden="true"></i>
-								</span>
-							</div>
-
-							<div class="container-login100-form-btn">
-								<button class="login100-form-btn">
-									Entrar
-								</button>
-							</div>
-
-							<div class="text-center p-t-12">
-								<span class="txt1">
-									Olvidaste
-								</span>
-								<a class="txt2" id="olvidar" href="#">
-									Tu contraseña?
-								</a>
-							</div>
-							<div class="text-center p-t-12">
-								<span class="txt1">
-									-
-								</span>
-								<a class="txt2" href="../index.html">
-									Volver -
-								</a>
-							</div>
-
-							<div class="text-center p-t-136">
-								<a class="txt2" href="../registro/register.php">
-									Registrarme
-									<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-								</a>
-							</div>
-						</form>
+				<form class="login100-form validate-form" action="procesalogin.php" method="post">
+					<span class="login100-form-title">
+						Recuperación de Contraseña
+					</span>
+					<div class="wrap-input100 validate-input" data-validate="Correo Requerido">
+						<input class="input100" type="text" name="email" placeholder="Correo">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-clock" aria-hidden="true"></i>
+						</span>
 					</div>
-				</div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Entrar
+						</button>
+					</div>
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							-
+						</span>
+						<a class="txt2" href="../login/index.php">
+							Volver -
+						</a>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -109,7 +77,7 @@
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
-	
+
 </body>
 
 </html>
