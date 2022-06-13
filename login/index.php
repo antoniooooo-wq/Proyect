@@ -38,7 +38,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Rut Requerido">
-						<input class="input100" type="text" id="frmusuario" name="frmusuario" oninput="checkRut(this)" minlength="9" maxlength="10" name="frmusuario" placeholder="Rut">
+						<input class="input100" type="text" id="frmusuario" name="frmusuario" oninput="checkRut(this)" minlength="9" maxlength="10"  placeholder="Rut">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-clock" aria-hidden="true"></i>

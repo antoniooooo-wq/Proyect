@@ -12,7 +12,7 @@ FROM
   usuario
   INNER JOIN tipo_usuario ON usuario.id_tipo_usuario = tipo_usuario.Id
 WHERE
-  usuario.pass = '".md5($_POST['frmclave'])."' AND usuario.run = '".$_POST['frmusuario']."' AND usuario.estado=1";
+  usuario.pass = '".md5($_POST['frmclave'])."' AND usuario.run = '".$_POST['frmusuario']."'AND usuario.estado=1";
 
 
 
