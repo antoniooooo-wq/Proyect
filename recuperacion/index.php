@@ -30,7 +30,7 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
-				<form class="login100-form validate-form" action="procesalogin.php" method="post">
+				<form class="login100-form validate-form" action="tokenUser.php" method="post">
 					<span class="login100-form-title">
 						Recuperación de Contraseña
 					</span>
@@ -38,7 +38,7 @@
 						<input class="input100" type="text" name="email" placeholder="Correo">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-clock" aria-hidden="true"></i>
+							<i class="fa fa-mail" aria-hidden="true"></i>
 						</span>
 					</div>
 					<div class="container-login100-form-btn">
@@ -54,8 +54,13 @@
 							Volver -
 						</a>
 					</div>
+					
+					<div class="text-center p-t-136">
+								<a class="txt2"></a>
+							</div>
 				</form>
 			</div>
+			<div style="padding-top: 50px;"></div>
 		</div>
 	</div>
 
