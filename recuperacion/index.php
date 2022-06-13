@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>P.Marticorena - Inicio Sesion</title>
+	<title>P.Marticorena - Recuperación Clave</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -43,7 +43,7 @@
 					</div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Entrar
+							Recuperar
 						</button>
 					</div>
 					<div class="text-center p-t-12">

@@ -55,7 +55,7 @@ if (isset($_SESSION['usuario'])) {
 
     </head>
 
-    <body id="bodyprinci" style="background-image: url(images/);height: 1080px; overflow-x: hidden; overflow-y: hidden; " class="overflow-scroll">
+    <body id="bodyprinci" style="background-image: url(images/);" class="overflow-scroll">
         <main>
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="users" viewBox="0 0 16 16">
@@ -125,7 +125,6 @@ if (isset($_SESSION['usuario'])) {
                     <hr>
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                             <strong><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -167,21 +166,21 @@ if (isset($_SESSION['usuario'])) {
                                                     <img src="assets/images/sinfoto.png" width="100px">
                                                 <?php
                                                 } else {
-                                                ?> 
-                                                    <img src="../assets/images/profiles/<?php echo $datos['imagen1']; ?>" width="100px">  
+                                                ?>
+                                                    <img src="../assets/images/profiles/<?php echo $datos['imagen1']; ?>" width="100px">
                                                 <?php
                                                 }
 
                                                 ?>
                                             </td>
                                         </tr>
-                                     
+
                                     <?php
                                     }
                                     ?>
-                                
+
                                 </table>
-                                <h6>id paciente: <?php  echo $_GET['idusu'];?></h6>
+                                <h6>id paciente: <?php echo $_GET['idusu']; ?></h6>
 
                                 <div class="row g-3">
                                     <div class="col">
@@ -251,7 +250,7 @@ if (isset($_SESSION['usuario'])) {
                                     </div>
                                     <div class="col">
                                         <input type="number" class="form-control" id="telefono" name="telefono" aria-label="Telefono" placeholder="Telefono" value="<?php echo $datosusu['telefono'] ?>" disabled>
-                                </div>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -281,11 +280,10 @@ if (isset($_SESSION['usuario'])) {
                                         </center>
                                     </div>
                                 </div>
-
                                         -->
+                                     
+                            </form>
                         </div>
-
-                        </form>
                     </div>
                 </div>
                 <!--Fin Body-->

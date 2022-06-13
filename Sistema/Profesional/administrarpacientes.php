@@ -127,7 +127,6 @@ if (isset($_SESSION['usuario'])) {
           <hr>
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../assets/images/profiles/<?php echo $datos['imagen1']; ?>" width="32" height="32" class="rounded-circle me-2">
               <strong><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
