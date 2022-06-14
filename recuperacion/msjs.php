@@ -1,6 +1,7 @@
 
  <?php
-if(isset($_REQUEST['errorEmail'])){ ?>
+if(isset($_REQUEST['errorEmail']))
+ { ?>
          <div class="alert show showAlert" style="color:#f44336;">
                <strong> Ops... </strong>
                El Correo no Existe, Por favor Comuniquese con el Profesional.
@@ -14,9 +15,13 @@ if(isset($_REQUEST['emaiIncorrecto'])){ ?>
    </div>
 <?php } 
 
-if(isset($_REQUEST['email'])){ ?>
+if(isset($_REQUEST['email']))
+{ 
+?>
     <div class="alert show showAlert" style="color:#fff;">
           <strong> Felicitaciones! </strong>
           Su clave fue cambiada, revise su correo.
    </div>
-<?php } ?>
+<?php
+}
+?>
