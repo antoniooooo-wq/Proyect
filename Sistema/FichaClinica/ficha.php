@@ -151,11 +151,9 @@ if (isset($_SESSION['usuario'])) {
                     <div id="formulario_usuario">
                         <div class="container p-3 my-1 border">
                             <h4> Paciente:</h4>
-                            <form action="#" method="post" name="form_ficha">
-
-                                <table>
-                                    <?php
-                                    $sql = "SELECT
+                            <table>
+                                <?php
+                                $sql = "SELECT
                                         usuario.Id,
                                         usuario.run,
                                         usuario.estado,
@@ -166,129 +164,125 @@ if (isset($_SESSION['usuario'])) {
                                         INNER JOIN images_tabla ON images_tabla.id_paciente = usuario.Id
                                         INNER JOIN tipo_usuario ON usuario.id_tipo_usuario = tipo_usuario.Id
                                         WHERE id_paciente =" . $datosusu['Id'];
-                                    $result = mysqli_query(conexion(), $sql);
-                                    while ($datos = mysqli_fetch_array($result)) {
-                                    ?>
-                                        <tr>
-                                            <td>
-                                                <?php
-                                                if ($datos['imagen1'] == "") {
-                                                ?>
-                                                    <img src="assets/images/sinfoto.png" width="100px">
-                                                <?php
-                                                } else {
-                                                ?>
-                                                    <img src="../assets/images/profiles/<?php echo $datos['imagen1']; ?>" width="100px">
-                                                <?php
-                                                }
+                                $result = mysqli_query(conexion(), $sql);
+                                while ($datos = mysqli_fetch_array($result)) {
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <?php
+                                            if ($datos['imagen1'] == "") {
+                                            ?>
+                                                <img src="assets/images/sinfoto.png" width="100px">
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <img src="../assets/images/profiles/<?php echo $datos['imagen1']; ?>" width="100px">
+                                            <?php
+                                            }
 
-                                                ?>
-                                            </td>
-                                        </tr>
+                                            ?>
+                                        </td>
+                                    </tr>
 
-                                    <?php
-                                    }
-                                    ?>
+                                <?php
+                                }
+                                ?>
 
-                                </table>
-                                <h6>id paciente: <?php echo $_GET['idusu']; ?></h6>
-                                <h6>id paciente datos : <?php echo $datosusu['Id']; ?></h6>
+                            </table>
+                            <h6>id paciente: <?php echo $_GET['idusu']; ?></h6>
+                            <h6>id paciente datos : <?php echo $datosusu['Id']; ?></h6>
 
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="name">Nombres</label>
-                                        <input type="text" class="form-control" id="name" name="name" aria-label="Nombres" placeholder="Nombres" value="<?php echo $datosusu['nombre'] ?>" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="app">Apellidos</label>
-                                        <input type="text" class="form-control" id="app" name="app" aria-label="Apellidos" placeholder="Apellidos" value="<?php echo $datosusu['apellido'] ?>" disabled>
-                                    </div>
+                            <div class="row g-3">
+                                <div class="col">
+                                    <label for="name">Nombres</label>
+                                    <input type="text" class="form-control" id="name" name="name" aria-label="Nombres" placeholder="Nombres" value="<?php echo $datosusu['nombre'] ?>" disabled>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="direccion">Dirección</label>
-                                        <input type="text" class="form-control" id="direccion" name="direccion" aria-label="Direccion" placeholder="Direccion" value="<?php echo $datosusu['direccion'] ?>" disabled>
-                                    </div>
+                                <div class="col">
+                                    <label for="app">Apellidos</label>
+                                    <input type="text" class="form-control" id="app" name="app" aria-label="Apellidos" placeholder="Apellidos" value="<?php echo $datosusu['apellido'] ?>" disabled>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="fechanacimiento">Fecha Nacimiento</label>
-                                        <input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento" aria-label="Fecha Nacimiento" onclick="verfecha(this.value)" placeholder="Fecha Nacimiento" value="<?php echo $datosusu['fecha_nac'] ?>" disabled>
-                                    </div>
-                                    <?php
-                                    function verfecha($vfecha)
-                                    {
-                                        $fch = explode("-", $vfecha);
-                                        $tfecha = $fch[2] . "-" . $fch[1] . "-" . $fch[0];
-                                        return $tfecha;
-                                    }
-                                    $fnaci = verfecha($datosusu['fecha_nac']);
-                                    function calcular_edad($fecha)
-                                    {
-                                        $dias = explode("-", $fecha, 3);
-                                        $dias = mktime(0, 0, 0, $dias[1], $dias[0], $dias[2]);
-                                        $edad = (int)((time() - $dias) / 31556926);
-                                        return $edad;
-                                    }
-                                    ?>
-                                    <?php
-                                    if (isset($_GET['idusu'])) {
-                                    ?>
-                                        <div class="col">
-                                            <label for="edad">Edad</label>
-                                            <input type="text" class="form-control" id="edad" name="edad" aria-label="Edad" placeholder="Edad" value="<?php echo calcular_edad($fnaci) ?>" disabled>
-                                        </div>
-                                    <?php
-                                    }
-                                    ?>
-                                    <div class="col">
-                                        <label for="correo">Correo</label>
-                                        <input type="email" class="form-control" id="correo" name="correo" aria-label="Correo" placeholder="Correo" value="<?php echo $datosusu['email'] ?>" disabled>
-                                    </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" aria-label="Direccion" placeholder="Direccion" value="<?php echo $datosusu['direccion'] ?>" disabled>
                                 </div>
-                                <br>
-                                <div class="row g-3">
-                                    <div></div>
-                                    <div class="col">
-                                        <label for="sexo">Sexo</label>
-                                        <input type="radio" class="form-check-input" id="radio" name="sexo" value="Masculino" <?php if ($datosusu['sexo'] == "Masculino") { ?> checked <?php } ?>" disabled>
-                                        <label class="form-check-label" for="radio">
-                                            Masculino
-                                        </label>
-                                        <input type="radio" class="form-check-input" id="radio" name="sexo" value="Femenino" <?php if ($datosusu['sexo'] == "Femenino") { ?> checked <?php } ?>" disabled>
-                                        <label class="form-check-label" for="radio">
-                                            Femenino
-                                        </label>
-                                    </div>
-                                    <div class="col">
-                                        <label for="telefono">Telefono</label>
-                                        <input type="number" class="form-control" id="telefono" name="telefono" aria-label="Telefono" placeholder="Telefono" value="<?php echo $datosusu['telefono'] ?>" disabled>
-                                    </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col">
+                                    <label for="fechanacimiento">Fecha Nacimiento</label>
+                                    <input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento" aria-label="Fecha Nacimiento" onclick="verfecha(this.value)" placeholder="Fecha Nacimiento" value="<?php echo $datosusu['fecha_nac'] ?>" disabled>
                                 </div>
-                                <br>
-
-                                <br>
-                                <hr>
-                                <br>
+                                <?php
+                                function verfecha($vfecha)
+                                {
+                                    $fch = explode("-", $vfecha);
+                                    $tfecha = $fch[2] . "-" . $fch[1] . "-" . $fch[0];
+                                    return $tfecha;
+                                }
+                                $fnaci = verfecha($datosusu['fecha_nac']);
+                                function calcular_edad($fecha)
+                                {
+                                    $dias = explode("-", $fecha, 3);
+                                    $dias = mktime(0, 0, 0, $dias[1], $dias[0], $dias[2]);
+                                    $edad = (int)((time() - $dias) / 31556926);
+                                    return $edad;
+                                }
+                                ?>
+                                <?php
+                                if (isset($_GET['idusu'])) {
+                                ?>
+                                    <div class="col">
+                                        <label for="edad">Edad</label>
+                                        <input type="text" class="form-control" id="edad" name="edad" aria-label="Edad" placeholder="Edad" value="<?php echo calcular_edad($fnaci) ?>" disabled>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <div class="col">
+                                    <label for="correo">Correo</label>
+                                    <input type="email" class="form-control" id="correo" name="correo" aria-label="Correo" placeholder="Correo" value="<?php echo $datosusu['email'] ?>" disabled>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row g-3">
+                                <div></div>
+                                <div class="col">
+                                    <label for="sexo">Sexo</label>
+                                    <input type="radio" class="form-check-input" id="radio" name="sexo" value="Masculino" <?php if ($datosusu['sexo'] == "Masculino") { ?> checked <?php } ?>" disabled>
+                                    <label class="form-check-label" for="radio">
+                                        Masculino
+                                    </label>
+                                    <input type="radio" class="form-check-input" id="radio" name="sexo" value="Femenino" <?php if ($datosusu['sexo'] == "Femenino") { ?> checked <?php } ?>" disabled>
+                                    <label class="form-check-label" for="radio">
+                                        Femenino
+                                    </label>
+                                </div>
+                                <div class="col">
+                                    <label for="telefono">Telefono</label>
+                                    <input type="number" class="form-control" id="telefono" name="telefono" aria-label="Telefono" placeholder="Telefono" value="<?php echo $datosusu['telefono'] ?>" disabled>
+                                </div>
+                            </div>
+                            <hr>
+                            <form action="registroficha.php" method="post" name="form_ficha">
                                 <h2>Enfermedades, Medicamentos e Intervenciones</h2>
                                 <div class="row g-3">
                                     <div class="col">
                                         <label for="enfermedades">Enfermedades</label>
-                                        <input type="checkbox" class="form-check-input" id="checkbox" name="enfermedades" value="Diabetes">
+                                        <input type="checkbox" class="form-check-input" name="enfermedades[]" value="Diabetes">
                                         <label class="form-check-label" for="checkbox">
                                             Diabetes
                                         </label>
-                                        <input type="checkbox" class="form-check-input" id="checkbox" name="enfermedades" value="HTA">
+                                        <input type="checkbox" class="form-check-input"name="enfermedades[]" value="hta">
                                         <label class="form-check-label" for="checkbox">
                                             HTA
                                         </label>
                                     </div>
                                     <div class="row g-3">
-                                        <label for="sick_otros">Otros</label>
-                                        <textarea></textarea>
+                                        <label for="otros">Otros</label>
+                                        <textarea value="<?php echo $datosusu['otros'] ?>"></textarea>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-12">
                                         <hr>
@@ -296,16 +290,16 @@ if (isset($_SESSION['usuario'])) {
                                             <?php
                                             if (isset($_GET['idusu'])) {
                                             ?>
-                                                <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarficha(this.value);">
+                                                <input id="btnIngresar" type="submit" value="Ingresar" class="btn btn-success">
                                             <?php
                                             } else {
                                             ?>
-                                                <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning" onclick="validarficha(this.value);">
+                                                <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning">
                                             <?php
                                             }
                                             ?>
-                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger" onclick="validarficha(this.value);">
-                                            
+                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger">
+
                                             <input type="hidden" id="accion" name="accion">
                                             <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
                                         </center>
