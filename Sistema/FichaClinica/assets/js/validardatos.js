@@ -1,7 +1,7 @@
-function validarpaciente(accion) {
+function validarficha(accion) {
 
     document.form1.accion.value = accion;
-    if ((accion != "Cancelar") && (accion != "Eliminar")) {
+    if (accion != "Cancelar") {
         if (accion != "Modificar") {
             if (document.form1.Rut.value == "") {
                 alert("Debe Ingresar el Rut");
