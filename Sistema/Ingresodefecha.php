@@ -1,5 +1,15 @@
 <?php
 include("../functions/setup.php");
+
+session_start();
+
+if (isset($_SESSION['usuario'])) {
+
+    if (isset($_GET['idusu'])) {
+        $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
+        $resultusu = mysqli_query(conexion(), $sqlusu);
+        $datosusu = mysqli_fetch_array($resultusu);
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,7 +51,7 @@ include("../functions/setup.php");
       </div>
     </div>
     <div class="line-break"></div>
-    <input type="button" value="Guardar" id="guardar">
+    <input class="button" type="button" value="Guardar" id="guardar">
   </form>
   <div id="mensaje"></div>
 </body>
@@ -52,3 +62,8 @@ include("../functions/setup.php");
 
 
 </html>
+<?php
+} else {
+  header('Location:../login/penka.php');
+}
+?>

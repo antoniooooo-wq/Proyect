@@ -1,6 +1,14 @@
 
 <?php
-include("../functions/setup.php");
+include("../Proyect/functions/setup.php");
+
+if (isset($_SESSION['usuario'])) {
+
+  if (isset($_GET['idusu'])) {
+      $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
+      $resultusu = mysqli_query(conexion(), $sqlusu);
+      $datosusu = mysqli_fetch_array($resultusu);
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,10 +30,6 @@ include("../functions/setup.php");
 
   
 </head>
-
-
-
-
 <body>
   <div class="py-1">
     <div class="container">
@@ -39,7 +43,7 @@ include("../functions/setup.php");
           <div class="col-sm-2"></div>
           <div class="col-sm-10 col-12">
             <p class="">
-              <a href="">Volver</a>
+              <a href="../principaal.php">Volver</a>
             </p>
           </div>
         </div>
@@ -151,3 +155,8 @@ include("../functions/setup.php");
 </body>
 
 </html>
+<?php
+} else {
+  header('Location:../../login/penka.php');
+}
+?>

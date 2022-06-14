@@ -32,10 +32,11 @@ $(document).ready(function() {
     $.ajax({
         type: "POST",
         url: "producto.php",
-        data: 'fecha='+$("#fecha").val()+'&hora='+$("#hora").val(),
+        data: 'fecha='+$("#fecha").val()+'&hora='+$("#hora").val()+'&idusu='+$("#idusu").val(),
         success: function (response) {
           if(response){
-            window.location.href="../login/index.php";
+            window.alert("Hora registrada")
+             window.location.href="../Sistema/principaal.php";
           }
 
       }
