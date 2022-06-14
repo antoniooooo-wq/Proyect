@@ -18,21 +18,16 @@ $miTokenClave     = generandoTokenClave();
 
 
 //Agregando Token en la tabla BD
-$updateClave    = ("UPDATE login SET tokenUser='$miTokenClave' WHERE email='".$correo."' ");
-$queryResult    = mysqli_query($con,$updateClave); 
+$updateClave    = "UPDATE usuario SET tokenUser='$miTokenClave' WHERE email='".$correo."'";
+$queryResult    = mysqli_query(conexion(),$updateClave); 
 
 
-$linkRecuperar      = "https://rpino.cl/recupacion/nuevaClave.php?id=".$dataConsulta['id']."&tokenUser=".$miTokenClave; // id llega nulo  ?id=(¿?)&tokenUser= sjhdjashdjasd
+$linkRecuperar      = "https://rpino.cl/Proyect/recuperacion/nuevaClave.php?Id=".$dataConsulta['Id']."&tokenUser=".$miTokenClave; 
 
 $destinatario = $correo; 
 $asunto       = "Recuperando Clave - Podología Marticorena";
 $cuerpo = '
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-    <title>Recuperar Clave de Usuario</title>';
-$cuerpo .= ' 
-<style>
+    <style>
     * {
         margin: 0;
         padding: 0;
@@ -92,50 +87,45 @@ $cuerpo .= '
 </head>
 <body>
     <div class="contenedor">
-    <img class="imgBanner" src=".png">
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-    <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
-    <tr>
-        <td style="padding: 0">
-            <img style="padding: 0; display: block" src="#.jpg" width="100%">
-        </td>
-    </tr>
-    
-    <tr>
-        <td style="background-color: #ffffff;">
-            <div class="misection">
-                <h2 style="color: red; margin: 0 0 7px">Hola, '.$dataConsulta['fullName'].'</h2>
-                <p style="margin: 2px; font-size: 18px">entra en el link para que puedas recuperar tu clave </p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <a href='.$linkRecuperar.' class="btnlink">Recuperar mi clave</a>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <img style="padding: 0; display: block" src="#" width="100%">
-                <p>&nbsp;</p>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td style="padding: 0;">
-            <img style="padding: 0; display: block" src="#" width="100%">
-        </td>
-    </tr>
-</table>'; 
-
+        <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 0">
+                <img style="padding: 0; display: block" src="https://rpino.cl/Proyect/recuperacion/images/banner2.png" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #ffffff;">
+                <div class="misection">
+                    <h2 style="color: red; margin: 0 0 7px">Hola,'.$dataConsulta['nombre'].'  '.$dataConsulta['apellido'].'</h2>
+                    <p style="margin: 2px; font-size: 18px">Entra en el link para que puedas recuperar tu clave </p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    
+                     <a href='.$linkRecuperar.'>
+                        <button id="btnlink">
+                        Recuperar mi clave
+                        </button>
+                     </a>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <img style="padding: 0; display: block" src="https://rpino.cl/Proyect/recuperacion/images/work.png" width="100%">
+                    <p>&nbsp;</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <img style="padding: 0; display: block" src="https://rpino.cl/Proyect/recuperacion/images/footer.jpg" width="100%">
+            </td>
+        </tr>
+    </table>'; 
 $cuerpo .= '
       </div>
     </body>
   </html>';
     
     $headers  = "MIME-Version: 1.0\r\n"; 
-    $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-    $headers .= "From: Podología Marticorena \r\n"; 
-    $headers .= "Reply-To: "; 
-    $headers .= "Return-path:"; 
-    $headers .= "Cc:"; 
-    $headers .= "Bcc:";
+    $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; ; 
     $headers .= "From: ricardo@rpino.cl"; //Cambiar por nombre de dominio -.-
     
     mail($destinatario,$asunto,$cuerpo,$headers);

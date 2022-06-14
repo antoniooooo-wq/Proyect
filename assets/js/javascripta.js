@@ -17,28 +17,35 @@ $(document).ready(function() {
         data: 'op=1&fecha='+$('#fecha').val(),
         success: function(response)
         {
-            $("#horas").html(response);
+            $("#hora").html(response);
        }
    });
  }
  
- function Ingresar(accion) {
+ $(document).on("ready",function(){
 
+ enviarDatos();
+});
 
-    if ((accion=="Ingresar")) {
-        if (document.formFechas.fecha.value == "") {
-            alert("Debe Ingresar una dia");
-            return false;
-        }
-        if (document.formFechas.hora.value == "") {
-            alert("Debe Ingresar una hora");
-            return false;
-        }
-        
-    }
-    
-    document.formFechas.submit();
+ function enviarDatos(){
+ $("#guardar").click(function(){
+    $.ajax({
+        type: "POST",
+        url: "producto.php",
+        data: 'fecha='+$("#fecha").val()+'&hora='+$("#hora").val()+'&idusu='+$("#idusu").val(),
+        success: function (response) {
+          if(response){
+            window.alert("Hora registrada")
+             window.location.href="../Sistema/principaal.php";
+          }
+
+      }
+});
+   
+});
 }
- 
+
+
+
 
  

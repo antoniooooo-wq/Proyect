@@ -1,5 +1,15 @@
 <?php
 include("../functions/setup.php");
+
+session_start();
+
+if (isset($_SESSION['usuario'])) {
+
+    if (isset($_GET['idusu'])) {
+        $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
+        $resultusu = mysqli_query(conexion(), $sqlusu);
+        $datosusu = mysqli_fetch_array($resultusu);
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,15 +51,19 @@ include("../functions/setup.php");
       </div>
     </div>
     <div class="line-break"></div>
-
-    <input id="btningresar" class="btn btn-primary" type="button" value="Ingresar" onclick=" Ingresar(this.value);">
-
+    <input class="button" type="button" value="Guardar" id="guardar">
   </form>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <div id="mensaje"></div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/jquery-3.0.0.min.js"></script>
 <script src="../assets/js/javascripta.js"></script>
 
 
 </html>
+<?php
+} else {
+  header('Location:../login/penka.php');
+}
+?>

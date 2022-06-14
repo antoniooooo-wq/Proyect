@@ -5,6 +5,8 @@ include("../functions/setup.php");
 session_start();
 
 if (isset($_SESSION['usuario'])) {
+
+  
 ?>
   <!doctype html>
   <html lang="en">
@@ -217,7 +219,7 @@ if (isset($_SESSION['usuario'])) {
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
+              <a href="../Sistema/Ingresodefecha.php?idusu=<?php echo $datos['usuarioid']; ?>"  class="nav-link active" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#Plus" />
                 </svg>
@@ -233,7 +235,7 @@ if (isset($_SESSION['usuario'])) {
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
+              <a href="../Sistema/Pago/Portaldepago.php?idusu=<?php echo $datos['usuarioid']; ?>" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#ing" />
                 </svg>
@@ -270,6 +272,42 @@ if (isset($_SESSION['usuario'])) {
         <div class="container px-0 py-5" id="featured-3">
           <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <p style="color: blue;">(Perfil Paciente)</p>
           </h2>
+          <div class="container p-5 my-5 border">
+            <h4>Horas</h4>
+            <div id="grilla" class="overflow-scroll">
+              <table class="table table-striped">
+                <tr>
+                  <th>Fecha</th>
+                  <th>Hora de inicio</th>
+                  <th>Hora final</th>
+                  <th>Tipo de tratamiento</th>
+
+                </tr>
+                <?php
+                $sql2 = "SELECT atencion.*
+                , horas.horadeinicio, horas.horafinal, usuario.Id, usuario.run,
+                 usuario.nombre, usuario.apellido 
+                 FROM usuario 
+                 INNER JOIN atencion ON atencion.id_paciente = usuario.Id 
+                 INNER JOIN horas ON atencion.horas_id = horas.Id
+                 WHERE atencion.id_paciente =" . $_SESSION['usuarioid']; 
+                
+                $resultt = mysqli_query(conexion(), $sql2);
+                while ($datospe = mysqli_fetch_array($resultt)) {
+                ?>
+                  <tr>
+                    <td><?php echo $datospe['fecha_atencion']; ?></td>
+                    <td><?php echo $datospe['horadeinicio']; ?></td>
+                    <td><?php echo $datospe['horafinal']; ?></td>
+                  </tr>
+                <?php
+                }
+                ?>
+              </table>
+            </div>
+
+       
+        
         </div>
       <?php
     } else
