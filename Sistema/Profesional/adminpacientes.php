@@ -69,9 +69,10 @@ function ingresar()
 function modificar()
 {
     $sql = " UPDATE usuario SET run='" . $_POST['Rut'] . "',nombre='" . $_POST['name'] . "',apellido='" . $_POST['app'] . "',
-    fecha_nac='" . $_POST['fechanacimiento'] . "',email='" . $_POST['correo'] . "',sexo='" . $_POST['sexo'] . "',edad='" . $_POST['edad'] . "',
+    fecha_nac='" . $_POST['fechanacimiento'] . "',email='" . $_POST['correo'] . "',sexo='" . $_POST['sexo'] . "',
     telefono='" . $_POST['telefono'] . "',estado='" . $_POST['frmestado'] . "',id_tipo_usuario= 3  WHERE Id= " . $_POST['idoculto'];
     
+
     mysqli_query(conexion(), $sql);
 
     $sql2 = "SELECT Id as id2 FROM usuario WHERE Id= " . $_POST['idoculto'] ;

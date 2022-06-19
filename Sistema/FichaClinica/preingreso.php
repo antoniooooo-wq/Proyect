@@ -151,14 +151,14 @@ if (isset($_SESSION['usuario'])) {
                     <!--ojitooo-->
                     <div id="formulario_usuario">
                         <div class="container p-3 my-1 border">
-                            <form action="#" method="post" name="form_ficha">
+                            <form action="registroficha.php" method="post" name="form_ficha">
                                 <!--
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                                 <h6>id paciente GET: <?php echo $_GET['idusu']; ?></h6>
                                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
                                 -->
-                                <?php 
+                                <?php
                                 $sql = "SELECT
                                 `usuario`.`nombre`
                               FROM
@@ -170,7 +170,7 @@ if (isset($_SESSION['usuario'])) {
 
                                 <h2>Pre-Ingreso</h2>
                                 <br>
-                                <h6>Paciente: <?php echo $datos['nombre'];?></h6>
+                                <h6>Paciente: <?php echo $datos['nombre']; ?></h6>
                                 <div class="row g-3">
                                     <div class="col">
                                         <label for="frec_card">Frecuencia Cardiaca</label>
@@ -242,6 +242,7 @@ if (isset($_SESSION['usuario'])) {
                                 <center>
                                     <h3>Tratamiento y Evolución</h3>
                                 </center>
+
                                 <div class="row g-3">
                                     <div class="row g-3">
                                         <label for="obss">Observaciones</label>
@@ -266,17 +267,17 @@ if (isset($_SESSION['usuario'])) {
                                         <hr>
                                         <center>
                                             <?php
-                                            if (isset($_GET['idusu'])) {
+                                            if (isset($_GET['Id'])) {
                                             ?>
-                                                <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarpreingreso(this.value);">
+                                                <input id="btnIngresar" type="button" value="PreIngreso" class="btn btn-success" onclick="validarpreingreso(this.value);">
                                             <?php
                                             } else {
                                             ?>
-                                                <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning" onclick="validarpreingreso(this.value);">
+                                                <input id="btnModificar" type="button" value="PreModificar" class="btn btn-warning" onclick="validarpreingreso(this.value);">
                                             <?php
                                             }
                                             ?>
-                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger" onclick="validarpreingreso(this.value);">
+                                            <input id="btnCancelar" type="button" value="PreCancelar" class="btn btn-danger" onclick="validarpreingreso(this.value);">
                                             <input type="hidden" id="accion" name="accion">
                                             <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
                                         </center>

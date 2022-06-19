@@ -189,9 +189,11 @@ if (isset($_SESSION['usuario'])) {
                                 ?>
 
                             </table>
+                            <!--
                             <h6>id paciente: <?php echo $_GET['idusu']; ?></h6>
                             <h6>id paciente datos : <?php echo $datosusu['Id']; ?></h6>
-
+                            -->
+                            <hr>
                             <div class="row g-3">
                                 <div class="col">
                                     <label for="name">Nombres</label>
@@ -269,18 +271,18 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="row g-3">
                                     <div class="col">
                                         <label for="enfermedades">Enfermedades</label>
-                                        <input type="checkbox" class="form-check-input" name="enfermedades[]" value="Diabetes">
+                                        <input type="checkbox" class="form-check-input" id="checkbox" name="diabetes" value="diabetes" <?php if ($datosusu['diabetes'] == "diabetes") { ?> checked <?php } ?>">
                                         <label class="form-check-label" for="checkbox">
                                             Diabetes
                                         </label>
-                                        <input type="checkbox" class="form-check-input"name="enfermedades[]" value="hta">
+                                        <input type="checkbox" class="form-check-input" id="checkbox" name="hta" value="hta" <?php if ($datosusu['hta'] == "hta") { ?> checked <?php } ?>">
                                         <label class="form-check-label" for="checkbox">
                                             HTA
                                         </label>
                                     </div>
                                     <div class="row g-3">
                                         <label for="otros">Otros</label>
-                                        <textarea value="<?php echo $datosusu['otros'] ?>"></textarea>
+                                        <textarea name="otros" value="<?php echo $datosusu['otros'] ?>"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -290,7 +292,7 @@ if (isset($_SESSION['usuario'])) {
                                             <?php
                                             if (isset($_GET['idusu'])) {
                                             ?>
-                                                <input id="btnIngresar" type="submit" value="Ingresar" class="btn btn-success">
+                                                <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarficha(this.value);">
                                             <?php
                                             } else {
                                             ?>
