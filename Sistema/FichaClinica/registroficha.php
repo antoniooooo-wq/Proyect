@@ -18,9 +18,6 @@ switch ($_POST['accion']) {
     case "PreIngreso":
         preingresar();
         break;
-    case "PreModificar":
-        premodificar();
-        break;
     case "PreCancelar":
         precancelar();
         break;
@@ -80,7 +77,7 @@ function preingresar()
     pre_ingreso.tto = '" . $_POST['tto'] . "',
     pre_ingreso.indic = '" . $_POST['indic'] . "',
     pre_ingreso.id_usuario  = " . $_POST['idoculto'];
-
+   
     mysqli_query(conexion(), $sql);
     header("Location:ficha.php?idusu=$_POST[idoculto]");
 }
