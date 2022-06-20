@@ -128,6 +128,14 @@ if (isset($_SESSION['usuario'])) {
                                 Ficha Paciente
                             </a>
                         </li>
+                        <li>
+                            <a href="vistaficha.php?Id=<?php echo $datosusu['Id']; ?>" class="nav-link text-white">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#book" />
+                                </svg>
+                                Atenciones
+                            </a>
+                        </li>
                     </ul>
                     <footer class="container">
                         <p>Copyright 2022 Podología Marticorena</p>
@@ -282,7 +290,7 @@ if (isset($_SESSION['usuario'])) {
                                     </div>
                                     <div class="row g-3">
                                         <label for="otros">Otros</label>
-                                        <textarea name="otros" value="<?php echo $datosusu['otros'] ?>"></textarea>
+                                        <textarea name="otros" value="<?php echo $datosusu['otros'] ?>"><?php echo $datosusu['otros'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="row">

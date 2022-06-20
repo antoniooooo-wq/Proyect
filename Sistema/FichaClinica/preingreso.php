@@ -235,7 +235,7 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="row g-3">
                                     <div class="row g-3">
                                         <label for="obs">Observaciones</label>
-                                        <textarea value="<?php echo $datosusu['obs'] ?>"></textarea>
+                                        <textarea name="obs" value="<?php echo $datosusu['obs'] ?>"></textarea>
                                     </div>
                                 </div>
                                 <hr>
@@ -246,19 +246,19 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="row g-3">
                                     <div class="row g-3">
                                         <label for="obss">Observaciones</label>
-                                        <textarea value="<?php echo $datosusu['obss'] ?>"></textarea>
+                                        <textarea name="obss" value="<?php echo $datosusu['obss'] ?>"></textarea>
                                     </div>
                                     <div class="row g-3">
                                         <label for="diag">Diagnostico</label>
-                                        <textarea value="<?php echo $datosusu['diag'] ?>"></textarea>
+                                        <textarea name="diag" value="<?php echo $datosusu['diag'] ?>"></textarea>
                                     </div>
                                     <div class="row g-3">
                                         <label for="tto">Tratamiento</label>
-                                        <textarea value="<?php echo $datosusu['tto'] ?>"></textarea>
+                                        <textarea name="tto" value="<?php echo $datosusu['tto'] ?>"></textarea>
                                     </div>
                                     <div class="row g-3">
                                         <label for="indic">Indicaciones</label>
-                                        <textarea value="<?php echo $datosusu['indic'] ?>"></textarea>
+                                        <textarea name="indic" value="<?php echo $datosusu['indic'] ?>"></textarea>
                                     </div>
                                 </div>
                                 <br>
@@ -279,7 +279,7 @@ if (isset($_SESSION['usuario'])) {
                                             ?>
                                             <input id="btnCancelar" type="button" value="PreCancelar" class="btn btn-danger" onclick="validarpreingreso(this.value);">
                                             <input type="hidden" id="accion" name="accion">
-                                            <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                            <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['Id']; ?>">
                                         </center>
                                     </div>
                                 </div>

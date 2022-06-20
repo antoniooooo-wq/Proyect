@@ -27,7 +27,6 @@ switch ($_POST['accion']) {
 function ingresar()
 {
     $sql = " UPDATE usuario SET diabetes='" . $_POST['diabetes'] . "',hta='" . $_POST['hta'] . "',otros='" . $_POST['otros'] . "' WHERE Id= " . $_POST['idoculto'];
-
     mysqli_query(conexion(), $sql);
     header("Location:ficha.php?idusu=$_POST[idoculto]");
 }
@@ -38,7 +37,6 @@ function modificar()
     mysqli_query(conexion(), $sql);
 
     header("Location:../Profesional/administrarpacientes.php");
-
 }
 
 
@@ -50,11 +48,30 @@ function cancelar()
 
 function preingresar()
 {
-    $sql = " INSERT INTO tratamiento SET frec_card='" . $_POST['frec_card'] . "',frec_resp='" . $_POST['frec_resp'] . "',sist='" . $_POST['sist'] . "',diast='" . $_POST['diast'] . "',temp='" . $_POST['temp'] . "',porc_satu='" . $_POST['porc_satu'] . "',glu='" . $_POST['glu'] . "',rotu='" . $_POST['rotu'] . "',pulso_pe='" . $_POST['pulso_pe'] . "',mono='" . $_POST['mono'] . "',punsion='" . $_POST['punsion'] . "',foc='" . $_POST['foc'] . "',diapa='" . $_POST['diapa'] . "',obs='" . $_POST['obs'] . "',obss='" . $_POST['obss'] . "',diag='" . $_POST['diag'] . "',tto='" . $_POST['tto'] . "',indic='" . $_POST['indic'] . "'" . "'   WHERE id_usuario='" . $_POST['idoculto'];
-
+    $sql = "INSERT INTO pre_ingreso SET
+    pre_ingreso.frec_card = '" . $_POST['frec_card'] . "',
+    pre_ingreso.frec_resp = '" . $_POST['frec_resp'] . "',
+    pre_ingreso.sist = '" . $_POST['sist'] . "',
+    pre_ingreso.diast = '" . $_POST['diast'] . "',
+    pre_ingreso.temp = '" . $_POST['temp'] . "',
+    pre_ingreso.porc_satu = '" . $_POST['porc_satu'] . "',
+    pre_ingreso.glu = '" . $_POST['glu'] . "',
+    pre_ingreso.rotu = '" . $_POST['rotu'] . "',
+    pre_ingreso.pulso_pe = '" . $_POST['pulso_pe'] . "',
+    pre_ingreso.mono = '" . $_POST['mono'] . "',
+    pre_ingreso.punsion = '" . $_POST['punsion'] . "',
+    pre_ingreso.foc = '" . $_POST['foc'] . "',
+    pre_ingreso.diapa = '" . $_POST['diapa'] . "',
+    pre_ingreso.obs = '" . $_POST['obs'] . "',
+    pre_ingreso.obss = '" . $_POST['obss'] . "',
+    pre_ingreso.diag = '" . $_POST['diag'] . "',
+    pre_ingreso.tto = '" . $_POST['tto'] . "',
+    pre_ingreso.indic = '" . $_POST['indic'] . "',
+    pre_ingreso.id_usuario  = " . $_POST['idoculto'];
+    
     mysqli_query(conexion(), $sql);
+
     header("Location:ficha.php?idusu=$_POST[idoculto]");
-    //OJitoooooo
 }
 
 function premodificar()
