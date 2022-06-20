@@ -129,7 +129,7 @@ if (isset($_SESSION['usuario'])) {
                             </a>
                         </li>
                         <li>
-                            <a href="vistaficha.php?Id=<?php echo $datosusu['Id']; ?>" class="nav-link text-white">
+                            <a href="vistaficha.php?idusu=<?php echo $_GET['idusu']; ?>" class="nav-link text-white">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#book" />
                                 </svg>
@@ -197,10 +197,12 @@ if (isset($_SESSION['usuario'])) {
                                 ?>
 
                             </table>
-                            <!--
-                            <h6>id paciente: <?php echo $_GET['idusu']; ?></h6>
-                            <h6>id paciente datos : <?php echo $datosusu['Id']; ?></h6>
-                            -->
+                            
+                                <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
+                                <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
+                                <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
+                                <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
+                                
                             <hr>
                             <div class="row g-3">
                                 <div class="col">
@@ -316,7 +318,7 @@ if (isset($_SESSION['usuario'])) {
                                     </div>
                                 </div>
                             </form>
-                            <a href="preingreso.php?Id=<?php echo $datosusu['Id']; ?>">
+                            <a href="preingreso.php?idusu=<?php echo $_GET['idusu']; ?>">
                                 <button class="btn btn-success">Pre-Ingreso</button>
                             </a>
                         </div>

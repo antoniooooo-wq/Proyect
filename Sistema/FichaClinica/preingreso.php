@@ -113,7 +113,7 @@ if (isset($_SESSION['usuario'])) {
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li>
-                            <a href="ficha.php?idusu=<?php echo $_GET['Id']; ?>" class="nav-link text-white">
+                            <a href="ficha.php?idusu=<?php echo $_GET['idusu']; ?>" class="nav-link text-white">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#book" />
                                 </svg>
@@ -128,7 +128,14 @@ if (isset($_SESSION['usuario'])) {
                                 Pre-Ingreso
                             </a>
                         </li>
-
+                        <li>
+                            <a href="vistaficha.php?idusu=<?php echo $_GET['idusu']; ?>" class="nav-link text-white">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#book" />
+                                </svg>
+                                Atenciones
+                            </a>
+                        </li>
                     </ul>
                     <footer class="container">
                         <p>Copyright 2022 Podología Marticorena</p>
@@ -152,18 +159,18 @@ if (isset($_SESSION['usuario'])) {
                     <div id="formulario_usuario">
                         <div class="container p-3 my-1 border">
                             <form action="registroficha.php" method="post" name="form_ficha">
-                                <!--
+                                
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
-                                <h6>id paciente GET: <?php echo $_GET['idusu']; ?></h6>
+                                <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                                -->
+                                
                                 <?php
                                 $sql = "SELECT
                                 `usuario`.`nombre`
                               FROM
                                 `usuario`
-                                WHERE Id =" . $_GET['Id'];
+                                WHERE Id =" . $_GET['idusu'];
                                 $result = mysqli_query(conexion(), $sql);
                                 $datos = mysqli_fetch_array($result);
                                 ?>

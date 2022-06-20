@@ -105,7 +105,7 @@ if (isset($_SESSION['usuario'])) {
                             </a>
                         </li>
                         <li>
-                            <a href="ficha.php?idusu=<?php echo $_GET['Id']; ?>" class="nav-link text-white">
+                            <a href="ficha.php?idusu=<?php echo $_GET['idusu']; ?>" class="nav-link text-white">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#book" />
                                 </svg>
@@ -141,18 +141,18 @@ if (isset($_SESSION['usuario'])) {
                 <div class="container p-9 my-5 border">
                     <h4>Atenciones</h4>
                     <div id="grilla" class="overflow-scroll">
-                        <!--       
+                           
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
-                                <h6>id paciente GET: <?php echo $_GET['idusu']; ?></h6>
+                                <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                        -->
+                        
                         <?php
                         $sql = "SELECT
                                 `usuario`.`nombre`
                               FROM
                                 `usuario`
-                                WHERE Id =" . $_GET['Id'];
+                                WHERE Id =" . $_GET['idusu'];
                         $result = mysqli_query(conexion(), $sql);
                         $datos = mysqli_fetch_array($result);
                         ?>
@@ -161,26 +161,25 @@ if (isset($_SESSION['usuario'])) {
                             <tr>
                                 <th>N° Atención</th>
                                 <th>Tratamiento</th>
-                                
                                 <th>Detalles</th>
                             </tr>
                             <?php
                             $sql = "SELECT
-                            `pre_ingreso`.`Id`,
+                            `pre_ingreso`.`cont`,
                             `pre_ingreso`.`tto`,
                             `pre_ingreso`.`id_usuario`
                           FROM
                             `pre_ingreso`
                           WHERE
-                            `pre_ingreso`.`id_usuario`=" . $_GET['Id'];
+                            `pre_ingreso`.`id_usuario`=" . $_GET['idusu'];
                             $result = mysqli_query(conexion(), $sql);
                             while ($datos = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $datos['Id']; ?></td>
+                                    <td><?php echo $datos['cont']; ?></td>
                                     <td><?php echo $datos['tto']; ?></td>
                                     <td>
-                                        <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/revision.png"></a>
+                                        <a href="../FichaClinica/preingreso.php?idusu=<?php echo $_GET['idusu']; ?>"><img src="assets/images/revision.png"></a>
                                     </td>
                                 </tr>
                             <?php

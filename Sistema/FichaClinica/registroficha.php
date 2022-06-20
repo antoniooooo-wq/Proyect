@@ -1,5 +1,7 @@
 <?php
 
+use const PHPSTORM_META\ANY_ARGUMENT;
+
 include("../../functions/setup.php");
 
 
@@ -48,7 +50,17 @@ function cancelar()
 
 function preingresar()
 {
+    $sql2 = "SELECT
+        `pre_ingreso`.`id_usuario`,
+        `pre_ingreso`.`cont`
+    FROM
+        `pre_ingreso`
+    WHERE
+        `pre_ingreso`.`id_usuario` = " . $_POST['idoculto'];
+    $cont = 1;
+    
     $sql = "INSERT INTO pre_ingreso SET
+    pre_ingreso.cont = $cont,
     pre_ingreso.frec_card = '" . $_POST['frec_card'] . "',
     pre_ingreso.frec_resp = '" . $_POST['frec_resp'] . "',
     pre_ingreso.sist = '" . $_POST['sist'] . "',
@@ -68,9 +80,8 @@ function preingresar()
     pre_ingreso.tto = '" . $_POST['tto'] . "',
     pre_ingreso.indic = '" . $_POST['indic'] . "',
     pre_ingreso.id_usuario  = " . $_POST['idoculto'];
-    
-    mysqli_query(conexion(), $sql);
 
+    mysqli_query(conexion(), $sql);
     header("Location:ficha.php?idusu=$_POST[idoculto]");
 }
 
