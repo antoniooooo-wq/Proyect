@@ -141,12 +141,12 @@ if (isset($_SESSION['usuario'])) {
                 <div class="container p-9 my-5 border">
                     <h4>Atenciones</h4>
                     <div id="grilla" class="overflow-scroll">
-                           
-                                <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
-                                <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
-                                <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
-                                <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                        
+                        <!--
+                            <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
+                            <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
+                            <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
+                            <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
+                        -->
                         <?php
                         $sql = "SELECT
                                 `usuario`.`nombre`

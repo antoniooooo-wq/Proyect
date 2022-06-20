@@ -159,12 +159,12 @@ if (isset($_SESSION['usuario'])) {
                     <div id="formulario_usuario">
                         <div class="container p-3 my-1 border">
                             <form action="registroficha.php" method="post" name="form_ficha">
-                                
+                                <!--
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                                 <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                                
+                                -->
                                 <?php
                                 $sql = "SELECT
                                 `usuario`.`nombre`

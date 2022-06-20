@@ -197,12 +197,12 @@ if (isset($_SESSION['usuario'])) {
                                 ?>
 
                             </table>
-                            
+                            <!--
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                                 <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                                
+                            -->
                             <hr>
                             <div class="row g-3">
                                 <div class="col">
