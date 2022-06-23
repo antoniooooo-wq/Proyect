@@ -154,7 +154,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
                 <!-- Fin SlideBar-->
-
+                <!-- Opaaaa-->
 
 
                 <!--Inicio Body-->
