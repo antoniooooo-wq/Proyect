@@ -25,14 +25,16 @@ switch ($_POST['accion']) {
 
 function ingresar()
 {
-    $sql = " UPDATE usuario SET diabetes='" . $_POST['diabetes'] . "',hta='" . $_POST['hta'] . "',otros='" . $_POST['otros'] . "' WHERE Id= " . $_POST['idoculto'];
+    $sql = " UPDATE usuario SET diabetes='" . $_POST['diabetes'] . "',hta='" . $_POST['hta'] . "',
+    otros='" . $_POST['otros'] . "' WHERE Id= " . $_POST['idoculto'];
     mysqli_query(conexion(), $sql);
     header("Location:ficha.php?idusu=$_POST[idoculto]");
 }
 
 function modificar()
 {
-    $sql = " UPDATE usuario SET diabetes='" . $_POST['diabetes'] . "',hta='" . $_POST['hta'] . "',otros='" . $_POST['otros'] . "'" . "' WHERE Id= " . $_POST['idoculto'];
+    $sql = " UPDATE usuario SET diabetes='" . $_POST['diabetes'] . "',hta='" . $_POST['hta'] . "',
+    otros='" . $_POST['otros'] . "'" . "' WHERE Id= " . $_POST['idoculto'];
     mysqli_query(conexion(), $sql);
 
     header("Location:../Profesional/administrarpacientes.php");
