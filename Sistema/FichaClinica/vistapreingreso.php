@@ -30,7 +30,6 @@ if (isset($_SESSION['usuario'])) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/sidebars.js"></script>
         <script src="assets/js/validardatos.js"></script>
-        <script src="assets/js/positivos.js"></script>
         <script src="assets/js/validarRUT.js"></script>
 
         <!-- Bootstrap core CSS -->
@@ -154,25 +153,24 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
                 <!-- Fin SlideBar-->
-                <!-- Opaaaa-->
+
 
 
                 <!--Inicio Body-->
                 <div class="container" id="global">
                     <!--ojitooo-->
                     <div id="formulario_usuario">
-                        <!--
-                        <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
-                        <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
-                        <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
-                        <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                    -->
                         <div class="container p-3 my-1 border">
-                            <form action="registroficha.php" method="post" name="form_preingreso">
+                            <form action="registroficha.php" method="post" name="form_ficha">
+                            <!--
+                                <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
+                                <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
+                                <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
+                                <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
+                            -->
                                 <?php
                                 $sql = "SELECT
                                         usuario.nombre
-                                  
                                     FROM
                                         usuario
                                         WHERE Id =" . $_GET['idusu'];
@@ -182,104 +180,129 @@ if (isset($_SESSION['usuario'])) {
                                 <h2>Pre-Ingreso</h2>
                                 <br>
                                 <h6>Paciente: <?php echo $datos['nombre']; ?></h6>
-                                <div  id = "contenedor-campos">
+
+                                <!-- Consulta-->
+                                <?php
+                                $sql2 = "SELECT
+                                        pre_ingreso.*
+                                      FROM
+                                      pre_ingreso
+                                      WHERE
+                                        pre_ingreso.cont = '" . $_GET['cont'] . "' AND pre_ingreso.id_usuario=". $_GET['idusu'] ;
+                                        
+                                $result = mysqli_query(conexion(), $sql2);
+                                while ($datosusu = mysqli_fetch_array($result)) {
+                                ?>
+                                    <!--Fin Consulta-->
                                     <div class="row g-3">
                                         <div class="col">
                                             <label for="frec_card">Frecuencia Cardiaca</label>
-                                            <input type="number" min="1"class="form-control" id="frec_card" name="frec_card" aria-label="Frecuencia Cardiaca" placeholder="Frecuencia Cardiaca" value="<?php echo $datosusu['frec_card'] ?>">
+                                            <input type="text" class="form-control" id="frec_card" name="frec_card" aria-label="Frecuencia Cardiaca" placeholder="Frecuencia Cardiaca" value="<?php echo $datosusu['frec_card'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="frec_resp">Frecuencia Respiratoria</label>
-                                            <input type="number" min="1"  class="form-control" id="frec_resp" name="frec_resp" aria-label="Frecuencia Respiratoria" placeholder="Frecuencia Respiratoria" value="<?php echo $datosusu['frec_resp'] ?>">
+                                            <input type="text" class="form-control" id="frec_resp" name="frec_resp" aria-label="Frecuencia Respiratoria" placeholder="Frecuencia Respiratoria" value="<?php echo $datosusu['frec_resp'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="sist">Sistole</label>
-                                            <input type="number" min="1"  class="form-control" id="sist" name="sist" aria-label="Sistole" placeholder="Sistole" value="<?php echo $datosusu['sist'] ?>">
+                                            <input type="text" class="form-control" id="sist" name="sist" aria-label="Sistole" placeholder="Sistole" value="<?php echo $datosusu['sist'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="diast">Diastole</label>
-                                            <input type="number" min="1" class="form-control"  id="diast" name="diast" aria-label="Diastole" placeholder="Diastole" value="<?php echo $datosusu['diast'] ?>">
+                                            <input type="text" class="form-control" id="diast" name="diast" aria-label="Diastole" placeholder="Diastole" value="<?php echo $datosusu['diast'] ?>">
                                         </div>
                                     </div>
 
                                     <div class="row g-3">
                                         <div class="col">
                                             <label for="temp">T°</label>
-                                            <input type="text" min="1" class="form-control" id="temp" name="temp" aria-label="T°" placeholder="T°" value="<?php echo $datosusu['temp'] ?>">
+                                            <input type="text" class="form-control" id="temp" name="temp" aria-label="T°" placeholder="T°" value="<?php echo $datosusu['temp'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="porc_satu">% de Saturación</label>
-                                            <input type="number" min="1" class="form-control" id="porc_satu" name="porc_satu" aria-label="% de Saturación" placeholder="% de Saturación" value="<?php echo $datosusu['porc_satu'] ?>">
+                                            <input type="text" class="form-control" id="porc_satu" name="porc_satu" aria-label="% de Saturación" placeholder="% de Saturación" value="<?php echo $datosusu['porc_satu'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="glu">Glucosa</label>
-                                            <input type="number" min="1" class="form-control" id="glu" name="glu" aria-label="Glucosa" placeholder="Glucosa" value="<?php echo $datosusu['glu'] ?>">
+                                            <input type="text" class="form-control" id="glu" name="glu" aria-label="Glucosa" placeholder="Glucosa" value="<?php echo $datosusu['glu'] ?>">
                                         </div>
                                     </div>
 
                                     <div class="row g-3">
                                         <div class="col">
                                             <label for="rotu">Rotuliano</label>
-                                            <input type="number" min="1" class="form-control" id="rotu" name="rotu" aria-label="Rotuliano" placeholder="Rotuliano" value="<?php echo $datosusu['rotu'] ?>">
+                                            <input type="text" class="form-control" id="rotu" name="rotu" aria-label="Rotuliano" placeholder="Rotuliano" value="<?php echo $datosusu['rotu'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="pulso_pe">Pulso Pedio</label>
-                                            <input type="number" min="1" class="form-control" id="pulso_pe" name="pulso_pe" aria-label="Pulso Pedio" placeholder="Pulso Pedio" value="<?php echo $datosusu['pulso_pe'] ?>">
+                                            <input type="text" class="form-control" id="pulso_pe" name="pulso_pe" aria-label="Pulso Pedio" placeholder="Pulso Pedio" value="<?php echo $datosusu['pulso_pe'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="mono">Monofila</label>
-                                            <input type="number" min="1" class="form-control" id="mono" name="mono" aria-label="Monofila" placeholder="Monofila" value="<?php echo $datosusu['mono'] ?>">
+                                            <input type="text" class="form-control" id="mono" name="mono" aria-label="Monofila" placeholder="Monofila" value="<?php echo $datosusu['mono'] ?>">
                                         </div>
                                         <div class="col">
-                                            <label for="punsion">Punsión </label>
-                                            <input type="number" min="1" class="form-control" id="punsion" name="punsion" aria-label="Punsión" placeholder="Punsión" value="<?php echo $datosusu['punsion'] ?>">
+                                            <label for="punsion">Punsión</label>
+                                            <input type="text" class="form-control" id="punsion" name="punsion" aria-label="Punsión" placeholder="Punsión" value="<?php echo $datosusu['punsion'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="foc">Frio/Calor</label>
-                                            <input type="text" min="1" class="form-control" id="foc" name="foc" aria-label="Frio/Calor" placeholder="Frio/Calor" value="<?php echo $datosusu['foc'] ?>">
+                                            <input type="text" class="form-control" id="foc" name="foc" aria-label="Frio/Calor" placeholder="Frio/Calor" value="<?php echo $datosusu['foc'] ?>">
                                         </div>
 
                                         <div class="col">
                                             <label for="diapa">Diapason</label>
-                                            <input type="number" min="1" class="form-control" id="diapa" name="diapa" aria-label="Diapason" placeholder="Diapason" value="<?php echo $datosusu['diapa'] ?>">
+                                            <input type="text" class="form-control" id="diapa" name="diapa" aria-label="Diapason" placeholder="Diapason" value="<?php echo $datosusu['diapa'] ?>">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row g-3">
                                     <div class="row g-3">
-                                        <label for="obs">Observaciones</label>
-                                        <textarea name="obs"><?php echo $datosusu['obs'] ?></textarea>
+                                        <div class="row g-3">
+                                            <label for="obs">Observaciones</label>
+                                            <textarea name="obs"><?php echo $datosusu['obs'] ?></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <center>
-                                    <h3>Tratamiento y Evolución</h3>
-                                </center>
+                                    <hr>
+                                    <center>
+                                        <h3>Tratamiento y Evolución</h3>
+                                    </center>
 
-                                <div class="row g-3">
                                     <div class="row g-3">
-                                        <label for="obss">Observaciones</label>
-                                        <textarea name="obss"><?php echo $datosusu['obss'] ?></textarea>
+                                        <div class="row g-3">
+                                            <label for="obss">Observaciones</label>
+                                            <textarea name="obss"><?php echo $datosusu['obss'] ?></textarea>
+                                        </div>
+                                        <div class="row g-3">
+                                            <label for="diag">Diagnostico</label>
+                                            <textarea name="diag"><?php echo $datosusu['diag'] ?></textarea>
+                                        </div>
+                                        <div class="row g-3">
+                                            <label for="tto">Tratamiento</label>
+                                            <textarea name="tto"><?php echo $datosusu['tto'] ?></textarea>
+                                        </div>
+                                        <div class="row g-3">
+                                            <label for="indic">Indicaciones</label>
+                                            <textarea name="indic"><?php echo $datosusu['indic'] ?></textarea>
+                                        </div>
                                     </div>
-                                    <div class="row g-3">
-                                        <label for="diag">Diagnostico</label>
-                                        <textarea name="diag"><?php echo $datosusu['diag'] ?></textarea>
-                                    </div>
-                                    <div class="row g-3">
-                                        <label for="tto">Tratamiento</label>
-                                        <textarea name="tto"><?php echo $datosusu['tto'] ?></textarea>
-                                    </div>
-                                    <div class="row g-3">
-                                        <label for="indic">Indicaciones</label>
-                                        <textarea name="indic"><?php echo $datosusu['indic'] ?></textarea>
-                                    </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
                                 <br>
                                 <div class="row">
                                     <div class="col-12">
                                         <hr>
                                         <center>
-                                            <input id="btnIngresar" type="button" value="PreIngreso" class="btn btn-success" onclick="validarpreingreso(this.value);">
+                                            <?php
+                                            if (isset($_GET['Id'])) {
+                                            ?>
+                                                <input id="btnIngresar" type="button" value="PreIngreso" class="btn btn-success" onclick="validarpreingreso(this.value);">
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <input id="btnModificar" type="button" value="PreModificar" class="btn btn-warning" onclick="validarpreingreso(this.value);">
+                                            <?php
+                                            }
+                                            ?>
                                             <input id="btnCancelar" type="button" value="PreCancelar" class="btn btn-danger" onclick="validarpreingreso(this.value);">
                                             <input type="hidden" id="accion" name="accion">
                                             <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
@@ -289,11 +312,11 @@ if (isset($_SESSION['usuario'])) {
                             </form>
                         </div>
                     </div>
-                    <!--Fin Body-->
-                <?php
-            }
-                ?>
                 </div>
+                <!--Fin Body-->
+            <?php
+            }
+            ?>
         </main>
     </body>
 

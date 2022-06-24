@@ -1,7 +1,6 @@
 <?php
 
-//http://localhost/Como-recuperar-clave-de-usuario-usando-PHP-y-MYSQL/nuevaClave.php?tokenUser=fdsfsdfFfDF&id=12
-if($_REQUEST['tokenUser'] !="" && $_REQUEST['id'] !=""){ ?>
+if($_REQUEST['tokenUser'] !="" && $_REQUEST['Id'] !=""){ ?>
 
 <!doctype html>
 <html lang="en">
@@ -45,7 +44,7 @@ if($_REQUEST['tokenUser'] !="" && $_REQUEST['id'] !=""){ ?>
 
       <div class="row text-center mb-5">
         <div class="col-md-12 mt-5">
-          <img src="assets/images/leonardo-dicaprio-muy-bien.gif" alt="bien" class="img-fluid well">
+          <img src="images/leonardo-dicaprio-muy-bien.gif" alt="bien" class="img-fluid well">
         </div>
       </div>
 
@@ -54,12 +53,15 @@ if($_REQUEST['tokenUser'] !="" && $_REQUEST['id'] !=""){ ?>
           <p>Hola Bienvenido, escribe tu nueva clave aquí</p>
           <hr>
           <form action="updateClave.php" action="POST">
-            <input type="text" name="id" value="<?php echo $_REQUEST['id']; ?>" hidden="true">
+            <input type="text" name="Id" value="<?php echo $_REQUEST['Id']; ?>" hidden="true">
+            
             <input type="text" name="tokenUser" value="<?php echo $_REQUEST['tokenUser']; ?>" hidden="true">
 
             <div class="form-group mb-3">
-                <label for="password" style="float: left; font-weight:bold;">Nueva Clave</label>
-                <input type="password" name="password" class="form-control">
+                
+                <label for="pass" style="float: left; font-weight:bold;">Nueva Clave</label>
+                <input type="password" name="pass" id="pass" class="form-control">
+                
             </div>
             <button type="submit" class="btn btn-primary  btn-block">Recuperar Ahora</button>
             

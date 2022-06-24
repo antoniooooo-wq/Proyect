@@ -1,53 +1,74 @@
 function validarficha(accion) {
 
-    document.form1.accion.value = accion;
+    document.form_ficha.accion.value = accion;
     if (accion != "Cancelar") {
         if (accion != "Modificar") {
-            if (document.form1.Rut.value == "") {
-                alert("Debe Ingresar el Rut");
-                return false;
-            }
-        }
-        if (document.form1.name.value == "") {
-            alert("Debe Ingresar un Nombre");
-            return false;
-        }
-        if (document.form1.app.value == "") {
-            alert("Debe Ingresar un Apellido");
-            return false;
-        }
-        if (document.form1.fechanacimiento.value == "") {
-            alert("Debe Ingresar Fecha de Nacimiento");
-            return false;
-        }
-        if (document.form1.correo.value == "") {
-            alert("Debe Ingresar el Correo");
-            return false;
-        }
-        if (document.form1.direccion.value == "") {
-            alert("Debe Ingresar una Direccion");
-            return false;
-        }
-        if (document.form1.sexo.value == "") {
-            alert("Debe Ingresar el Sexo");
-            return false;
-        }
-        if (document.form1.telefono.value == "") {
-            alert("Debe Ingresar el Telefono");
-            return false;
-        }
-        if (accion != "Modificar") {
-            if (document.form1.pass.value == "") {
-                alert("Debe Ingresar la clave");
-                return false;
-            }
-        }
-        if (accion == "Modificar") {
-            if (document.form1.frmestado.value == 3) {
-                alert("Debe Ingresar el Estado del usuario");
-                return false;
-            }
+            
         }
     }
-    document.form1.submit();
+    document.form_ficha.submit();
+}
+
+function validarpreingreso(accion){
+
+    document.form_preingreso.accion.value = accion;
+    if (accion != "Cancelar") {
+        /*
+        if (document.form_preingreso.frec_card.value <="0") {
+            alert("Número Inválido (Frecuencia Cardiaca)");
+           return false;
+        }
+        
+        if (document.form_preingreso.frec_resp.value <="0") {
+            alert("Número Inválido (Frecuencia Respiratoria)");
+            return false;
+        }
+        if (document.form_preingreso.sist.value <="0") {
+            alert("Número Inválido (Sistole)");
+            return false;
+        }
+        if (document.form_preingreso.diast.value <"0") {
+            alert("Número Inválido (Diastole)");
+            return false;
+        }
+        if (document.form_preingreso.temp.value <"0") {
+            alert("Número Inválido (T°)");
+            return false;
+        }
+        if (document.form_preingreso.porc_satu.value <"0") {
+            alert("Número Inválido (Saturación)");
+            return false;
+        }
+        if (document.form_preingreso.glu.value <"0") {
+            alert("Número Inválido (Glucosa)");
+            return false;
+        }
+        if (document.form_preingreso.rotu.value <"0") {
+            alert("Número Inválido (Rotuliano)");
+            return false;
+        }
+        if (document.form_preingreso.pulso_pe.value <"0") {
+            alert("Número Inválido (Pulso Pedio)");
+            return false;
+        }
+        if (document.form_preingreso.mono.value <"0") {
+            alert("Número Inválido (Monofila)");
+            return false;
+        }
+        if (document.form_preingreso.punsion.value <"0") {
+            alert("Número Inválido (Punsión)");
+            return false;
+        }
+        if (document.form_preingreso.foc.value <"0") {
+            alert("Número Inválido (Frio/Calor)");
+            return false;
+        }
+        if (document.form_preingreso.diapa.value <"0") {
+            alert("Número Inválido (Diapason)");
+            return false;
+        }
+*/
+       
+    }
+    document.form_preingreso.submit();
 }
