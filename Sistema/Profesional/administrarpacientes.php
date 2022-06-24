@@ -141,62 +141,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="container p-9 my-5 border">
           <h4>Pacientes</h4>
           <div id="grilla" class="overflow-scroll">
-            <table class="table table-striped">
-              <tr>
-                <th>Rut</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Estado</th>
-                <th>Editar</th>
-                <th>Ficha</th>
-              </tr>
-              <?php
-              $sql = "SELECT
-              usuario.run,
-              usuario.nombre,
-              usuario.apellido,
-              usuario.id_tipo_usuario,
-              usuario.estado,
-              usuario.Id
-            FROM
-              usuario
-              INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
-            WHERE
-              usuario.id_tipo_usuario = 3";
-              $result = mysqli_query(conexion(), $sql);
-              while ($datos = mysqli_fetch_array($result)) {
-              ?>
-                <tr>
-                  
-                  <td><?php echo $datos['run']; ?></td>
-                  <td><?php echo $datos['nombre']; ?></td>
-                  <td><?php echo $datos['apellido']; ?></td>
-                  <td>
-                    <?php
-                    if ($datos['estado'] == 0) {
-                    ?>
-                      <img src="assets/images/inactivo.png">
-                    <?php
-                    } else {
-                    ?>
-                      <img src="assets/images/activo.png">
-                    <?php
-                    }
-
-                    ?>
-                  </td>
-
-                  <td>
-                    <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
-                  </td>
-                  <td>
-                    <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/revision.png"></a>
-                  </td>
-                </tr>
-              <?php
-              }
-              ?>
-            </table>
+            
           </div>
         </div>
         <!--Fin Body-->

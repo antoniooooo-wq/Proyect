@@ -2,6 +2,8 @@
 <?php
 include("../Proyect/functions/setup.php");
 
+session_start();
+
 if (isset($_SESSION['usuario'])) {
 
   if (isset($_GET['idusu'])) {
@@ -65,13 +67,13 @@ if (isset($_SESSION['usuario'])) {
               <thead>
                 <tr>
                   <th>Nombre</th>
-                  <th>rut</th>
+                  <th>rut </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>ricardo adrian</td>
-                  <td>14.556.166-7</td>
+                  <td><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></td>
+                  <td><?php echo $_SESSION['usuariorun']; ?></td>
                 </tr>
                 <tr></tr>
               </tbody>

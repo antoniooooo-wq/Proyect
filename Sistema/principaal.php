@@ -235,7 +235,7 @@ if (isset($_SESSION['usuario'])) {
               </a>
             </li>
             <li>
-              <a href="../Sistema/Pago/Portaldepago.php?idusu=<?php echo $datos['usuarioid']; ?>" class="nav-link text-white">
+              <a href="../Sistema/Pago/Portaldepago.php<?php echo $datos['usuarioid']; ?>" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#ing" />
                 </svg>
