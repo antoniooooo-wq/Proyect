@@ -1,4 +1,4 @@
- <?php
+<?php
 
    include("../functions/setup.php");
 
@@ -16,6 +16,6 @@
 
    mysqli_query(conexion(), $sql);
 
-   header("Location:../login/index.php");
+   header("Location:../../Proyect/login/index.php");
 
-      ?>
+?>
