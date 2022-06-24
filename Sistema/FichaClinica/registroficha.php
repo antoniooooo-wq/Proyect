@@ -56,7 +56,7 @@ function preingresar()
         `pre_ingreso`
     WHERE
         `pre_ingreso`.`id_usuario` = " . $_POST['idoculto'];
-    $cont = 1;
+    $cont=1;
     
     $sql = "INSERT INTO pre_ingreso SET
     pre_ingreso.cont = $cont,
