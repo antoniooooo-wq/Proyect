@@ -186,12 +186,12 @@ if (isset($_SESSION['usuario'])) {
                                 ?>
 
                             </table>
-                        <!--
+                            <!--
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                                 <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                            -->   
+                            -->
                             <hr>
                             <div class="row g-3">
                                 <div class="col">
@@ -264,6 +264,9 @@ if (isset($_SESSION['usuario'])) {
                                     <input type="number" class="form-control" id="telefono" name="telefono" aria-label="Telefono" placeholder="Telefono" value="<?php echo $datosusu['telefono'] ?>" disabled>
                                 </div>
                             </div>
+                            <a href="fotos.php?idusu=<?php echo $_GET['idusu']; ?>">
+                                <button class="btn btn-success">Fotos</button>
+                            </a>
                             <hr>
                             <form action="registroficha.php" method="post" name="form_ficha">
                                 <h2>Enfermedades, Medicamentos e Intervenciones</h2>
