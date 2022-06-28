@@ -154,24 +154,24 @@ if (isset($_SESSION['usuario'])) {
                             </tr>
                             <?php
                             $sql = "SELECT
-                            `pre_ingreso`.`cont`,
-                            `pre_ingreso`.`tto`,
-                            `pre_ingreso`.`id_usuario`
+                            *
                           FROM
                             `pre_ingreso`
                           WHERE
                             `pre_ingreso`.`id_usuario`=" . $_GET['idusu'];
-                            $result = mysqli_query(conexion(), $sql);
+                            $result = mysqli_query(conexion(), $sql);  
+                            $cont=1;
                             while ($datos = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $datos['cont']; ?></td>
+                                    <td><?php echo $cont; ?></td>
                                     <td><?php echo $datos['tto']; ?></td>
                                     <td>
-                                        <a href="vistapreingreso.php?idusu=<?php echo $_GET['idusu']; ?>&cont=<?php echo $datos['cont']; ?>"><img src="assets/images/revision.png"></a>
+                                        <a href="vistapreingreso.php?id=<?php echo $datos['Id']; ?>&idusu=<?php echo $_GET['idusu'] ?>"><img src="assets/images/revision.png"></a>
                                     </td>
                                 </tr>
                             <?php
+                                $cont++;
                             }
                             ?>
                         </table>

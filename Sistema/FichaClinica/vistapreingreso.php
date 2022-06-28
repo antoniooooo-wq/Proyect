@@ -184,12 +184,11 @@ if (isset($_SESSION['usuario'])) {
                                 <!-- Consulta-->
                                 <?php
                                 $sql2 = "SELECT
-                                        pre_ingreso.*
+                                        *
                                       FROM
                                       pre_ingreso
                                       WHERE
-                                        pre_ingreso.cont = '" . $_GET['cont'] . "' AND pre_ingreso.id_usuario=". $_GET['idusu'] ;
-                                        
+                                        Id=". $_GET['id'] ;     
                                 $result = mysqli_query(conexion(), $sql2);
                                 while ($datosusu = mysqli_fetch_array($result)) {
                                 ?>
