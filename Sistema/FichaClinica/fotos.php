@@ -159,9 +159,7 @@ if (isset($_SESSION['usuario'])) {
                 -->
 
                 <div class="container">
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" style="padding-top: 100px" ;>
-                            <?php
+                <?php
                             $sql = "SELECT
                                         usuario.Id,
                                         images_tabla.imagen AS imagen1
@@ -170,25 +168,31 @@ if (isset($_SESSION['usuario'])) {
                                         INNER JOIN images_tabla ON images_tabla.id_paciente = usuario.Id
                                         WHERE id_paciente =" . $_GET['idusu'];
                             $result = mysqli_query(conexion(), $sql);
-                            while ($datosimg = mysqli_fetch_array($result)) {
-                            ?>
-                                <div class="carousel-item">
-                                    <img src="../assets/images/profiles/<?php echo $datosimg['imagen1']; ?>" class="d-block w-100" alt="..." width="100" height="600">
-                                </div>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Siguiente</span>
-                        </button>
-                    </div>
+                        
+                ?>
                 </div>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                    <?php
+                    while ($datosimg = mysqli_fetch_array($result)) {
+                        ?>
+                        <div class="carousel-item active <!-- if principal -->">
+                            <img src="../assets/images/profiles/<?php echo $datosimg['imagen1']; ?>" class="d-block w-10">  
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
                 <!--Fin Body-->
             <?php
             }
