@@ -19,7 +19,6 @@ switch ($_POST['accion']) {
 
 function modificar()
 {
-
     $sql2 = "SELECT Id as id2 FROM usuario WHERE Id= " . $_POST['idoculto'];
 
     $result = mysqli_query(conexion(), $sql2);
