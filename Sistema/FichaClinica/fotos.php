@@ -29,8 +29,8 @@ if (isset($_SESSION['usuario'])) {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/sidebars.js"></script>
-        <script src="assets/js/validardatos.js"></script>
-        <script src="assets/js/validarRUT.js"></script>
+        <script src="../assets/js/validarfotos.js"></script>
+
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/features.css" rel="stylesheet">
@@ -85,6 +85,10 @@ if (isset($_SESSION['usuario'])) {
                     <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z" />
                     <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z" />
                 </symbol>
+                <symbol id="foto" viewBox="0 0 16 16">
+                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                    <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                </symbol>
             </svg>
             <?php
             if ($_SESSION['tipo'] == "2") //Profesional
@@ -120,7 +124,7 @@ if (isset($_SESSION['usuario'])) {
                         <li>
                             <a href="#" class="nav-link active">
                                 <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#ficha" />
+                                    <use xlink:href="#foto" />
                                 </svg>
                                 Fotos
                             </a>
@@ -157,42 +161,77 @@ if (isset($_SESSION['usuario'])) {
                 <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
                 -->
+                <div class="container">
+                    <div class="row">
+                        <form action="funcionfotos.php?idusu=<?php echo $_GET['idusu']; ?>" method="POST" name="form1" enctype="multipart/form-data">
+                            <h3>Ingreso de Imagenes</h3>
+                            <div class="col">
+                                <label for="imagen[]">Inserte Imagen de Perfil:</label>
+                                <input type="file" class="form-control" name="imagen[]" id="imagen[]" multiple="">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                    <center>
+                                        <?php
+                                        if (isset($_GET['idusu'])) {
+                                        ?>
+                                            <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarfotos(this.value);">
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning">
+                                        <?php
+                                        }
+                                        ?>
+                                        <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger">
+
+                                        <input type="hidden" id="accion" name="accion">
+                                        <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                    </center>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="container">
-                <?php
-                            $sql = "SELECT
+                    <h2>Imagenes</h2>
+                    <?php
+                    $sql = "SELECT
                                         usuario.Id,
                                         images_tabla.imagen AS imagen1
                                         FROM
                                         usuario
                                         INNER JOIN images_tabla ON images_tabla.id_paciente = usuario.Id
                                         WHERE id_paciente =" . $_GET['idusu'];
-                            $result = mysqli_query(conexion(), $sql);
-                        
-                ?>
-                </div>
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                    <?php
-                    while ($datosimg = mysqli_fetch_array($result)) {
-                        ?>
-                        <div class="carousel-item active <!-- if principal -->">
-                            <img src="../assets/images/profiles/<?php echo $datosimg['imagen1']; ?>" class="d-block w-10">  
-                        </div>
-                        <?php
-                    }
+                    $result = mysqli_query(conexion(), $sql);
                     ?>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-                
+                <center>
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <?php
+                            while ($datosimg = mysqli_fetch_array($result)) {
+                            ?>
+                                <div class="carousel-item <?php if ($datosimg['principal'] == 1) { ?> active <?php } ?>">
+                                    <img src="../assets/images/pies/<?php echo $datosimg['imagen1']; ?>" class="d-block w-10">
+                                </div>
+                                <br>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </center>
                 <!--Fin Body-->
             <?php
             }
