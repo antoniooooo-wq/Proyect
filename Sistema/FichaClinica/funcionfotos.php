@@ -25,7 +25,6 @@ function ingresar()
     $result=mysqli_query(conexion(),$sql2);
     $datos=mysqli_fetch_array($result);
     $cont=1;
-    
     foreach ($_FILES['imagen']['tmp_name'] as $key =>$tmp_name){
     
         $filename=$datos['id2'].'_'.$cont.'.png';
@@ -40,7 +39,7 @@ function ingresar()
         $ruta= $directorio.'/'.$filename;
         move_uploaded_file($temporal,$ruta);
     
-        $sql2="INSERT INTO images_tabla SET id_paciente=".$datos['id2'].",imagen='".$filename."',principal=0, estado=1";
+        $sql2="INSERT INTO foto SET id_paciente=".$datos['id2'].",imagen='".$filename."',principal=0, estado=1";
         $result=mysqli_query(conexion(),$sql2);
         
         $cont++;
