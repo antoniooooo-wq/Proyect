@@ -200,10 +200,10 @@ if (isset($_SESSION['usuario'])) {
                     <?php
                     $sql = "SELECT
                                         usuario.Id,
-                                        images_tabla.imagen AS imagen1
+                                        foto.imagen AS imagen1
                                         FROM
                                         usuario
-                                        INNER JOIN images_tabla ON images_tabla.id_paciente = usuario.Id
+                                        INNER JOIN foto ON foto.id_paciente = usuario.Id
                                         WHERE id_paciente =" . $_GET['idusu'];
                     $result = mysqli_query(conexion(), $sql);
                     ?>
