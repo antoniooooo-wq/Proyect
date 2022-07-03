@@ -52,6 +52,24 @@ if (isset($_SESSION['usuario'])) {
         }
       }
     </style>
+     <style type="text/css">
+            #global {
+                height: auto;
+                width: auto;
+                border: 1px solid #ddd;
+                background: #f1f1f1;
+                overflow-y: scroll;
+            }
+
+            #mensajes {
+                height: auto;
+            }
+
+            .texto {
+                padding: 4px;
+                background: #fff;
+            }
+        </style>
 
   </head>
 
@@ -136,7 +154,9 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
 
         <!--Inicio Body-->
-        <div class="container px-0 py-5" id="featured-3">
+        <div class="container" id="global">
+        <br>
+        <br>
           <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?><br></h2>
 
           <!--ojitooo-->

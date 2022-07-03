@@ -284,7 +284,7 @@ button {
     width: 100%;
     float: left;
     font-size: 59px;
-    color: #ffffff;
+    color: #080808;
     font-weight: 600;
     text-align: left;
     padding-top: 70px;
@@ -294,7 +294,7 @@ button {
     width: 100%;
     float: left;
     font-size: 17px;
-    color: #ffffff;
+    color: #0d0d0d;
     padding-left: 0;
     margin: 10px 0 0;
 }
@@ -382,7 +382,7 @@ button {
 .top_button_section li a.login-bt:hover,
 .top_button_section li a.login-bt:focus,
 .top_button_section li a.login-bt.active {
-    background: #c6610f;
+    background: #08a2df;
 }
 
 .about_section {

@@ -52,6 +52,24 @@ if (isset($_SESSION['usuario'])) {
         }
       }
     </style>
+    <style type="text/css">
+            #global {
+                height: auto;
+                width: auto;
+                border: 1px solid #ddd;
+                background: #f1f1f1;
+                overflow-y: scroll;
+            }
+
+            #mensajes {
+                height: auto;
+            }
+
+            .texto {
+                padding: 4px;
+                background: #fff;
+            }
+        </style>
 
 <!--Probando :v-->
   </head>
@@ -128,7 +146,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
 
         <!--Inicio Body-->
-        <div class="container p-9 my-5 border">
+        <div class="container" id="global">
           <h4>Pacientes</h4>
           <div id="grilla" class="overflow-scroll">
           <table class="table table-striped">
