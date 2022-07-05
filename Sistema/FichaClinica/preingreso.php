@@ -97,12 +97,7 @@ if (isset($_SESSION['usuario'])) {
 
                 <!-- Inicio SlideBar-->
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <svg class="bi me-2" width="20" height="32">
-                            <use xlink:href="#bootstrap" />
-                        </svg>
-                        <span class="fs-4">Podología Marticorena</span>
-                    </a>
+                    <span class="fs-4">Podología Marticorena</span>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
@@ -181,23 +176,23 @@ if (isset($_SESSION['usuario'])) {
                                 <h2>Pre-Ingreso</h2>
                                 <br>
                                 <h6>Paciente: <?php echo $datos['nombre']; ?></h6>
-                                <div  id = "contenedor-campos">
+                                <div id="contenedor-campos">
                                     <div class="row g-3">
                                         <div class="col">
                                             <label for="frec_card">Frecuencia Cardiaca</label>
-                                            <input type="number" min="1"class="form-control" id="frec_card" name="frec_card" aria-label="Frecuencia Cardiaca" placeholder="Frecuencia Cardiaca" value="<?php echo $datosusu['frec_card'] ?>">
+                                            <input type="number" min="1" class="form-control" id="frec_card" name="frec_card" aria-label="Frecuencia Cardiaca" placeholder="Frecuencia Cardiaca" value="<?php echo $datosusu['frec_card'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="frec_resp">Frecuencia Respiratoria</label>
-                                            <input type="number" min="1"  class="form-control" id="frec_resp" name="frec_resp" aria-label="Frecuencia Respiratoria" placeholder="Frecuencia Respiratoria" value="<?php echo $datosusu['frec_resp'] ?>">
+                                            <input type="number" min="1" class="form-control" id="frec_resp" name="frec_resp" aria-label="Frecuencia Respiratoria" placeholder="Frecuencia Respiratoria" value="<?php echo $datosusu['frec_resp'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="sist">Sistole</label>
-                                            <input type="number" min="1"  class="form-control" id="sist" name="sist" aria-label="Sistole" placeholder="Sistole" value="<?php echo $datosusu['sist'] ?>">
+                                            <input type="number" min="1" class="form-control" id="sist" name="sist" aria-label="Sistole" placeholder="Sistole" value="<?php echo $datosusu['sist'] ?>">
                                         </div>
                                         <div class="col">
                                             <label for="diast">Diastole</label>
-                                            <input type="number" min="1" class="form-control"  id="diast" name="diast" aria-label="Diastole" placeholder="Diastole" value="<?php echo $datosusu['diast'] ?>">
+                                            <input type="number" min="1" class="form-control" id="diast" name="diast" aria-label="Diastole" placeholder="Diastole" value="<?php echo $datosusu['diast'] ?>">
                                         </div>
                                     </div>
 
