@@ -89,12 +89,12 @@ if (isset($_SESSION['usuario'])) {
                                 Agendar Hora
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link text-white">
+                        <li>
+                            <a href="#" class="nav-link text-red">
                                 <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#book" />
+                                    <use xlink:href="#cancel" />
                                 </svg>
-                                Consultar Observaciones
+                                Cancelar Hora
                             </a>
                         </li>
                         <li>
@@ -104,15 +104,7 @@ if (isset($_SESSION['usuario'])) {
                                 </svg>
                                 Portal de Pagos
                             </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-red">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#cancel" />
-                                </svg>
-                                Cancelar Hora
-                            </a>
-                        </li>                      
+                        </li>                           
                     </ul>
                     <!--Fin Slidebar-->
                     <footer class="container">

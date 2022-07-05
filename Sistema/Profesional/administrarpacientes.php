@@ -147,12 +147,12 @@ if (isset($_SESSION['usuario'])) {
               <table class="table table-striped">
 
                 <tr>
-                  <th>Rut</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Estado</th>
-                  <th>Editar</th>
-                  <th>Ficha</th>
+                  <th>RUN</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Estado Paciente</th>
+                  <th>Modificar Paciente</th>
+                  <th>Ficha Clínica</th>
                 </tr>
                 <?php
                 $sql = "SELECT
@@ -178,12 +178,12 @@ if (isset($_SESSION['usuario'])) {
                     <td>
                       <?php
                       if ($datos['estado'] == 0) {
-                      ?>
-                        <img src="assets/images/inactivo.png">
+                      ?>                      
+                        <img src="assets/images/inactivo.png"> Dado de Alta
                       <?php
                       } else {
                       ?>
-                        <img src="assets/images/activo.png">
+                        <img src="assets/images/activo.png"> En TTO
                       <?php
                       }
 
