@@ -226,12 +226,12 @@ if (isset($_SESSION['usuario'])) {
                 Agendar Hora
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-white">
+            <li>
+              <a href="Paciente/cancelarhora.php" class="nav-link text-red">
                 <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#book" />
+                  <use xlink:href="#cancel" />
                 </svg>
-                Consultar Observaciones
+                Cancelar Hora
               </a>
             </li>
             <li>
@@ -242,14 +242,7 @@ if (isset($_SESSION['usuario'])) {
                 Portal de Pagos
               </a>
             </li>
-            <li>
-              <a href="Paciente/cancelarhora.php" class="nav-link text-red">
-                <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#cancel" />
-                </svg>
-                Cancelar Hora
-              </a>
-            </li>
+            
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>
@@ -257,7 +250,6 @@ if (isset($_SESSION['usuario'])) {
           <hr>
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
               <strong><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -280,7 +272,7 @@ if (isset($_SESSION['usuario'])) {
                   <th>Fecha</th>
                   <th>Hora de inicio</th>
                   <th>Hora final</th>
-                  <th>Tipo de tratamiento</th>
+                 
 
                 </tr>
                 <?php

@@ -58,7 +58,7 @@ if (isset($_SESSION['usuario'])) {
     <link href="features.css" rel="stylesheet">
   </head>
 
-  <body id="bodyprinci" style="background-image: url(images/)">
+  <body id="bodyprinci" style="background-image: url(images/); height: 1080px; overflow-x: hidden; overflow-y: hidden;">
     <main>
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="users" viewBox="0 0 16 16">
@@ -112,7 +112,6 @@ if (isset($_SESSION['usuario'])) {
           <hr>
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
               <strong><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -140,7 +139,7 @@ if (isset($_SESSION['usuario'])) {
                   <th>Fecha</th>
                   <th>Hora de inicio</th>
                   <th>Hora final</th>
-                  <th>Tipo de tratamiento</th>
+                  <th>Cancelar Hora</th>
 
                 </tr>
                 <?php
@@ -161,7 +160,7 @@ if (isset($_SESSION['usuario'])) {
                     <td><?php echo $datospe['horafinal']; ?></td>
                     <td>
 
-                    <a href="cancelar.php?id=<?php echo $datospe['Idatencion'];?>&op=3"><img id="elim<?php echo $datospe['Idatencion'];?>" src="assets/images/updated.png"></a>
+                    <a href="cancelar.php?id=<?php echo $datospe['Idatencion'];?>&op=3"><img id="elim<?php echo $datospe['Idatencion'];?>" src="assets/images/cerrar.png"></a>
                   </td>
                   </tr>
                 <?php

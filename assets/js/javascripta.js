@@ -35,15 +35,22 @@ $(document).ready(function() {
         data: 'fecha='+$("#fecha").val()+'&hora='+$("#hora").val()+'&idusu='+$("#idusu").val(),
         success: function (response) {
           if(response){
-            window.alert("Hora registrada")
+            window.alert("Hora registrada Exitosamente")
              window.location.href="../Sistema/principaal.php";
           }
 
       }
+
+      
 });
    
 });
 }
+
+
+
+
+
 
 
 
