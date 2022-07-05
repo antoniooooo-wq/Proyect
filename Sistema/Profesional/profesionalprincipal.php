@@ -55,7 +55,6 @@ if (isset($_SESSION['usuario'])) {
      <style type="text/css">
             #global {
                 height: auto;
-                width: auto;
                 border: 1px solid #ddd;
                 background: #f1f1f1;
                 overflow-y: scroll;
@@ -73,7 +72,7 @@ if (isset($_SESSION['usuario'])) {
 
   </head>
 
-  <body id="bodyprinci" style="background-image: url(images/);height: 1080px; overflow-x: hidden; overflow-y: hidden; ">
+  <body id="bodyprinci" style="background-color: #44A1F3 ;height: 1080px; overflow-x: hidden; overflow-y: hidden; ">
     <main>
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="users" viewBox="0 0 16 16">

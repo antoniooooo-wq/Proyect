@@ -55,7 +55,6 @@ if (isset($_SESSION['usuario'])) {
         <style type="text/css">
             #global {
                 height: auto;
-                width: auto;
                 border: 1px solid #ddd;
                 background: #f1f1f1;
                 overflow-y: scroll;

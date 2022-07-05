@@ -53,25 +53,24 @@ if (isset($_SESSION['usuario'])) {
       }
     </style>
     <style type="text/css">
-            #global {
-                height: auto;
-                width: auto;
-                border: 1px solid #ddd;
-                background: #f1f1f1;
-                overflow-y: scroll;
-            }
+      #global {
+        height: auto;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+      }
 
-            #mensajes {
-                height: auto;
-            }
+      #mensajes {
+        height: auto;
+      }
 
-            .texto {
-                padding: 4px;
-                background: #fff;
-            }
-        </style>
+      .texto {
+        padding: 4px;
+        background: #fff;
+      }
+    </style>
 
-<!--Probando :v-->
+    <!--Probando :v-->
   </head>
 
   <body id="bodyprinci" style="background-image: url(images/);height: 1080px; overflow-x: hidden; overflow-y: hidden; ">
@@ -79,7 +78,7 @@ if (isset($_SESSION['usuario'])) {
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="users" viewBox="0 0 16 16">
           <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
-        </symbol>  
+        </symbol>
         <symbol id="add" viewBox="0 0 16 16">
           <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
           <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
@@ -148,18 +147,20 @@ if (isset($_SESSION['usuario'])) {
         <!--Inicio Body-->
         <div class="container" id="global">
           <h4>Pacientes</h4>
-          <div id="grilla" class="overflow-scroll">
-          <table class="table table-striped">
-              <tr>
-                <th>Rut</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Estado</th>
-                <th>Editar</th>
-                <th>Ficha</th>
-              </tr>
-              <?php
-              $sql = "SELECT
+          <div id="formulario_adminpacientes">
+            <div class="container p-3 my-1 border">
+              <table class="table table-striped">
+
+                <tr>
+                  <th>Rut</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Estado</th>
+                  <th>Editar</th>
+                  <th>Ficha</th>
+                </tr>
+                <?php
+                $sql = "SELECT
               usuario.run,
               usuario.nombre,
               usuario.apellido,
@@ -171,42 +172,43 @@ if (isset($_SESSION['usuario'])) {
               INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
             WHERE
               usuario.id_tipo_usuario = 3";
-              $result = mysqli_query(conexion(), $sql);
-              while ($datos = mysqli_fetch_array($result)) {
-              ?>
-                <tr>
-                  
-                  <td><?php echo $datos['run']; ?></td>
-                  <td><?php echo $datos['nombre']; ?></td>
-                  <td><?php echo $datos['apellido']; ?></td>
-                  <td>
-                    <?php
-                    if ($datos['estado'] == 0) {
-                    ?>
-                      <img src="assets/images/inactivo.png">
-                    <?php
-                    } else {
-                    ?>
-                      <img src="assets/images/activo.png">
-                    <?php
-                    }
+                $result = mysqli_query(conexion(), $sql);
+                while ($datos = mysqli_fetch_array($result)) {
+                ?>
+                  <tr>
 
-                    ?>
-                  </td>
+                    <td><?php echo $datos['run']; ?></td>
+                    <td><?php echo $datos['nombre']; ?></td>
+                    <td><?php echo $datos['apellido']; ?></td>
+                    <td>
+                      <?php
+                      if ($datos['estado'] == 0) {
+                      ?>
+                        <img src="assets/images/inactivo.png">
+                      <?php
+                      } else {
+                      ?>
+                        <img src="assets/images/activo.png">
+                      <?php
+                      }
 
-                  <td>
-                    <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
-                  </td>
-                  <td>
-                    <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/ficha.png"></a>
-                  </td>
-                </tr>
-              <?php
-              }
-              ?>
-            </table>
-            
+                      ?>
+                    </td>
+
+                    <td>
+                      <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
+                    </td>
+                    <td>
+                      <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/ficha.png"></a>
+                    </td>
+                  </tr>
+                <?php
+                }
+                ?>
+              </table>
+            </div>
           </div>
+
         </div>
         <!--Fin Body-->
       <?php

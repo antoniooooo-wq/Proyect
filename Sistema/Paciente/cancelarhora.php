@@ -58,7 +58,7 @@ if (isset($_SESSION['usuario'])) {
     <link href="features.css" rel="stylesheet">
   </head>
 
-  <body id="bodyprinci" style="background-image: url(images/); height: 1080px; overflow-x: hidden; overflow-y: hidden;">
+  <body id="bodyprinci" style="height: 1080px; overflow-x: hidden; overflow-y: hidden;">
     <main>
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="users" viewBox="0 0 16 16">

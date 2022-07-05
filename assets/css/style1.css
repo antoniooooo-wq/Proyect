@@ -80,7 +80,7 @@ form h3 {
 }
 
 .form-group:hover {
-  border-left: 3px solid #f47931d1;
+  border-left: 3px solid #0e74c7d1;
 }
 
 .form-date-group {
@@ -93,7 +93,7 @@ form h3 {
 }
 
 .form-date-group:hover {
-  border-left: 3px solid #f47931d1;
+  border-left: 3px solid #0e74c7d1;
 }
 
 .form-date-group .form-group {
@@ -153,11 +153,11 @@ input[type=text]:focus,
 input[type=date]:focus,
 textarea:focus {
   outline: none;
-  border-color: f47931d1;
+  border-color: #0e74c7d1;
 }
 
 input[type=submit] {
-  background: #f47931d1;
+  background: #0e74c7d1;
   padding: 8px 16px;
   color: white;
   font-weight: bold;
@@ -174,19 +174,19 @@ input[type=submit] {
 input[type=submit]:hover {
   margin-top: -1px;
   margin-bottom: 1px;
-  background: #f47931d1;
+  background: #0e74c7d1;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.14);
 }
 
 #btn btn-primary[type=submit]:hover {
   margin-top: -1px;
   margin-bottom: 1px;
-  background: #f47931d1;
+  background: #0e74c7d1;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.14);
 }
 
 input[type=submit]:active {
-  background: #f47931d1;
+  background: #0e74c7d1;
   margin-top: 0px;
   margin-bottom: 0px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.00), 0 1px 2px rgba(0, 0, 0, 0.00);
@@ -220,12 +220,12 @@ input[type=submit]:active {
 }
 
 #guardar{
-  background:#f47931d1;
+  background:#0e74c7d1;
   color:#f0f0f0;  
 }
 
 #failure{
-  background:#ff3939;
+  background:#0e74c7d1;
   color:#f0f0f0;  
 }
 

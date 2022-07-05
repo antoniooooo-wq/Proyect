@@ -133,7 +133,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <p style="color: blue;">(Perfil Administrador)</p>
+          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> 
           </h2>
           <div>
           </div>
@@ -191,7 +191,6 @@ if (isset($_SESSION['usuario'])) {
               <strong><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-              <!--<li><a class="dropdown-item" href="#">Profile</a></li>-->
               <li><a class="dropdown-item" href="cerrarsesion.php">Cerrar Sesión</a></li>
             </ul>
           </div>
@@ -199,7 +198,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <p style="color: blue;">(Perfil Profesional)</p>
+          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
           </h2>
         </div>
       <?php
@@ -262,7 +261,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <p style="color: blue;">(Perfil Paciente)</p>
+          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> 
           </h2>
           <div class="container p-5 my-5 border">
             <h4>Horas</h4>
