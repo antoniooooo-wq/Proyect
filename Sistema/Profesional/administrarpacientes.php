@@ -9,7 +9,7 @@ if (isset($_SESSION['usuario'])) {
   if (isset($_GET['idusu'])) {
     $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
     $resultusu = mysqli_query(conexion(), $sqlusu);
-    $datosusu = mysqli_fetch_array($resultusu); 
+    $datosusu = mysqli_fetch_array($resultusu);
   }
 ?>
   <!doctype html>
@@ -156,13 +156,7 @@ if (isset($_SESSION['usuario'])) {
               </div>
             </div>
           </div>
-        </div>
-        <div id="formulario_adminpacientes">
-          <div class="container p-3 my-1 border">
-            <div id="grilla"></div>
-          </div>
-        </div>
-
+          <div id="grilla"></div>
         </div>
         <!--Fin Body-->
       <?php
@@ -170,41 +164,41 @@ if (isset($_SESSION['usuario'])) {
       ?>
     </main>
     <script>
-    $(document).ready(function() {
-      muestratodos();
+      $(document).ready(function() {
+        muestratodos();
 
-      $("#txt").keyup(function() {
-        like($("#txt").val());
+        $("#txt").keyup(function() {
+          like($("#txt").val());
+        });
+
+
       });
 
+      function muestratodos() {
+        $.ajax({
+          type: "POST",
+          url: 'busquedarut.php',
+          data: 'op=1',
+          success: function(response) {
+            $("#grilla").html(response);
+          }
+        });
+      }
 
-    });
+      function like(txt) {
+        $.ajax({
+          type: "POST",
+          url: 'busquedarut.php',
+          data: 'op=2&txt=' + txt,
+          success: function(response) {
+            $("#grilla").html(response);
+          }
+        });
+      }
+    </script>
 
-    function muestratodos() {
-      $.ajax({
-        type: "POST",
-        url: 'busquedarut.php',
-        data: 'op=1',
-        success: function(response) {
-          $("#grilla").html(response);
-        }
-      });
-    }
 
-    function like(txt) {
-      $.ajax({
-        type: "POST",
-        url: 'busquedarut.php',
-        data: 'op=2&txt=' + txt,
-        success: function(response) {
-          $("#grilla").html(response);
-        }
-      });
-    }
-  </script>
-  
-  
-  
+
   </body>
 
 
