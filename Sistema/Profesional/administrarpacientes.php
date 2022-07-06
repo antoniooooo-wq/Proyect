@@ -147,6 +147,7 @@ if (isset($_SESSION['usuario'])) {
 
         <!--Inicio Body-->
         <div class="container" id="global">
+          <br>
           <h4>Pacientes</h4>
           <div class="card">
             <div class="card-body">
@@ -158,6 +159,7 @@ if (isset($_SESSION['usuario'])) {
               </div>
             </div>
           </div>
+          <hr>  
           <div id="grilla"></div>
         </div>
         <!--Fin Body-->
