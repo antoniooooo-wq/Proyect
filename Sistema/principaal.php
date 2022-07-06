@@ -207,7 +207,7 @@ if (isset($_SESSION['usuario'])) {
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="../Sistema/Ingresodefecha.php?idusu=<?php echo $datos['usuarioid']; ?>"  class="nav-link active" aria-current="page">
+              <a href="../Sistema/Ingresodefecha.php<?php echo $datos['usuarioid']; ?>"  class="nav-link active" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#Plus" />
                 </svg>

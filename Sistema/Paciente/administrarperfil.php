@@ -82,7 +82,7 @@ if (isset($_SESSION['usuario'])) {
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="./Proyect/Sistema/Ingresodefecha.php?idusu=<?php echo $datosusu['Id']; ?>" class="nav-link active" aria-current="page">
+                            <a href="./Proyect/Sistema/Ingresodefecha.php<?php echo $datosusu['Id']; ?>" class="nav-link active" aria-current="page">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#Plus" />
                                 </svg>
@@ -98,7 +98,7 @@ if (isset($_SESSION['usuario'])) {
                             </a>
                         </li>
                         <li>
-                            <a href="href=./Proyect/Sistema/Pago/Portaldepago.php?idusu=<?php echo $datosusu['Id']; ?>" class="nav-link text-white">
+                            <a href="href=./Proyect/Sistema/Pago/Portaldepago.php<?php echo $datosusu['Id']; ?>" class="nav-link text-white">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#ing" />
                                 </svg>

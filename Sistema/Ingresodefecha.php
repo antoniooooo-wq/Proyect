@@ -41,13 +41,13 @@ if (isset($_SESSION['usuario'])) {
       <div class="form-date-group">
         <div class="form-group">
           <label for="job-1__start">Seleccione el dia</label>
-          <input type="date" name="fecha" id="fecha">
+          <input type="date" name="fecha" id="fecha" required>
         </div>
       </div>
       <div class="form-date-group">
         <div class="modal-body">
           <label>Seleccione la hora de su cita: </label><label id="info" name="info" class="ml-14"></label><br>
-          <select class="form-control" name="hora" id="hora">
+          <select class="form-control" name="hora" id="hora" required>
           </select><br>
         </div>
       </div>
