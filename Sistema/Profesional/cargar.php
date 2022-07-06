@@ -23,7 +23,7 @@ include("../../functions/setup.php");
     </div>
 </div>
 <hr>
-<div id="grilla">
+<div id="grilla2">
 
 
 </div>
