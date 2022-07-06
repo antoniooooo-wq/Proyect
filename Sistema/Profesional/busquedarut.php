@@ -13,66 +13,52 @@ switch($_POST['op'])
 
 function todos()
 {
-  $sql = "SELECT
-  usuario.run,
-  usuario.nombre,
-  usuario.apellido,
-  usuario.id_tipo_usuario,
-  usuario.estado,
-  usuario.Id
+$sql = "SELECT
+usuario.run,
+usuario.nombre,
+usuario.apellido,
+usuario.id_tipo_usuario,
+usuario.estado,
+usuario.Id
 FROM
-  usuario
-  INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
+usuario
+INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
 WHERE
-  usuario.id_tipo_usuario = 3";
-    $result=mysqli_query(conexion(),$sql);
-?>
-     <table class="table table-striped">
-    <thead>
-      <tr>
-                <th>Rut</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Estado</th>
-                <th>Editar</th>
-                <th>Ficha</th>
-      </tr>
-    </thead>
-    <tbody>
+usuario.id_tipo_usuario = 3";
+  $result = mysqli_query(conexion(), $sql);
+  while ($datos = mysqli_fetch_array($result)) {
+  ?>
+    <tr>
+
+      <td><?php echo $datos['run']; ?></td>
+      <td><?php echo $datos['nombre']; ?></td>
+      <td><?php echo $datos['apellido']; ?></td>
+      <td>
         <?php
-         while ($datos = mysqli_fetch_array($result)) {
-          ?>
-            <tr>
-              
-              <td><?php echo $datos['run']; ?></td>
-              <td><?php echo $datos['nombre']; ?></td>
-              <td><?php echo $datos['apellido']; ?></td>
-              <td>
-                <?php
-                if ($datos['estado'] == 0) {
-                ?>
-                  <img src="assets/images/inactivo.png">
-                <?php
-                } else {
-                ?>
-                  <img src="assets/images/activo.png">
-                <?php
-                }
+        if ($datos['estado'] == 0) {
+        ?>                      
+          <img src="assets/images/inactivo.png"> Dado de Alta
+        <?php
+        } else {
+        ?>
+          <img src="assets/images/activo.png"> En TTO
+        <?php
+        }
 
-                ?>
-              </td>
+        ?>
+      </td>
 
-              <td>
-                <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
-              </td>
-              <td>
-                <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/revision.png"></a>
-              </td>
-            </tr>
-          <?php
-          }
-          ?>
-        </table>
+      <td>
+        <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
+      </td>
+      <td>
+        <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/ficha.png"></a>
+      </td>
+    </tr>
+  <?php
+  }
+  ?>
+</table>
 <?php
 }
 
@@ -86,59 +72,63 @@ WHERE
 
     $result=mysqli_query(conexion(),$sql);
 ?>
-    <table class="table table-striped">
-    <thead>
-      <tr>
-                <th>Rut</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Estado</th>
-                <th>Editar</th>
-                <th>Ficha</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php
-         while ($datos = mysqli_fetch_array($result)) {
-          if ($datos['id_tipo_usuario']==3) {
-            ?>
-            <tr>
-              
-              <td><?php echo $datos['run']; ?></td>
-              <td><?php echo $datos['nombre']; ?></td>
-              <td><?php echo $datos['apellido']; ?></td>
-              <td>
-                <?php
-                if ($datos['estado'] == 0) {
-                ?>
-                  <img src="assets/images/inactivo.png">
-                <?php
-                } else {
-                ?>
-                  <img src="assets/images/activo.png">
-                <?php
-                }
+     <table class="table table-striped">
 
-                ?>
-              </td>
+<tr>
+  <th>RUN</th>
+  <th>Nombres</th>
+  <th>Apellidos</th>
+  <th>Estado Paciente</th>
+  <th>Modificar Paciente</th>
+  <th>Ficha Clínica</th>
+</tr>
+<?php
+$sql = "SELECT
+usuario.run,
+usuario.nombre,
+usuario.apellido,
+usuario.id_tipo_usuario,
+usuario.estado,
+usuario.Id
+FROM
+usuario
+INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
+WHERE
+usuario.id_tipo_usuario = 3";
+$result = mysqli_query(conexion(), $sql);
+while ($datos = mysqli_fetch_array($result)) {
+?>
+  <tr>
 
-              <td>
-                <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
-              </td>
-              <td>
-                <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/revision.png"></a>
-              </td>
-            </tr>
-          <?php
+    <td><?php echo $datos['run']; ?></td>
+    <td><?php echo $datos['nombre']; ?></td>
+    <td><?php echo $datos['apellido']; ?></td>
+    <td>
+      <?php
+      if ($datos['estado'] == 0) {
+      ?>                      
+        <img src="assets/images/inactivo.png"> Dado de Alta
+      <?php
+      } else {
+      ?>
+        <img src="assets/images/activo.png"> En TTO
+      <?php
+      }
 
+      ?>
+    </td>
 
-
-      
-          }
-          
-          }
-          ?>
-        </table>
+    <td>
+      <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
+    </td>
+    <td>
+      <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/ficha.png"></a>
+    </td>
+  </tr>
+<?php
+}
+?>
+</table>
 <?php
 }
 

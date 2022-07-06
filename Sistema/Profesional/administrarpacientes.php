@@ -9,7 +9,7 @@ if (isset($_SESSION['usuario'])) {
   if (isset($_GET['idusu'])) {
     $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
     $resultusu = mysqli_query(conexion(), $sqlusu);
-    $datosusu = mysqli_fetch_array($resultusu);
+    $datosusu = mysqli_fetch_array($resultusu); 
   }
 ?>
   <!doctype html>
@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario'])) {
 
         <!-- Inicio SlideBar-->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-            <span class="fs-4">Podología Marticorena</span>
+          <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
@@ -142,67 +142,23 @@ if (isset($_SESSION['usuario'])) {
         <!--Inicio Body-->
         <div class="container" id="global">
           <h4>Pacientes</h4>
-          <div id="formulario_adminpacientes">
-            <div class="container p-3 my-1 border">
-              <table class="table table-striped">
-
-                <tr>
-                  <th>RUN</th>
-                  <th>Nombres</th>
-                  <th>Apellidos</th>
-                  <th>Estado Paciente</th>
-                  <th>Modificar Paciente</th>
-                  <th>Ficha Clínica</th>
-                </tr>
-                <?php
-                $sql = "SELECT
-              usuario.run,
-              usuario.nombre,
-              usuario.apellido,
-              usuario.id_tipo_usuario,
-              usuario.estado,
-              usuario.Id
-            FROM
-              usuario
-              INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
-            WHERE
-              usuario.id_tipo_usuario = 3";
-                $result = mysqli_query(conexion(), $sql);
-                while ($datos = mysqli_fetch_array($result)) {
-                ?>
-                  <tr>
-
-                    <td><?php echo $datos['run']; ?></td>
-                    <td><?php echo $datos['nombre']; ?></td>
-                    <td><?php echo $datos['apellido']; ?></td>
-                    <td>
-                      <?php
-                      if ($datos['estado'] == 0) {
-                      ?>                      
-                        <img src="assets/images/inactivo.png"> Dado de Alta
-                      <?php
-                      } else {
-                      ?>
-                        <img src="assets/images/activo.png"> En TTO
-                      <?php
-                      }
-
-                      ?>
-                    </td>
-
-                    <td>
-                      <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
-                    </td>
-                    <td>
-                      <a href="../FichaClinica/ficha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/ficha.png"></a>
-                    </td>
-                  </tr>
-                <?php
-                }
-                ?>
-              </table>
+          <div class="card">
+            <div class="card-header">Busqueda</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <label for="lname" class="fontforusuario">Palabra a buscar :</label>
+                  <input type="text" class="form-control" id="txt" name="txt">
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+        <div id="formulario_adminpacientes">
+          <div class="container p-3 my-1 border">
+            <div id="grilla"></div>
+          </div>
+        </div>
 
         </div>
         <!--Fin Body-->
@@ -211,8 +167,42 @@ if (isset($_SESSION['usuario'])) {
       ?>
     </main>
   </body>
+  <script>
+    $(document).ready(function() {
+      muestratodos();
+
+      $("#txt").keyup(function() {
+        like($("#txt").val());
+      });
+
+
+    });
+
+    function muestratodos() {
+      $.ajax({
+        type: "POST",
+        url: 'busquedarut.php',
+        data: 'op=1',
+        success: function(response) {
+          $("#grilla").html(response);
+        }
+      });
+    }
+
+    function like(txt) {
+      $.ajax({
+        type: "POST",
+        url: 'busquedarut.php',
+        data: 'op=2&txt=' + txt,
+        success: function(response) {
+          $("#grilla").html(response);
+        }
+      });
+    }
+  </script>
 
   </html>
+
 <?php
 } else {
   header('Location:../../login/Login.php');
