@@ -79,15 +79,11 @@ WHERE
 
 function like($txt)
 {
-  $sql=  "SELECT *
-FROM
-  usuario
-  usuario.id_tipo_usuario
-  INNER JOIN tipo_usuario ON tipo_usuario.Id = usuario.id_tipo_usuario
+  $sql= "SELECT*FROM
+usuario
 WHERE
  nombre like '%".$txt."%'  OR run like '%".$txt."%' OR apellido like '%".$txt."%'";
- echo $sql;
- die;
+
     $result=mysqli_query(conexion(),$sql);
 ?>
     <table class="table table-striped">
@@ -104,7 +100,8 @@ WHERE
     <tbody>
         <?php
          while ($datos = mysqli_fetch_array($result)) {
-          ?>
+          if ($datos['id_tipo_usuario']==3) {
+            ?>
             <tr>
               
               <td><?php echo $datos['run']; ?></td>
@@ -133,6 +130,12 @@ WHERE
               </td>
             </tr>
           <?php
+
+
+
+      
+          }
+          
           }
           ?>
         </table>
