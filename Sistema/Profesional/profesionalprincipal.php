@@ -106,6 +106,14 @@ if (isset($_SESSION['usuario'])) {
         <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+              <a href="../principaal.php"class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#add" />
+                </svg>
+                Panel Principal
+              </a>
+            </li>
             <li class="nav-item">
               <a href="profesionalprincipal.php" class="nav-link active" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">

@@ -6,11 +6,12 @@ session_start();
 
 if (isset($_SESSION['usuario'])) {
 
-  
+
 ?>
   <!doctype html>
   <html lang="en">
-<!--BIENVENIDO A LOS PODA PATAS O ALGO ASÍ NO SE QUE SIGNIFICA PODOLOGIA-->
+  <!--BIENVENIDO A LOS PODA PATAS O ALGO ASÍ NO SE QUE SIGNIFICA PODOLOGIA-->
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +26,7 @@ if (isset($_SESSION['usuario'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/sidebars.js"></script>
+    <script src="assets/js/horayfecha.js"></script>
 
 
     <!-- Bootstrap core CSS -->
@@ -82,6 +84,10 @@ if (isset($_SESSION['usuario'])) {
         <symbol id="cancel" viewBox="0 0 16 16">
           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
         </symbol>
+        <symbol id="clockk" viewBox="0 0 16 16">
+          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+        </symbol>
       </svg>
       <?php
       if ($_SESSION['tipo'] == "1") //Administrador
@@ -89,7 +95,7 @@ if (isset($_SESSION['usuario'])) {
       ?>
         <!-- Inicio SlideBar-->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-        <span class="fs-4">Podología Marticorena</span>
+          <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
@@ -128,7 +134,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> 
+          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
           </h2>
           <div>
           </div>
@@ -144,15 +150,22 @@ if (isset($_SESSION['usuario'])) {
       ?>
         <!-- Inicio SlideBar-->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-            <svg class="bi me-2" width="20" height="32">
-              <use xlink:href="#bootstrap" />
-            </svg>
-            <span class="fs-4">Podología Marticorena</span>
-          </a>
+          <svg class="bi me-2" width="20" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+          <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="Profesional/profesionalprincipal.php" class="nav-link active" aria-current="page">
+              <a href="principaal.php" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#add" />
+                </svg>
+                Panel Principal
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="Profesional/profesionalprincipal.php" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#add" />
                 </svg>
@@ -165,6 +178,14 @@ if (isset($_SESSION['usuario'])) {
                   <use xlink:href="#users" />
                 </svg>
                 Administrar Pacientes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#clockk" />
+                </svg>
+                Reservar Hora
               </a>
             </li>
             <li>
@@ -191,6 +212,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
+<<<<<<< HEAD
         <div class="container px-0 py-5" id="featured-3">
           <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
           </h2>
@@ -241,6 +263,29 @@ if (isset($_SESSION['usuario'])) {
 
 
         </div>
+=======
+
+        <body onload="startTime()">
+          <div class="container px-0 py-5" id="featured-3">
+            <center>
+              <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
+                <center>
+                  <h6>Podología Marticorena</h6>
+                </center>
+            </center>
+
+            </h2>
+            <center>
+              <div id="clockdate">
+                <div class="clockdate-wrapper">
+                  <div id="clock"></div>
+                  <div id="date"></div>
+                </div>
+              </div>
+            </center>
+          </div>
+        </body>
+>>>>>>> 6dbda5df4a898a1178d7cedaeb50480972c74aff
       <?php
     } else
       ?>
@@ -249,11 +294,11 @@ if (isset($_SESSION['usuario'])) {
       ?>
         <!-- Inicio SlideBar-->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-        <span class="fs-4">Podología Marticorena</span>
+          <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="../Sistema/Ingresodefecha.php<?php echo $datos['usuarioid']; ?>"  class="nav-link active" aria-current="page">
+              <a href="../Sistema/Ingresodefecha.php<?php echo $datos['usuarioid']; ?>" class="nav-link active" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#Plus" />
                 </svg>
@@ -276,7 +321,7 @@ if (isset($_SESSION['usuario'])) {
                 Portal de Pagos
               </a>
             </li>
-            
+
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>
@@ -296,7 +341,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> 
+          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
           </h2>
           <div class="container p-5 my-5 border">
             <h4>Horas</h4>
@@ -306,7 +351,7 @@ if (isset($_SESSION['usuario'])) {
                   <th>Fecha</th>
                   <th>Hora de inicio</th>
                   <th>Hora final</th>
-                 
+
 
                 </tr>
                 <?php
@@ -316,8 +361,8 @@ if (isset($_SESSION['usuario'])) {
                  FROM usuario 
                  INNER JOIN atencion ON atencion.id_paciente = usuario.Id 
                  INNER JOIN horas ON atencion.horas_id = horas.Id
-                 WHERE atencion.id_paciente =" . $_SESSION['usuarioid']; 
-                
+                 WHERE atencion.id_paciente =" . $_SESSION['usuarioid'];
+
                 $resultt = mysqli_query(conexion(), $sql2);
                 while ($datospe = mysqli_fetch_array($resultt)) {
                 ?>
@@ -332,19 +377,19 @@ if (isset($_SESSION['usuario'])) {
               </table>
             </div>
 
-       
-        
-        </div>
-      <?php
-    } else
-      ?>
-      <?php if ($_SESSION['tipo'] == '4') //Secretaria
-    {
-      ?>
-        <!--Codigo Aquí-->
-      <?php
-    }
-      ?>
+
+
+          </div>
+        <?php
+      } else
+        ?>
+        <?php if ($_SESSION['tipo'] == '4') //Secretaria
+      {
+        ?>
+          <!--Codigo Aquí-->
+        <?php
+      }
+        ?>
 
 
     </main>
