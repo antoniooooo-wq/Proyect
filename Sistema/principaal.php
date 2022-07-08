@@ -212,10 +212,29 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
-<<<<<<< HEAD
         <div class="container px-0 py-5" id="featured-3">
           <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
           </h2>
+          <body onload="startTime()">
+          <div class="container px-0 py-5" id="featured-3">
+            <center>
+              <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
+                <center>
+                  <h6>Podología Marticorena</h6>
+                </center>
+            </center>
+
+            </h2>
+            <center>
+              <div id="clockdate">
+                <div class="clockdate-wrapper">
+                  <div id="clock"></div>
+                  <div id="date"></div>
+                </div>
+              </div>
+            </center>
+          </div>
+        </body>
 
           <div class="container p-5 my-5 border">
             <h4>Horas</h4>
@@ -263,29 +282,6 @@ if (isset($_SESSION['usuario'])) {
 
 
         </div>
-=======
-
-        <body onload="startTime()">
-          <div class="container px-0 py-5" id="featured-3">
-            <center>
-              <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
-                <center>
-                  <h6>Podología Marticorena</h6>
-                </center>
-            </center>
-
-            </h2>
-            <center>
-              <div id="clockdate">
-                <div class="clockdate-wrapper">
-                  <div id="clock"></div>
-                  <div id="date"></div>
-                </div>
-              </div>
-            </center>
-          </div>
-        </body>
->>>>>>> 6dbda5df4a898a1178d7cedaeb50480972c74aff
       <?php
     } else
       ?>
