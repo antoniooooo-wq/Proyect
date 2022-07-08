@@ -213,8 +213,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
-          </h2>
+          
           <body onload="startTime()">
           <div class="container px-0 py-5" id="featured-3">
             <center>
@@ -234,8 +233,7 @@ if (isset($_SESSION['usuario'])) {
               </div>
             </center>
           </div>
-        </body>
-
+          
           <div class="container p-5 my-5 border">
             <h4>Horas</h4>
             <div id="grilla" class="overflow-scroll">
@@ -279,6 +277,10 @@ if (isset($_SESSION['usuario'])) {
                 ?>
               </table>
             </div>
+
+
+        </body>
+
 
 
         </div>
