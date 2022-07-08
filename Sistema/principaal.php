@@ -84,9 +84,9 @@ if (isset($_SESSION['usuario'])) {
         <symbol id="cancel" viewBox="0 0 16 16">
           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
         </symbol>
-        <symbol id="clockk" viewBox="0 0 16 16">
-          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+        <symbol id="homes" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
         </symbol>
       </svg>
       <?php
@@ -150,16 +150,14 @@ if (isset($_SESSION['usuario'])) {
       ?>
         <!-- Inicio SlideBar-->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-          <svg class="bi me-2" width="20" height="32">
-            <use xlink:href="#bootstrap" />
-          </svg>
+         
           <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
               <a href="principaal.php" class="nav-link active" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#add" />
+                  <use xlink:href="#homes" />
                 </svg>
                 Panel Principal
               </a>
@@ -178,14 +176,6 @@ if (isset($_SESSION['usuario'])) {
                   <use xlink:href="#users" />
                 </svg>
                 Administrar Pacientes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#clockk" />
-                </svg>
-                Reservar Hora
               </a>
             </li>
             <li>
@@ -235,18 +225,15 @@ if (isset($_SESSION['usuario'])) {
           </div>
           
           <div class="container p-5 my-5 border">
-            <h4>Horas</h4>
+            <h4>Atenciones del día</h4>
             <div id="grilla" class="overflow-scroll">
               <table class="table table-striped">
                 <tr>
-                  <th>Fecha</th>
-                  <th>Hora de inicio</th>
-                  <th>Hora final</th>
                   <th>Nombre</th>
                   <th>Run</th>
-
-                 
-
+                  <th>Fecha</th>
+                  <th>Hora de inicio</th>
+                  <th>Hora final</th>             
                 </tr>
                 <?php
                 $sql2 = "SELECT
@@ -267,11 +254,11 @@ if (isset($_SESSION['usuario'])) {
                 while ($datospe = mysqli_fetch_array($resultt)) {
                 ?>
                   <tr>
-                    <td><?php echo $datospe['fecha_atencion']; ?></td>
-                    <td><?php echo $datospe['horadeinicio']; ?></td>
-                    <td><?php echo $datospe['horafinal']; ?></td>
                     <td><?php echo $datospe['nombre']; ?><br><?php echo $datospe['apellido']; ?></td>
                     <td><?php echo $datospe['run']; ?></td>
+                    <td><?php echo $datospe['fecha_atencion']; ?></td>
+                    <td><?php echo $datospe['horadeinicio']; ?></td>
+                    <td><?php echo $datospe['horafinal']; ?></td>                  
                   </tr>
                 <?php
                 }
