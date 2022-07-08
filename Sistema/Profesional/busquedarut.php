@@ -34,6 +34,7 @@ WHERE
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Estado</th>
+                <th>Reservar Hora</th>
                 <th>Editar</th>
                 <th>Ficha</th>
       </tr>
@@ -51,17 +52,20 @@ WHERE
                 <?php
                 if ($datos['estado'] == 0) {
                 ?>
-                  <img src="assets/images/inactivo.png">
+                  <img src="assets/images/inactivo.png"> Dado de Alta
                 <?php
                 } else {
                 ?>
-                  <img src="assets/images/activo.png">
+                  <img src="assets/images/activo.png"> En TTO
                 <?php
                 }
 
                 ?>
               </td>
 
+              <td>
+                <a href="#"><img src="assets/images/reloj.png?idusu=<?php echo $datos['Id']; ?>"></a>
+              </td>
               <td>
                 <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
               </td>
@@ -92,6 +96,7 @@ WHERE
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Estado</th>
+                <th>Reservar Hora</th>
                 <th>Editar</th>
                 <th>Ficha</th>
       </tr>
@@ -107,20 +112,22 @@ WHERE
               <td><?php echo $datos['nombre']; ?></td>
               <td><?php echo $datos['apellido']; ?></td>
               <td>
-                <?php
+              <?php
                 if ($datos['estado'] == 0) {
                 ?>
-                  <img src="assets/images/inactivo.png">
+                  <img src="assets/images/inactivo.png"> Dado de Alta
                 <?php
                 } else {
                 ?>
-                  <img src="assets/images/activo.png">
+                  <img src="assets/images/activo.png"> En TTO
                 <?php
                 }
 
                 ?>
               </td>
-
+              <td>
+                <a href="#"><img src="assets/images/reloj.png"></a>
+              </td>
               <td>
                 <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
               </td>
