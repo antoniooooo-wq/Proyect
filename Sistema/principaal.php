@@ -178,7 +178,7 @@ if (isset($_SESSION['usuario'])) {
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#clockk" />
                 </svg>
-                Pedir Hora
+                Reservar Hora
               </a>
             </li>
             <li>
