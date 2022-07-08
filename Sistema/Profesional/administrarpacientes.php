@@ -154,7 +154,8 @@ if (isset($_SESSION['usuario'])) {
               <div class="row">
                 <div class="col">
                   <label for="lname" class="fontforusuario">Buscar</label> <svg class="bi me-2" width="16" height="16"><use xlink:href="#search" /></svg>:
-                  <input type="text" class="form-control" id="txt" name="txt">
+                    <br>
+                    <input type="text" class="form-control" id="txt" name="txt">
                 </div>
               </div>
             </div>
