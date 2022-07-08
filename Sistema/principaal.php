@@ -260,7 +260,8 @@ if (isset($_SESSION['usuario'])) {
               FROM
                 atencion
                 INNER JOIN horas ON atencion.horas_id = horas.Id
-                INNER JOIN usuario ON atencion.id_paciente = usuario.Id"; 
+                INNER JOIN usuario ON atencion.id_paciente = usuario.Id"
+                ; 
                 
                 $resultt = mysqli_query(conexion(), $sql2);
                 while ($datospe = mysqli_fetch_array($resultt)) {
