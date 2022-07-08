@@ -144,7 +144,13 @@ if (isset($_SESSION['usuario'])) {
                 </tr>
               </tbody>
             </table>
-            <button>Pagar</button>
+            <a href="https://www.bancoestado.cl/transa/login_pers.asp?negocio=MODPAGO">   <button  >Pagar
+            
+            </button>
+              
+
+            </a>
+         
           </div>
           <div class="col-sm-2"></div>
         </div>

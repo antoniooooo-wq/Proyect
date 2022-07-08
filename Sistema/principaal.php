@@ -194,6 +194,52 @@ if (isset($_SESSION['usuario'])) {
         <div class="container px-0 py-5" id="featured-3">
           <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
           </h2>
+
+          <div class="container p-5 my-5 border">
+            <h4>Horas</h4>
+            <div id="grilla" class="overflow-scroll">
+              <table class="table table-striped">
+                <tr>
+                  <th>Fecha</th>
+                  <th>Hora de inicio</th>
+                  <th>Hora final</th>
+                  <th>Nombre</th>
+                  <th>Run</th>
+
+                 
+
+                </tr>
+                <?php
+                $sql2 = "SELECT
+                atencion.fecha_atencion,
+                horas.horadeinicio,
+                horas.horafinal,
+                usuario.run,
+                usuario.nombre,
+                usuario.apellido
+             
+              FROM
+                atencion
+                INNER JOIN horas ON atencion.horas_id = horas.Id
+                INNER JOIN usuario ON atencion.id_paciente = usuario.Id"; 
+                
+                $resultt = mysqli_query(conexion(), $sql2);
+                while ($datospe = mysqli_fetch_array($resultt)) {
+                ?>
+                  <tr>
+                    <td><?php echo $datospe['fecha_atencion']; ?></td>
+                    <td><?php echo $datospe['horadeinicio']; ?></td>
+                    <td><?php echo $datospe['horafinal']; ?></td>
+                    <td><?php echo $datospe['nombre']; ?><br><?php echo $datospe['apellido']; ?></td>
+                    <td><?php echo $datospe['run']; ?></td>
+                  </tr>
+                <?php
+                }
+                ?>
+              </table>
+            </div>
+
+
         </div>
       <?php
     } else
