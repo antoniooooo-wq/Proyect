@@ -27,14 +27,26 @@ if (isset($_SESSION['usuario'])) {
         <link rel="icon" type="image/png" href="assets/images/icons/favicon-16x16.png" />
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/sidebars.js"></script>
         <script src="../assets/js/validarfotos.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.zoom').hover(function() {
+                    $(this).addClass('transition');
+                }, function() {
+                    $(this).removeClass('transition');
+                });
+            });
+        </script>
 
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/features.css" rel="stylesheet">
         <link href="assets/css/sidebars.css" rel="stylesheet">
+        <link href="assets/css/galeria.css" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {
@@ -97,7 +109,7 @@ if (isset($_SESSION['usuario'])) {
 
                 <!-- Inicio SlideBar-->
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-                <span class="fs-4">Podología Marticorena</span>
+                    <span class="fs-4">Podología Marticorena</span>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
@@ -156,82 +168,66 @@ if (isset($_SESSION['usuario'])) {
                 <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                 <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
                 -->
-                <div class="container">
-                    <div class="row">
-                        <form action="funcionfotos.php?idusu=<?php echo $_GET['idusu']; ?>" method="POST" name="form1" enctype="multipart/form-data">
-                            <h3>Ingreso de Imagenes</h3>
-                            <div class="col">
-                                <label for="imagen[]">Inserte Imagen de Perfil:</label>
-                                <input type="file" class="form-control" name="imagen[]" id="imagen[]" multiple="">
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr>
-                                    <center>
-                                        <?php
-                                        if (isset($_GET['idusu'])) {
-                                        ?>
-                                            <input id="btnIngresar" type="button" value="Ingresar" class="btn btn-success" onclick="validarfotos(this.value);">
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning">
-                                        <?php
-                                        }
-                                        ?>
-                                        <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger">
-
-                                        <input type="hidden" id="accion" name="accion">
-                                        <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
-                                    </center>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <h2>Imagenes</h2>
-                    <?php
-                    $sql = "SELECT
-                                        usuario.Id,
-                                        foto.imagen AS imagen1
-                                        FROM
-                                        usuario
-                                        INNER JOIN foto ON foto.id_paciente = usuario.Id
-                                        WHERE id_paciente =" . $_GET['idusu'];
-                    $result = mysqli_query(conexion(), $sql);
-                    ?>
-                </div>
                 <center>
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                    <div class="container">
+                        <div class="row">
+                            <form action="funcionfotos.php?idusu=<?php echo $_GET['idusu']; ?>" method="POST" name="form1" enctype="multipart/form-data">
+                                <h3>Ingreso de Imagenes</h3>
+                                <div class="col">
+                                    <label for="imagen[]">Inserte Imagen de Perfil:</label>
+                                    <input type="file" class="form-control" name="imagen[]" id="imagen[]" multiple="">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <hr>
+                                        <center>
+                                            <input id="btnIngresar" type="submit" value="Ingresar" class="btn btn-success" onclick="validarfotos(this.value);">
+
+                                            <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning">
+
+                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger">
+
+                                            <input type="hidden" id="accion" name="accion">
+                                            <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                        </center>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <section id="galeria" class="container">
+                        <?php
+                        $sql = "SELECT
+                            usuario.Id,
+                            foto.imagen AS imagen1
+                            FROM
+                            usuario
+                            INNER JOIN foto ON foto.id_paciente = usuario.Id
+                            WHERE id_paciente =" . $_GET['idusu'];
+                        $result = mysqli_query(conexion(), $sql);
+                        ?>
+                        <div class="text-center pt-5">
+                            <h1>Galeria de Imagenes</h1>
+                        </div>
+                        <div class="row">
                             <?php
                             while ($datosimg = mysqli_fetch_array($result)) {
                             ?>
-                                <div class="carousel-item <?php if ($datosimg['principal'] == 1) { ?> active <?php } ?>">
-                                    <img src="../assets/images/pies/<?php echo $datosimg['imagen1']; ?>" class="d-block w-10">
+                                <div class="col-lg-4 col-md-6 col-sm-12 <?php if ($datosimg['principal'] == 0) { ?> active <?php } ?>">
+                                    <img src="../assets/images/profiles/<?php echo $datosimg['imagen1']; ?>" class="zoom">
                                 </div>
-                                <br>
                             <?php
                             }
                             ?>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </center>
-                <!--Fin Body-->
-            <?php
+                    </section>
+                    <!--Fin Body-->
+                <?php
             }
-            ?>
+                ?>
         </main>
+        </center>
     </body>
 
     </html>
