@@ -63,6 +63,10 @@ function ingresar()
 
     $contf = $datosf['cuantos'];
 
+    $sql4 = "DELETE FROM foto WHERE id_paciente=" . $_POST['idoculto'];
+
+    $result = mysqli_query(conexion(), $sql4);
+
     foreach ($_FILES['imagen']['tmp_name'] as $key => $tmp_name) {
         $contf++;
 
@@ -75,6 +79,7 @@ function ingresar()
         }
         $ruta = $directorio . '/' . $filename;
         move_uploaded_file($temporal, $ruta);
+
 
         $sql2 = "INSERT INTO foto SET id_paciente=" . $datos['id2'] . ",imagen='" . $filename . "',principal=0, estado=1";
 
