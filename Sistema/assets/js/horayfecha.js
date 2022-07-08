@@ -12,7 +12,7 @@ function startTime() {
     sec = checkTime(sec);
     document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
     
-    var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'];
+    var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Dec'];
     var days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
     var curWeekDay = days[today.getDay()];
     var curDay = today.getDate();

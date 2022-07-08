@@ -154,11 +154,18 @@ if (isset($_SESSION['usuario'])) {
             <use xlink:href="#bootstrap" />
           </svg>
           <span class="fs-4">Podología Marticorena</span>
-          </a>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="Profesional/profesionalprincipal.php" class="nav-link active" aria-current="page">
+              <a href="principaal.php" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#add" />
+                </svg>
+                Panel Principal
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="Profesional/profesionalprincipal.php" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#add" />
                 </svg>
@@ -208,7 +215,13 @@ if (isset($_SESSION['usuario'])) {
 
         <body onload="startTime()">
           <div class="container px-0 py-5" id="featured-3">
-            <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
+            <center>
+              <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
+                <center>
+                  <h6>Podología Marticorena</h6>
+                </center>
+            </center>
+
             </h2>
             <center>
               <div id="clockdate">
