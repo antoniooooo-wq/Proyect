@@ -48,6 +48,7 @@ if (isset($_SESSION['usuario'])) {
         <link href="assets/css/sidebars.css" rel="stylesheet">
         <link href="assets/css/galeria.css" rel="stylesheet">
 
+
         <style>
             .bd-placeholder-img {
                 font-size: 1.125rem;
@@ -65,8 +66,7 @@ if (isset($_SESSION['usuario'])) {
         </style>
         <style type="text/css">
             #global {
-                height: auto;
-                width: auto;
+                max-height: auto;
                 border: 1px solid #ddd;
                 background: #f1f1f1;
                 overflow-y: scroll;
@@ -82,9 +82,10 @@ if (isset($_SESSION['usuario'])) {
             }
         </style>
 
+
     </head>
 
-    <body id="bodyprinci" style="background-image: url(images/);height: 1080px; overflow-x: hidden; overflow-y: hidden; ">
+    <body id="bodyprinci" style="height: 1080px; overflow-x: hidden; overflow-y: hidden; ">
         <main>
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="atenciones" viewBox="0 0 16 16">
@@ -108,7 +109,7 @@ if (isset($_SESSION['usuario'])) {
             ?>
 
                 <!-- Inicio SlideBar-->
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
                     <span class="fs-4">Podología Marticorena</span>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
@@ -162,66 +163,64 @@ if (isset($_SESSION['usuario'])) {
                 <!-- Fin SlideBar-->
 
                 <!--Inicio Body-->
-                <!-- 
-                <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
-                <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
-                <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
-                <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-                -->
                 <center>
-                    <div class="container">
-                        <div class="row">
-                            <form action="funcionfotos.php?idusu=<?php echo $_GET['idusu']; ?>" method="POST" name="form1" enctype="multipart/form-data">
-                                <h3>Ingreso de Imagenes</h3>
-                                <div class="col">
-                                    <label for="imagen[]">Inserte Imagen de Perfil:</label>
-                                    <input type="file" class="form-control" name="imagen[]" id="imagen[]" multiple="">
+
+                    <div class="container px-4 py-5" id="global">
+
+                        <form action="funcionfotos.php?idusu=<?php echo $_GET['idusu']; ?>" method="POST" name="form1" enctype="multipart/form-data">
+                            <h3>Fotos Paciente:</h3>
+                            <div class="col">
+                                <label for="imagen[]">Inserte Imagenes</label>
+                                <input type="file" class="form-control" name="imagen[]" id="imagen[]" multiple="">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                    <center>
+                                        <input id="btnIngresar" type="submit" value="Ingresar" class="btn btn-success" onclick="validarfotos(this.value);">
+
+                                        <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger">
+
+                                        <input type="hidden" id="accion" name="accion">
+                                        <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                    </center>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <hr>
-                                        <center>
-                                            <input id="btnIngresar" type="submit" value="Ingresar" class="btn btn-success" onclick="validarfotos(this.value);">
+                            </div>
+                        </form>
 
-                                            <input id="btnModificar" type="button" value="Modificar" class="btn btn-warning">
-
-                                            <input id="btnCancelar" type="button" value="Cancelar" class="btn btn-danger">
-
-                                            <input type="hidden" id="accion" name="accion">
-                                            <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
-                                        </center>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <br>
-                    <section id="galeria" class="container">
-                        <?php
-                        $sql = "SELECT
+                        <br>
+                        <div class="container p-3 my-1 border" id="global">
+                            <div>
+                                <section id="galeria">
+                                    <?php
+                                    $sql = "SELECT
                             usuario.Id,
                             foto.imagen AS imagen1
                             FROM
                             usuario
                             INNER JOIN foto ON foto.id_paciente = usuario.Id
                             WHERE id_paciente =" . $_GET['idusu'];
-                        $result = mysqli_query(conexion(), $sql);
-                        ?>
-                        <div class="text-center pt-5">
-                            <h1>Galeria de Imagenes</h1>
+                                    $result = mysqli_query(conexion(), $sql);
+                                    ?>
+                                    <div class="text-center pt-5">
+                                        <h1>Galeria de Imagenes</h1>
+                                    </div>
+                                    <div class="row">
+                                        <?php
+                                        while ($datosimg = mysqli_fetch_array($result)) {
+                                        ?>
+                                            <div class="col-lg-4 col-md-6 col-sm-12" <?php if ($datosimg['principal'] == 0) { ?> active <?php } ?>">
+                                                <img src="../assets/images/profiles/<?php echo $datosimg['imagen1']; ?>" class="zoom">
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </section>
+                            </div>
                         </div>
-                        <div class="row">
-                            <?php
-                            while ($datosimg = mysqli_fetch_array($result)) {
-                            ?>
-                                <div class="col-lg-4 col-md-6 col-sm-12 <?php if ($datosimg['principal'] == 0) { ?> active <?php } ?>">
-                                    <img src="../assets/images/profiles/<?php echo $datosimg['imagen1']; ?>" class="zoom">
-                                </div>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </section>
+                    </div>
+
                     <!--Fin Body-->
                 <?php
             }
