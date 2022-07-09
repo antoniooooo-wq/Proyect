@@ -1,7 +1,7 @@
 <?php
 include("../../../functions/setup.php");
 
-session_start();
+  session_start();
 
 if (isset($_SESSION['usuario'])) {
 
@@ -9,7 +9,8 @@ if (isset($_SESSION['usuario'])) {
     $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
     $resultusu = mysqli_query(conexion(), $sqlusu);
     $datosusu = mysqli_fetch_array($resultusu);
-  }
+
+ }
 ?>
   <!doctype html>
   <html lang="en">
@@ -59,7 +60,9 @@ if (isset($_SESSION['usuario'])) {
       </div>
 
       <div class="line-break"></div>
-      <input class="button" type="button" value="Guardar" id="guardar" name="Guardar" >
+      <input class="button" type="button" value="Guardar" id="guardar" name="Guardar">
+       
+      <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu'];?>">
 
       <a href="../../principaal.php" type="button">Volver
       </a>
@@ -73,7 +76,8 @@ if (isset($_SESSION['usuario'])) {
 
 
   </html>
-<?php
+<?php 
+
 } else {
   header('Location:../../login/penka.php');
 }

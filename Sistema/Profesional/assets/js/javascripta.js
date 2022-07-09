@@ -34,6 +34,7 @@ function validarDatos() {
         alert("Debe seleccionar una Hora");
         return false;
     }
+    
 
 }
 
@@ -47,10 +48,11 @@ function enviarDatos() {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $("#hora").val() + '&idusu=' + $("#idusu").val(),
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&datosusu'+ $("#idusu").val(),
             success: function (response) {
                 if (response) {
-                    window.alert("Hora registrada Exitosamente")
+                    window.alert(response)
+                    
                     window.location.href = "../administrarpacientes.php";
                 }
 
