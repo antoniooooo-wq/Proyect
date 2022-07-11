@@ -43,7 +43,7 @@ function modificar()
         $cont++;
     }
 
-    header("Location:administrarpacientes.php");
+    header("Location:ficha.php");
 }
 
 function ingresar()
@@ -87,7 +87,7 @@ function ingresar()
         $cont++;
     }
 
-    header("Location:../Profesional/administrarpacientes.php");
+    header("Location:ficha.php?idusu=$_POST[idoculto]");
 }
 
 function eliminar()
