@@ -304,9 +304,6 @@ if (isset($_SESSION['usuario'])) {
                                     </div>
                                 </div>
                             </form>
-                            <a href="preingreso.php?idusu=<?php echo $_GET['idusu']; ?>">
-                                <button class="btn btn-success">Pre-Ingreso</button>
-                            </a>
                         </div>
                     </div>
                 </div>

@@ -233,7 +233,8 @@ if (isset($_SESSION['usuario'])) {
                   <th>Run</th>
                   <th>Fecha</th>
                   <th>Hora de inicio</th>
-                  <th>Hora final</th>             
+                  <th>Hora final</th>   
+                  <th>Estado</th>          
                 </tr>
                 <?php
                 $sql2 = "SELECT

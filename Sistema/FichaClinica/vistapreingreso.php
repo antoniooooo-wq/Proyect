@@ -181,9 +181,9 @@ if (isset($_SESSION['usuario'])) {
                                 $sql2 = "SELECT
                                         *
                                       FROM
-                                      pre_ingreso
+                                      atencion
                                       WHERE
-                                        Id=". $_GET['id'] ;     
+                                      Idatencion=". $_GET['Idatencion'] ;     
                                 $result = mysqli_query(conexion(), $sql2);
                                 while ($datosusu = mysqli_fetch_array($result)) {
                                 ?>

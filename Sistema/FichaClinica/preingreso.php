@@ -276,7 +276,9 @@ if (isset($_SESSION['usuario'])) {
                                             <input id="btnIngresar" type="button" value="PreIngreso" class="btn btn-success" onclick="validarpreingreso(this.value);">
                                             <input id="btnCancelar" type="button" value="PreCancelar" class="btn btn-danger" onclick="validarpreingreso(this.value);">
                                             <input type="hidden" id="accion" name="accion">
-                                            <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                            <input type="text" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                            <input type="text" id="idoculto" name="idatencion" value="<?php echo $_GET['Idatencion']; ?>">
+
                                         </center>
                                     </div>
                                 </div>

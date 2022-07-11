@@ -1,6 +1,6 @@
 <?php
 
-use const PHPSTORM_META\ANY_ARGUMENT;
+
 
 include("../../functions/setup.php");
 
@@ -50,34 +50,34 @@ function cancelar()
 function preingresar()
 {
     $sql2 = "SELECT
-        `pre_ingreso`.`id_usuario`,
-        `pre_ingreso`.`cont`
-    FROM
-        `pre_ingreso`
+    `atencion`.`Idatencion`
+  FROM
+    `atencion`
     WHERE
-        `pre_ingreso`.`id_usuario` = " . $_POST['idoculto'];
+    `atencion`.`Idatencion` = " . $_POST['idoculto'];
     
-    $sql = "INSERT INTO pre_ingreso SET
-    pre_ingreso.frec_card = '" . $_POST['frec_card'] . "',
-    pre_ingreso.frec_resp = '" . $_POST['frec_resp'] . "',
-    pre_ingreso.sist = '" . $_POST['sist'] . "',
-    pre_ingreso.diast = '" . $_POST['diast'] . "',
-    pre_ingreso.temp = '" . $_POST['temp'] . "',
-    pre_ingreso.porc_satu = '" . $_POST['porc_satu'] . "',
-    pre_ingreso.glu = '" . $_POST['glu'] . "',
-    pre_ingreso.rotu = '" . $_POST['rotu'] . "',
-    pre_ingreso.pulso_pe = '" . $_POST['pulso_pe'] . "',
-    pre_ingreso.mono = '" . $_POST['mono'] . "',
-    pre_ingreso.punsion = '" . $_POST['punsion'] . "',
-    pre_ingreso.foc = '" . $_POST['foc'] . "',
-    pre_ingreso.diapa = '" . $_POST['diapa'] . "',
-    pre_ingreso.obs = '" . $_POST['obs'] . "',
-    pre_ingreso.obss = '" . $_POST['obss'] . "',
-    pre_ingreso.diag = '" . $_POST['diag'] . "',
-    pre_ingreso.tto = '" . $_POST['tto'] . "',
-    pre_ingreso.indic = '" . $_POST['indic'] . "',
-    pre_ingreso.id_usuario  = " . $_POST['idoculto'];
-   
+    $sql = "UPDATE atencion SET
+    `atencion`.`frec_card`= '" . $_POST['frec_card'] . "',
+    `atencion`.`frec_resp` = '" . $_POST['frec_resp'] . "',
+    `atencion`.`sist` = '" . $_POST['sist'] . "',
+    `atencion`.`diast` = '" . $_POST['diast'] . "',
+    `atencion`.`temp` = '" . $_POST['temp'] . "',
+    `atencion`.`porc_satu` = '" . $_POST['porc_satu'] . "',
+    `atencion`.`glu` = '" . $_POST['glu'] . "',
+    `atencion`.`rotu` = '" . $_POST['rotu'] . "',
+    `atencion`.`pulso_pe` = '" . $_POST['pulso_pe'] . "',
+    `atencion`.`mono` = '" . $_POST['mono'] . "',
+    `atencion`.`punsion` = '" . $_POST['punsion'] . "',
+    `atencion`.`foc` = '" . $_POST['foc'] . "',
+    `atencion`.`diapa` = '" . $_POST['diapa'] . "',
+    `atencion`.`obs` = '" . $_POST['obs'] . "',
+    `atencion`.`obss` = '" . $_POST['obss'] . "',
+    `atencion`.`diag` = '" . $_POST['diag'] . "',
+    `atencion`.`tto` = '" . $_POST['tto'] . "',
+    `atencion`.`indic` = '" . $_POST['indic'] . "'
+    WHERE 
+    Idatencion=" . $_POST['idatencion'];
+
     mysqli_query(conexion(), $sql);
     header("Location:ficha.php?idusu=$_POST[idoculto]");
 }

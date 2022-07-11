@@ -52,6 +52,23 @@ if (isset($_SESSION['usuario'])) {
                 }
             }
         </style>
+        <style type="text/css">
+            #global {
+                height: auto;
+                border: 1px solid #ddd;
+                background: #f1f1f1;
+                overflow-y: scroll;
+            }
+
+            #mensajes {
+                height: auto;
+            }
+
+            .texto {
+                padding: 4px;
+                background: #fff;
+            }
+        </style>
 
         <!--Probando :v-->
     </head>
@@ -62,7 +79,7 @@ if (isset($_SESSION['usuario'])) {
                 <symbol id="back" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </symbol>
-                <symbol  id="ficha" viewBox="0 0 16 16">
+                <symbol id="ficha" viewBox="0 0 16 16">
                     <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z" />
                     <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z" />
                 </symbol>
@@ -77,7 +94,7 @@ if (isset($_SESSION['usuario'])) {
 
                 <!-- Inicio SlideBar-->
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-                <span class="fs-4">Podología Marticorena</span>
+                    <span class="fs-4">Podología Marticorena</span>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
@@ -122,10 +139,11 @@ if (isset($_SESSION['usuario'])) {
                 <!-- Fin SlideBar-->
 
                 <!--Inicio Body-->
-                <div class="container p-9 my-5 border">
+                <div class="container p-9 my-5 border" id="global">
                     <h4>Atenciones</h4>
-                    <div id="grilla" class="overflow-scroll">
-                    <!--
+                    <br>
+                    <div>
+                        <!--
                             <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                             <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                             <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
@@ -140,30 +158,55 @@ if (isset($_SESSION['usuario'])) {
                         $result = mysqli_query(conexion(), $sql);
                         $datos = mysqli_fetch_array($result);
                         ?>
-
                         <table class="table table-striped">
                             <tr>
                                 <th>N° Atención</th>
+                                <th>Fecha</th>
+                                <th>Hora Inicio</th>
+                                <th>Hora Final</th>
                                 <th>Tratamiento</th>
+                                <th>Pre-Ingresar</th>
                                 <th>Detalles</th>
                             </tr>
+
                             <?php
                             $sql = "SELECT
-                            *
+                            `atencion`.*,
+                            `horas`.`horadeinicio`,
+                             `horas`.`horafinal`
                           FROM
-                            `pre_ingreso`
+                            `atencion`
+                            INNER JOIN `horas` ON `atencion`.`horas_id` = `horas`.`Id`
                           WHERE
-                            `pre_ingreso`.`id_usuario`=" . $_GET['idusu'];
-                            $result = mysqli_query(conexion(), $sql);  
-                            $cont=1;
+                          `atencion`.`id_paciente`=" . $_GET['idusu'];  
+                            $result = mysqli_query(conexion(), $sql);
+                            $cont = 1;
                             while ($datos = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
                                     <td><?php echo $cont; ?></td>
+                                    <td><?php echo $datos['fecha_atencion']?></td>
+                                    <td><?php echo $datos['horadeinicio']; ?></td>
+                                    <td><?php echo $datos['horafinal']; ?></td>
                                     <td><?php echo $datos['tto']; ?></td>
-                                    <td>
-                                        <a href="vistapreingreso.php?id=<?php echo $datos['Id']; ?>&idusu=<?php echo $_GET['idusu'] ?>"><img src="assets/images/revision.png"></a>
-                                    </td>
+                                    <?php
+                                    if ($datos['tto'] == "") {
+                                    ?>
+                                        <td>
+                                            <a href="preingreso.php?idusu=<?php echo $_GET['idusu']; ?>&Idatencion=<?php echo $datos['Idatencion']; ?>">
+                                                <button class="btn btn-success">Pre-Ingreso</button>
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <td></td>
+                                        <td>
+                                            <a href="vistapreingreso.php?Idatencion=<?php echo $datos['Idatencion']; ?>&idusu=<?php echo $_GET['idusu'] ?>"><img src="assets/images/revision.png"></a>
+                                        </td>
+                                    <?php
+                                    }
+                                    ?>
                                 </tr>
                             <?php
                                 $cont++;
