@@ -265,9 +265,9 @@ if (isset($_SESSION['usuario'])) {
                 atencion
                 INNER JOIN horas ON atencion.horas_id = horas.Id
                 INNER JOIN usuario ON atencion.id_paciente = usuario.Id
-              WHERE  
-              atencion.estado = 'Sin atender'";
-
+              WHERE                                                                                                                           
+              atencion.estado = '0'";
+                                
                   $resultt = mysqli_query(conexion(), $sql2);
                   while ($datospe = mysqli_fetch_array($resultt)) {
 
@@ -278,7 +278,22 @@ if (isset($_SESSION['usuario'])) {
                       <td><?php echo $datospe['fecha_atencion']; ?></td>
                       <td><?php echo $datospe['horadeinicio']; ?></td>
                       <td><?php echo $datospe['horafinal']; ?></td>
-                      <td><?php echo $datospe['estado']; ?></td>
+                      <td>
+                      <?php
+                            if ($datospe['estado'] == 0) {
+                            ?>
+                              
+                                <p>Por atender</p>
+                            <?php
+                            } else {
+                            ?>
+                              <p> Atendido</p>
+                            <?php
+                            }
+
+                            ?>
+                        </td>
+                   
                     </tr>
                   <?php
                   }

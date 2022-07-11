@@ -78,7 +78,7 @@ function preingresar()
     `atencion`.`diag` = '" . $_POST['diag'] . "',
     `atencion`.`tto` = '" . $_POST['tto'] . "',
     `atencion`.`indic` = '" . $_POST['indic'] . "',
-    `atencion`.`estado` = 'Atendida'
+    `atencion`.`estado` = '1'
     WHERE 
     Idatencion=" . $_POST['idatencion'];
 
@@ -114,6 +114,7 @@ function premodificar()
     `atencion`.`diag` = '" . $_POST['diag'] . "',
     `atencion`.`tto` = '" . $_POST['tto'] . "',
     `atencion`.`indic` = '" . $_POST['indic'] . "'
+    `atencion`.`estado` = '1'
     WHERE 
     Idatencion=" . $_POST['idatencion'];
 
