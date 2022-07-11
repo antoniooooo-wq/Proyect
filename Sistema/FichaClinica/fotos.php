@@ -195,12 +195,12 @@ if (isset($_SESSION['usuario'])) {
                                 <section id="galeria">
                                     <?php
                                     $sql = "SELECT
-                            usuario.Id,
-                            foto.imagen AS imagen1
-                            FROM
-                            usuario
-                            INNER JOIN foto ON foto.id_paciente = usuario.Id
-                            WHERE id_paciente =" . $_GET['idusu'];
+                                        usuario.Id,
+                                        foto.imagen AS imagen1
+                                        FROM
+                                        usuario
+                                        INNER JOIN foto ON foto.id_paciente = usuario.Id
+                                        WHERE id_paciente =" . $_GET['idusu'];
                                     $result = mysqli_query(conexion(), $sql);
                                     ?>
                                     <div class="text-center pt-5">
