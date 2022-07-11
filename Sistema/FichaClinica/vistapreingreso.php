@@ -97,7 +97,7 @@ if (isset($_SESSION['usuario'])) {
 
                 <!-- Inicio SlideBar-->
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-                <span class="fs-4">Podología Marticorena</span>
+                    <span class="fs-4">Podología Marticorena</span>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
@@ -156,8 +156,8 @@ if (isset($_SESSION['usuario'])) {
                     <!--ojitooo-->
                     <div id="formulario_usuario">
                         <div class="container p-3 my-1 border">
-                            <form action="registroficha.php" method="post" name="form_ficha">
-                            <!--
+                            <form action="registroficha.php" method="post" name="form_preingresoo">
+                                <!--
                                 <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                                 <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                                 <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
@@ -183,7 +183,7 @@ if (isset($_SESSION['usuario'])) {
                                       FROM
                                       atencion
                                       WHERE
-                                      Idatencion=". $_GET['Idatencion'] ;     
+                                      Idatencion=" . $_GET['Idatencion'];
                                 $result = mysqli_query(conexion(), $sql2);
                                 while ($datosusu = mysqli_fetch_array($result)) {
                                 ?>
@@ -293,13 +293,14 @@ if (isset($_SESSION['usuario'])) {
                                             <?php
                                             } else {
                                             ?>
-                                                <input id="btnModificar" type="button" value="PreModificar" class="btn btn-warning" onclick="validarpreingreso(this.value);">
+                                                <input id="btnModificar" type="button" value="PreModificar" class="btn btn-warning" onclick="validarpremodificar(this.value);">
                                             <?php
                                             }
                                             ?>
                                             <input id="btnCancelar" type="button" value="PreCancelar" class="btn btn-danger" onclick="validarpreingreso(this.value);">
                                             <input type="hidden" id="accion" name="accion">
                                             <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu']; ?>">
+                                            <input type="hidden" id="idoculto" name="idatencion" value="<?php echo $_GET['Idatencion']; ?>">
                                         </center>
                                     </div>
                                 </div>

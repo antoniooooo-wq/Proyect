@@ -48,6 +48,23 @@ if (isset($_SESSION['usuario'])) {
         }
       }
     </style>
+     <style type="text/css">
+            #global {
+                height: auto;
+                border: 1px solid #ddd;
+                background: #f1f1f1;
+                overflow-y: scroll;
+            }
+
+            #mensajes {
+                height: auto;
+            }
+
+            .texto {
+                padding: 4px;
+                background: #fff;
+            }
+        </style>
 
 
     <!-- Custom styles for this template -->
@@ -150,7 +167,7 @@ if (isset($_SESSION['usuario'])) {
       ?>
         <!-- Inicio SlideBar-->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
-         
+
           <span class="fs-4">Podología Marticorena</span>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
@@ -203,42 +220,41 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
-          
           <body onload="startTime()">
-          <div class="container px-0 py-5" id="featured-3">
-            <center>
-              <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
-                <center>
-                  <h6>Podología Marticorena</h6>
-                </center>
-            </center>
-
-            </h2>
-            <center>
-              <div id="clockdate">
-                <div class="clockdate-wrapper">
-                  <div id="clock"></div>
-                  <div id="date"></div>
+            <div>
+              <center>
+                <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
+                  <center>
+                    <h6>Podología Marticorena</h6>
+                  </center>
+                  </h2>
+              </center>
+              <center>
+                <div id="clockdate">
+                  <div class="clockdate-wrapper">
+                    <div id="clock"></div>
+                    <div id="date"></div>
+                  </div>
                 </div>
-              </div>
-            </center>
-          </div>
-          
-          <div class="container p-5 my-5 border">
+              </center>
+            </div>
+            <br>
             <h4>Atenciones del día</h4>
-            <div id="grilla" class="overflow-scroll">
-              <table class="table table-striped">
-                <tr>
-                  <th>Nombre</th>
-                  <th>Run</th>
-                  <th>Fecha</th>
-                  <th>Hora de inicio</th>
-                  <th>Hora final</th>   
-                  <th>Estado</th>          
-                </tr>
-                <?php
-                $sql2 = "SELECT
+            <div  class="container my-5 border" >
+              <div  id="global" >
+                <table class="table table-striped">
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Run</th>
+                    <th>Fecha</th>
+                    <th>Hora de inicio</th>
+                    <th>Hora final</th>
+                    <th>Estado</th>
+                  </tr>
+                  <?php
+                  $sql2 = "SELECT
                 atencion.fecha_atencion,
+                atencion.estado,
                 horas.horadeinicio,
                 horas.horafinal,
                 usuario.run,
@@ -248,27 +264,30 @@ if (isset($_SESSION['usuario'])) {
               FROM
                 atencion
                 INNER JOIN horas ON atencion.horas_id = horas.Id
-                INNER JOIN usuario ON atencion.id_paciente = usuario.Id"
-                ; 
-                
-                $resultt = mysqli_query(conexion(), $sql2);
-                while ($datospe = mysqli_fetch_array($resultt)) {
-                ?>
-                  <tr>
-                    <td><?php echo $datospe['nombre']; ?><br><?php echo $datospe['apellido']; ?></td>
-                    <td><?php echo $datospe['run']; ?></td>
-                    <td><?php echo $datospe['fecha_atencion']; ?></td>
-                    <td><?php echo $datospe['horadeinicio']; ?></td>
-                    <td><?php echo $datospe['horafinal']; ?></td>                  
-                  </tr>
-                <?php
-                }
-                ?>
-              </table>
-            </div>
+                INNER JOIN usuario ON atencion.id_paciente = usuario.Id
+              WHERE  
+              atencion.estado = 'Sin atender'";
+
+                  $resultt = mysqli_query(conexion(), $sql2);
+                  while ($datospe = mysqli_fetch_array($resultt)) {
+
+                  ?>
+                    <tr>
+                      <td><?php echo $datospe['nombre']; ?><br><?php echo $datospe['apellido']; ?></td>
+                      <td><?php echo $datospe['run']; ?></td>
+                      <td><?php echo $datospe['fecha_atencion']; ?></td>
+                      <td><?php echo $datospe['horadeinicio']; ?></td>
+                      <td><?php echo $datospe['horafinal']; ?></td>
+                      <td><?php echo $datospe['estado']; ?></td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                </table>
+              </div>
 
 
-        </body>
+          </body>
 
 
 
@@ -300,6 +319,7 @@ if (isset($_SESSION['usuario'])) {
                 Cancelar Hora
               </a>
             </li>
+            <!--
             <li>
               <a href="../Sistema/Pago/Portaldepago.php<?php echo $datos['usuarioid']; ?>" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
@@ -308,7 +328,7 @@ if (isset($_SESSION['usuario'])) {
                 Portal de Pagos
               </a>
             </li>
-
+            -->
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>
@@ -327,23 +347,44 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
-        <div class="container px-0 py-5" id="featured-3">
-          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?>
-          </h2>
-          <div class="container p-5 my-5 border">
+
+        <body onload="startTime()">
+          <div class="container px-0 py-5" >
+            <center>
+              <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
+                <center>
+                  <h6>Podología Marticorena</h6>
+                </center>
+            </center>
+            </h2>
+            <center>
+              <div id="clockdate">
+                <div class="clockdate-wrapper">
+                  <div id="clock"></div>
+                  <div id="date"></div>
+                </div>
+              </div>
+            </center>
             <h4>Horas</h4>
-            <div id="grilla" class="overflow-scroll">
+            <div id="global">
               <table class="table table-striped">
                 <tr>
                   <th>Fecha</th>
                   <th>Hora de inicio</th>
                   <th>Hora final</th>
+                  <th>Estado</th>
+                  <th>Indicaciones</th>
 
                 </tr>
                 <?php
-                $sql2 = "SELECT atencion.*
-                , horas.horadeinicio, horas.horafinal, usuario.Id, usuario.run,
-                 usuario.nombre, usuario.apellido 
+                $sql2 = "SELECT 
+                atencion.*, 
+                horas.horadeinicio, 
+                horas.horafinal,
+                usuario.Id, 
+                usuario.run,
+                usuario.nombre, 
+                usuario.apellido 
                  FROM usuario 
                  INNER JOIN atencion ON atencion.id_paciente = usuario.Id 
                  INNER JOIN horas ON atencion.horas_id = horas.Id
@@ -356,6 +397,8 @@ if (isset($_SESSION['usuario'])) {
                     <td><?php echo $datospe['fecha_atencion']; ?></td>
                     <td><?php echo $datospe['horadeinicio']; ?></td>
                     <td><?php echo $datospe['horafinal']; ?></td>
+                    <td><?php echo $datospe['estado']; ?></td>
+                    <td><?php echo $datospe['indic']; ?></td>
                   </tr>
                 <?php
                 }
@@ -363,19 +406,19 @@ if (isset($_SESSION['usuario'])) {
               </table>
             </div>
 
-
-
           </div>
-        <?php
-      } else
-        ?>
-        <?php if ($_SESSION['tipo'] == '4') //Secretaria
-      {
-        ?>
-          <!--Codigo Aquí-->
-        <?php
-      }
-        ?>
+        </body>
+        </div>
+      <?php
+    } else
+      ?>
+      <?php if ($_SESSION['tipo'] == '4') //Secretaria
+    {
+      ?>
+        <!--Codigo Aquí-->
+      <?php
+    }
+      ?>
 
 
     </main>

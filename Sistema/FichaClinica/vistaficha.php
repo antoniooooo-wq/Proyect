@@ -167,6 +167,7 @@ if (isset($_SESSION['usuario'])) {
                                 <th>Tratamiento</th>
                                 <th>Pre-Ingresar</th>
                                 <th>Detalles</th>
+                                <th>Estado</th>
                             </tr>
 
                             <?php
@@ -178,14 +179,14 @@ if (isset($_SESSION['usuario'])) {
                             `atencion`
                             INNER JOIN `horas` ON `atencion`.`horas_id` = `horas`.`Id`
                           WHERE
-                          `atencion`.`id_paciente`=" . $_GET['idusu'];  
+                          `atencion`.`id_paciente`=" . $_GET['idusu'];
                             $result = mysqli_query(conexion(), $sql);
                             $cont = 1;
                             while ($datos = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
                                     <td><?php echo $cont; ?></td>
-                                    <td><?php echo $datos['fecha_atencion']?></td>
+                                    <td><?php echo $datos['fecha_atencion'] ?></td>
                                     <td><?php echo $datos['horadeinicio']; ?></td>
                                     <td><?php echo $datos['horafinal']; ?></td>
                                     <td><?php echo $datos['tto']; ?></td>
@@ -197,6 +198,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <button class="btn btn-success">Pre-Ingreso</button>
                                             </a>
                                         </td>
+                                        <td></td>
                                     <?php
                                     } else {
                                     ?>
@@ -207,6 +209,8 @@ if (isset($_SESSION['usuario'])) {
                                     <?php
                                     }
                                     ?>
+                                    
+                                    <td><?php echo $datos['estado'] ?></td>
                                 </tr>
                             <?php
                                 $cont++;
