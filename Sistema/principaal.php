@@ -339,7 +339,6 @@ if (isset($_SESSION['usuario'])) {
                   <th>Hora de inicio</th>
                   <th>Hora final</th>
 
-
                 </tr>
                 <?php
                 $sql2 = "SELECT atencion.*
