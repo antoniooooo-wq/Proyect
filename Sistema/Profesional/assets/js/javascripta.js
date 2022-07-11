@@ -21,23 +21,6 @@ function fecha() {
 }
 
 
-
-function validarDatos() {
-
-    document.formFechas.guardar.value = guardar;
-
-    if (document.formFechas.fecha.value == "") {
-        alert("Debe seleccionar una Fecha");
-        return false;
-    }
-    if (document.formFechas.hora.value == "null") {
-        alert("Debe seleccionar una Hora");
-        return false;
-    }
-    
-
-}
-
     $(document).on("ready", function () {
 
         enviarDatos();
@@ -48,7 +31,7 @@ function enviarDatos() {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&datosusu'+ $("#idusu").val(),
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&idusu'+ $("#idusu").val(),
             success: function (response) {
                 if (response) {
                     window.alert(response)

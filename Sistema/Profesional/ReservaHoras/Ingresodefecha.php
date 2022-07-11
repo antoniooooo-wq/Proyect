@@ -61,14 +61,13 @@ if (isset($_SESSION['usuario'])) {
 
       <div class="line-break"></div>
       <input class="button" type="button" value="Guardar" id="guardar" name="Guardar">
-       
-      <input type="hidden" id="idoculto" name="idoculto" value="<?php echo $_GET['idusu'];?>">
-
+          
       <a href="../../principaal.php" type="button">Volver
       </a>
     </form>
 
   </body>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/js/jquery-3.0.0.min.js"></script>

@@ -15,7 +15,7 @@ if (isset($_GET['idusu'])) {
   }
 
 
-  $sql = "INSERT INTO atencion SET fecha_atencion='" . $_POST['fecha'] . "',horas_id='" . $_POST['hora'] ."',id_paciente='".$datosusu['idusu']. "'";
+  $sql = "INSERT INTO atencion SET fecha_atencion='" . $_POST['fecha'] . "',horas_id='" . $_POST['hora'] ."',id_paciente='".$_GETg['idusu']. "'";
 
 
 
