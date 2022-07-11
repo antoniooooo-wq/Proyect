@@ -221,15 +221,14 @@ if (isset($_SESSION['usuario'])) {
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
           <body onload="startTime()">
-            <div class="container px-0 py-5" id="featured-3">
+            <div>
               <center>
                 <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
                   <center>
                     <h6>Podología Marticorena</h6>
                   </center>
+                  </h2>
               </center>
-
-              </h2>
               <center>
                 <div id="clockdate">
                   <div class="clockdate-wrapper">
@@ -239,10 +238,10 @@ if (isset($_SESSION['usuario'])) {
                 </div>
               </center>
             </div>
-
-            <div class="container p-5 my-5 border">
-              <h4>Atenciones del día</h4>
-              <div id="global" >
+            <br>
+            <h4>Atenciones del día</h4>
+            <div  class="container my-5 border" >
+              <div  id="global" >
                 <table class="table table-striped">
                   <tr>
                     <th>Nombre</th>
@@ -366,7 +365,6 @@ if (isset($_SESSION['usuario'])) {
                 </div>
               </div>
             </center>
-
             <h4>Horas</h4>
             <div id="global">
               <table class="table table-striped">
