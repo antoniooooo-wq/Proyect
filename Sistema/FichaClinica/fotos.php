@@ -66,7 +66,8 @@ if (isset($_SESSION['usuario'])) {
         </style>
         <style type="text/css">
             #global {
-                max-height: auto;
+                height: 100%;
+                width: 100%;
                 border: 1px solid #ddd;
                 background: #f1f1f1;
                 overflow-y: scroll;
@@ -189,7 +190,7 @@ if (isset($_SESSION['usuario'])) {
                         </form>
 
                         <br>
-                        <div class="container p-3 my-1 border" id="global">
+                        <div class="container p-3 my-1 border">
                             <div>
                                 <section id="galeria">
                                     <?php
