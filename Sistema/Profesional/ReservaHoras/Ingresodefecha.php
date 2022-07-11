@@ -36,7 +36,7 @@ if (isset($_SESSION['usuario'])) {
       </div>
       <h2>Agende su hora en dos simple pasos</h2>
       <h2>Paso 1:</h2>
-      <p>Elija el dia que le acomode</p>
+      <p>Elija el dia</p>
       <h2>Paso 2:</h2>
       <p>Seleccione la hora deseada</p>
       <div class="form-date-group">
@@ -61,11 +61,12 @@ if (isset($_SESSION['usuario'])) {
 
       <div class="line-break"></div>
       <input class="button" type="button" value="Guardar" id="guardar" name="Guardar">
+
           
       <a href="../../principaal.php" type="button">Volver
       </a>
     </form>
-
+      <input type="text" id="idusu" name="idusu" value="<?php echo $_GET['idusu']; ?>">
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

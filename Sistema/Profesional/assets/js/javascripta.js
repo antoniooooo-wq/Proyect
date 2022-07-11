@@ -31,11 +31,10 @@ function enviarDatos() {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&idusu'+ $("#idusu").val(),
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&id_paciente'+ $("#idusu").val(),
             success: function (response) {
                 if (response) {
-                    window.alert(response)
-                    
+                    window.alert(data)            
                     window.location.href = "../administrarpacientes.php";
                 }
 
