@@ -460,4 +460,9 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
+
+
+  .text-center{
+    margin-top: 140px;
+  }
 }

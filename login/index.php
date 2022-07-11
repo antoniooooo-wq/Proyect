@@ -83,6 +83,19 @@
 						</a>
 					</div>
 				</form>
+				<?php
+        if(isset($_GET['error']))
+        {
+            ?>
+
+        <div id="alert-validate">
+        		error - Problemas con el Usuario y/o Contraseña<br>
+       			 o la cuenta se encuentra desactivada, favor comunicarse con el administrador
+        </div>
+
+        <?php
+        }
+        ?>
 			</div>
 		</div>
 	</div>
@@ -97,11 +110,14 @@
 	<script src="vendor/select2/select2.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+
+
 	<script>
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
+
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 

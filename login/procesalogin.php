@@ -45,7 +45,7 @@ if($cont!=0)
     header('Location:../Sistema/principaal.php');
 
 }else{
-    header ('Location:penka.php');
+    header ('Location:../login/index.php?error');
 }
 
 ?>
