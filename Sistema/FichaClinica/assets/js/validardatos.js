@@ -1,74 +1,60 @@
 function validarficha(accion) {
 
     document.form_ficha.accion.value = accion;
-    if (accion != "Cancelar") {
-        if (accion != "Modificar") {
-            
-        }
-    }
+    if (accion != "Cancelar") { }
     document.form_ficha.submit();
 }
 
-function validarpreingreso(accion){
+function validarpreingreso(accion) {
 
     document.form_preingreso.accion.value = accion;
     if (accion != "Cancelar") {
-        /*
-        if (document.form_preingreso.frec_card.value <="0") {
-            alert("Número Inválido (Frecuencia Cardiaca)");
-           return false;
-        }
-        
-        if (document.form_preingreso.frec_resp.value <="0") {
-            alert("Número Inválido (Frecuencia Respiratoria)");
+
+        if (document.form_preingreso.obss.value == "") {
+            alert("Campo Obligatorio (Observaciones)");
             return false;
         }
-        if (document.form_preingreso.sist.value <="0") {
-            alert("Número Inválido (Sistole)");
+
+        if (document.form_preingreso.diag.value == "") {
+            alert("Campo Obligatorio (Diagnóstico)");
             return false;
         }
-        if (document.form_preingreso.diast.value <"0") {
-            alert("Número Inválido (Diastole)");
+        if (document.form_preingreso.tto.value == "") {
+            alert("Campo Obligatorio (Tratamiento)");
             return false;
         }
-        if (document.form_preingreso.temp.value <"0") {
-            alert("Número Inválido (T°)");
+        if (document.form_preingreso.indic.value == "") {
+            alert("Campo Obligatorio (Indicaciones)");
             return false;
         }
-        if (document.form_preingreso.porc_satu.value <"0") {
-            alert("Número Inválido (Saturación)");
-            return false;
-        }
-        if (document.form_preingreso.glu.value <"0") {
-            alert("Número Inválido (Glucosa)");
-            return false;
-        }
-        if (document.form_preingreso.rotu.value <"0") {
-            alert("Número Inválido (Rotuliano)");
-            return false;
-        }
-        if (document.form_preingreso.pulso_pe.value <"0") {
-            alert("Número Inválido (Pulso Pedio)");
-            return false;
-        }
-        if (document.form_preingreso.mono.value <"0") {
-            alert("Número Inválido (Monofila)");
-            return false;
-        }
-        if (document.form_preingreso.punsion.value <"0") {
-            alert("Número Inválido (Punsión)");
-            return false;
-        }
-        if (document.form_preingreso.foc.value <"0") {
-            alert("Número Inválido (Frio/Calor)");
-            return false;
-        }
-        if (document.form_preingreso.diapa.value <"0") {
-            alert("Número Inválido (Diapason)");
-            return false;
-        }
-*/
-       
     }
     document.form_preingreso.submit();
+}
+
+function validarpremodificar(accion) {
+
+    document.form_preingresoo.accion.value = accion;
+    if (accion != "Cancelar") {
+        if (accion != "Cancelar") {
+
+            if (document.form_preingresoo.obss.value == "") {
+                alert("Campo Obligatorio (Observaciones)");
+                return false;
+            }
+    
+            if (document.form_preingresoo.diag.value == "") {
+                alert("Campo Obligatorio (Diagnóstico)");
+                return false;
+            }
+            if (document.form_preingresoo.tto.value == "") {
+                alert("Campo Obligatorio (Tratamiento)");
+                return false;
+            }
+            if (document.form_preingresoo.indic.value == "") {
+                alert("Campo Obligatorio (Indicaciones)");
+                return false;
+            }
+        }
+    }
+    document.form_preingresoo.submit();
 }

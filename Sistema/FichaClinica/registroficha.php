@@ -18,6 +18,9 @@ switch ($_POST['accion']) {
     case "PreIngreso":
         preingresar();
         break;
+    case "PreModificar":
+        premodificar();
+        break;
     case "PreCancelar":
         precancelar();
         break;
@@ -55,7 +58,43 @@ function preingresar()
     `atencion`
     WHERE
     `atencion`.`Idatencion` = " . $_POST['idoculto'];
-    
+
+    $sql = "UPDATE atencion SET
+    `atencion`.`frec_card`= '" . $_POST['frec_card'] . "',
+    `atencion`.`frec_resp` = '" . $_POST['frec_resp'] . "',
+    `atencion`.`sist` = '" . $_POST['sist'] . "',
+    `atencion`.`diast` = '" . $_POST['diast'] . "',
+    `atencion`.`temp` = '" . $_POST['temp'] . "',
+    `atencion`.`porc_satu` = '" . $_POST['porc_satu'] . "',
+    `atencion`.`glu` = '" . $_POST['glu'] . "',
+    `atencion`.`rotu` = '" . $_POST['rotu'] . "',
+    `atencion`.`pulso_pe` = '" . $_POST['pulso_pe'] . "',
+    `atencion`.`mono` = '" . $_POST['mono'] . "',
+    `atencion`.`punsion` = '" . $_POST['punsion'] . "',
+    `atencion`.`foc` = '" . $_POST['foc'] . "',
+    `atencion`.`diapa` = '" . $_POST['diapa'] . "',
+    `atencion`.`obs` = '" . $_POST['obs'] . "',
+    `atencion`.`obss` = '" . $_POST['obss'] . "',
+    `atencion`.`diag` = '" . $_POST['diag'] . "',
+    `atencion`.`tto` = '" . $_POST['tto'] . "',
+    `atencion`.`indic` = '" . $_POST['indic'] . "',
+    `atencion`.`estado` = 'Atendida'
+    WHERE 
+    Idatencion=" . $_POST['idatencion'];
+
+    mysqli_query(conexion(), $sql);
+    header("Location:vistaficha.php?idusu=$_POST[idoculto]");
+}
+
+function premodificar()
+{
+    $sql2 = "SELECT
+    `atencion`.`Idatencion`
+  FROM
+    `atencion`
+    WHERE
+    `atencion`.`Idatencion` = " . $_POST['idoculto'];
+
     $sql = "UPDATE atencion SET
     `atencion`.`frec_card`= '" . $_POST['frec_card'] . "',
     `atencion`.`frec_resp` = '" . $_POST['frec_resp'] . "',
@@ -79,20 +118,12 @@ function preingresar()
     Idatencion=" . $_POST['idatencion'];
 
     mysqli_query(conexion(), $sql);
-    header("Location:ficha.php?idusu=$_POST[idoculto]");
-}
-
-function premodificar()
-{
-    $sql = " UPDATE usuario SET diabetes='" . $_POST['diabetes'] . "',hta='" . $_POST['hta'] . "',otros='" . $_POST['otros'] . "'" . "' WHERE Id= " . $_POST['idoculto'];
-    mysqli_query(conexion(), $sql);
-
-    header("Location:../Profesional/administrarpacientes.php");
+    header("Location:vistaficha.php?idusu=$_POST[idoculto]");
 }
 
 
 function precancelar()
 {
 
-    header("Location:../Profesional/administrarpacientes.php");
+    header("Location:vistaficha.php?idusu=$_POST[idoculto]");
 }
