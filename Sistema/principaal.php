@@ -48,23 +48,23 @@ if (isset($_SESSION['usuario'])) {
         }
       }
     </style>
-     <style type="text/css">
-            #global {
-                height: auto;
-                border: 1px solid #ddd;
-                background: #f1f1f1;
-                overflow-y: scroll;
-            }
+    <style type="text/css">
+      #global {
+        height: auto;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+      }
 
-            #mensajes {
-                height: auto;
-            }
+      #mensajes {
+        height: auto;
+      }
 
-            .texto {
-                padding: 4px;
-                background: #fff;
-            }
-        </style>
+      .texto {
+        padding: 4px;
+        background: #fff;
+      }
+    </style>
 
 
     <!-- Custom styles for this template -->
@@ -220,6 +220,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- Fin SlideBar-->
         <!--Inicio Body-->
         <div class="container px-0 py-5" id="featured-3">
+
           <body onload="startTime()">
             <div>
               <center>
@@ -227,7 +228,7 @@ if (isset($_SESSION['usuario'])) {
                   <center>
                     <h6>Podología Marticorena</h6>
                   </center>
-                  </h2>
+                </h2>
               </center>
               <center>
                 <div id="clockdate">
@@ -240,8 +241,8 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <br>
             <h4>Atenciones del día</h4>
-            <div  class="container my-5 border" >
-              <div  id="global" >
+            <div class="container my-5 border">
+              <div id="global">
                 <table class="table table-striped">
                   <tr>
                     <th>Nombre</th>
@@ -249,25 +250,26 @@ if (isset($_SESSION['usuario'])) {
                     <th>Fecha</th>
                     <th>Hora de inicio</th>
                     <th>Hora final</th>
+                    <th>Acceso Rápido</th>
                     <th>Estado</th>
                   </tr>
                   <?php
                   $sql2 = "SELECT
-                atencion.fecha_atencion,
-                atencion.estado,
-                horas.horadeinicio,
-                horas.horafinal,
-                usuario.run,
-                usuario.nombre,
-                usuario.apellido
-             
-              FROM
-                atencion
-                INNER JOIN horas ON atencion.horas_id = horas.Id
-                INNER JOIN usuario ON atencion.id_paciente = usuario.Id
-              WHERE                                                                                                                           
-              atencion.estado = '0'";
-                                
+                    atencion.fecha_atencion,
+                    atencion.id_paciente,
+                    atencion.estado,
+                    horas.horadeinicio,
+                    horas.horafinal,
+                    usuario.run,
+                    usuario.nombre,
+                    usuario.apellido
+                
+                  FROM
+                    atencion
+                    INNER JOIN horas ON atencion.horas_id = horas.Id
+                    INNER JOIN usuario ON atencion.id_paciente = usuario.Id
+                  WHERE                                                                                                                           
+                  atencion.estado = '0'";
                   $resultt = mysqli_query(conexion(), $sql2);
                   while ($datospe = mysqli_fetch_array($resultt)) {
 
@@ -279,21 +281,23 @@ if (isset($_SESSION['usuario'])) {
                       <td><?php echo $datospe['horadeinicio']; ?></td>
                       <td><?php echo $datospe['horafinal']; ?></td>
                       <td>
-                      <?php
-                            if ($datospe['estado'] == 0) {
-                            ?>
-                              
-                                <p>Por atender</p>
-                            <?php
-                            } else {
-                            ?>
-                              <p> Atendido</p>
-                            <?php
-                            }
+                        <a href="FichaClinica/ficha.php?idusu=<?php echo $datospe['id_paciente']; ?>"><img src="Profesional/assets/images/revision.png"></a>
+                      </td>
+                      <td>
+                        <?php
+                        if ($datospe['estado'] == 0) {
+                        ?>
 
-                            ?>
-                        </td>
-                   
+                          <p>Por atender</p>
+                        <?php
+                        } else {
+                        ?>
+                          <p> Atendido</p>
+                        <?php
+                        }
+
+                        ?>
+                      </td>   
                     </tr>
                   <?php
                   }
@@ -364,7 +368,7 @@ if (isset($_SESSION['usuario'])) {
         <!--Inicio Body-->
 
         <body onload="startTime()">
-          <div class="container px-0 py-5" >
+          <div class="container px-0 py-5">
             <center>
               <h2 class="pb-2 border-bottom">Bienvenido/a: <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <br>
                 <center>
@@ -412,7 +416,20 @@ if (isset($_SESSION['usuario'])) {
                     <td><?php echo $datospe['fecha_atencion']; ?></td>
                     <td><?php echo $datospe['horadeinicio']; ?></td>
                     <td><?php echo $datospe['horafinal']; ?></td>
-                    <td><?php echo $datospe['estado']; ?></td>
+                    <td>
+                      <?php
+                      if ($datospe['estado'] == 0) {
+                      ?>
+                        <p>Por atender</p>
+                      <?php
+                      } else {
+                      ?>
+                        <p> Atendido</p>
+                      <?php
+                      }
+
+                      ?>
+                    </td>
                     <td><?php echo $datospe['indic']; ?></td>
                   </tr>
                 <?php

@@ -209,8 +209,22 @@ if (isset($_SESSION['usuario'])) {
                                     <?php
                                     }
                                     ?>
-                                    
-                                    <td><?php echo $datos['estado'] ?></td>
+
+                                    <td>
+                                        <?php
+                                        if ($datos['estado'] == 0) {
+                                        ?>
+
+                                            <p>Por atender</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <p> Atendido</p>
+                                        <?php
+                                        }
+
+                                        ?>
+                                    </td>
                                 </tr>
                             <?php
                                 $cont++;

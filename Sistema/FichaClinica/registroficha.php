@@ -81,7 +81,7 @@ function preingresar()
     `atencion`.`estado` = '1'
     WHERE 
     Idatencion=" . $_POST['idatencion'];
-
+    
     mysqli_query(conexion(), $sql);
     header("Location:vistaficha.php?idusu=$_POST[idoculto]");
 }
@@ -114,10 +114,9 @@ function premodificar()
     `atencion`.`diag` = '" . $_POST['diag'] . "',
     `atencion`.`tto` = '" . $_POST['tto'] . "',
     `atencion`.`indic` = '" . $_POST['indic'] . "'
-    `atencion`.`estado` = '1'
     WHERE 
     Idatencion=" . $_POST['idatencion'];
-
+  
     mysqli_query(conexion(), $sql);
     header("Location:vistaficha.php?idusu=$_POST[idoculto]");
 }
