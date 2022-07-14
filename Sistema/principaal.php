@@ -338,7 +338,7 @@ if (isset($_SESSION['usuario'])) {
                 Cancelar Hora
               </a>
             </li>
-            <!--
+          
             <li>
               <a href="../Sistema/Pago/Portaldepago.php<?php echo $datos['usuarioid']; ?>" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
@@ -347,7 +347,7 @@ if (isset($_SESSION['usuario'])) {
                 Portal de Pagos
               </a>
             </li>
-            -->
+            
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>
