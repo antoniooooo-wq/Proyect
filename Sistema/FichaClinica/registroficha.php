@@ -113,6 +113,7 @@ function premodificar()
     `atencion`.`obss` = '" . $_POST['obss'] . "',
     `atencion`.`diag` = '" . $_POST['diag'] . "',
     `atencion`.`tto` = '" . $_POST['tto'] . "',
+    `atencion`.`valor` = '" . $_POST['valor'] . "',
     `atencion`.`indic` = '" . $_POST['indic'] . "'
     WHERE 
     Idatencion=" . $_POST['idatencion'];
