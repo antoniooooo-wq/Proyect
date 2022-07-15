@@ -267,6 +267,10 @@ if (isset($_SESSION['usuario'])) {
                                         <label for="indic">Indicaciones</label>
                                         <textarea name="indic"><?php echo $datosusu['indic'] ?></textarea>
                                     </div>
+                                    <div class="row g-3">
+                                        <label for="valor">Valor</label>
+                                        <textarea name="valor"><?php echo $datosusu['valor'] ?></textarea>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="row">

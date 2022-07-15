@@ -117,6 +117,7 @@ if (isset($_SESSION['usuario'])) {
                       <th>Hora de inicio</th>
                       <th>Hora final</th>
                       <th>Cancelar Hora</th>
+                    
 
                     </tr>
                     <?php
@@ -130,20 +131,20 @@ if (isset($_SESSION['usuario'])) {
 
                     $resultt = mysqli_query(conexion(), $sql2);
                     while ($datospe = mysqli_fetch_array($resultt)) {
-                    ?>
-                      <tr>
-                        <td><?php echo $datospe['fecha_atencion']; ?></td>
-                        <td><?php echo $datospe['horadeinicio']; ?></td>
-                        <td><?php echo $datospe['horafinal']; ?></td>
-                        <td>
-
-                          <a href="cancelar.php?id=<?php echo $datospe['Idatencion']; ?>&op=3"><img id="elim<?php echo $datospe['Idatencion']; ?>" src="assets/images/cerrar.png"></a>
-                        </td>
-                      </tr>
-                    <?php
-                    }
-                    ?>
-                  </table>
+                      if ($datospe['estado'] == 0) {
+                        ?>
+                            <tr>
+                            <td><?php echo $datospe['fecha_atencion']; ?></td>
+                            <td><?php echo $datospe['horadeinicio']; ?></td>
+                            <td><?php echo $datospe['horafinal']; ?></td>
+  
+                            <td><a href="cancelar.php?id=<?php echo $datospe['Idatencion']; ?>&op=3"><img id="elim<?php echo $datospe['Idatencion']; ?>" src="assets/images/cerrar.png"></a></td>
+                            </tr>
+                        <?php
+                  
+                          }
+                        }
+                        ?>
                 </div>
 
 

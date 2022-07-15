@@ -1,170 +1,168 @@
-
 <?php
-include("../Proyect/functions/setup.php");
+
+include("../../functions/setup.php");
 
 session_start();
 
 if (isset($_SESSION['usuario'])) {
 
   if (isset($_GET['idusu'])) {
-      $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
-      $resultusu = mysqli_query(conexion(), $sqlusu);
-      $datosusu = mysqli_fetch_array($resultusu);
+    $sqlusu = "SELECT * FROM usuario WHERE Id=" . $_GET['idusu'];
+    $resultusu = mysqli_query(conexion(), $sqlusu);
+    $datosusu = mysqli_fetch_array($resultusu);
   }
 ?>
-<!DOCTYPE html>
-<html>
+  <!doctype html>
+  <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="../../assets/css/pagos.css" type="text/css">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- mobile metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-  <title> Portal de Pago </title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title> Panel Principal </title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/features/">
-  <link rel="icon" type="image/png" href="../assets/images/icons/favicon-16x16.png" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/features/">
+    <link rel="icon" type="image/png" href="assets/images/icons/favicon-16x16.png" />
 
-  
-</head>
-<body>
-  <div class="py-1">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-12 col-sm-10">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-10 col-12">
-            <h1>Portal de pagos</h1>
-          </div>
-          <div class="col-sm-2"></div>
-          <div class="col-sm-10 col-12">
-            <p class="">
-              <a href="../principaal.php">Volver</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="py-1">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-12 col-sm-8 py-1">
-            <h4 class="">Información</h4>
-          </div>
-          <div class="col-sm-2"></div>
-        </div>
-        <div class="row" id="app-info">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8 col-12">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>rut </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></td>
-                  <td><?php echo $_SESSION['usuariorun']; ?></td>
-                </tr>
-                <tr></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-sm-2"></div>
-        </div>
-      </div>
-    </div>
-    <div class="py-1">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8 col-12 py-1">
-            <h4 class="">Detalles</h4>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8 col-12">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="text-primary">Atencion</th>
-                  <th class="text-primary">Fecha</th>
-                  <th class="text-primary">Hora</th>
-                  <th class="text-primary">Costo</th>
-                  <th class="text-primary">Detalle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Matricectomía</td>
-                  <td>20-10-2002</td>
-                  <td>10:000</td>
-                  <td>$10000</td>
-                  <td><label><input type="checkbox" id="cbox1" value="first_checkbox"></label></td>
-                </tr>
-                <tr></tr>
-                <tr></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-      </div>
-    </div>
-    <div class="py-1">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-            <div class="col-sm-8 col-12 bg-primary py-1">
-            <h4 class="">Total a Pagar </h4>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="text-light"></th>
-                  <th class="text-light"></th>
-                  <th class="text-light"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-light"></td>
-                  <td class="text-light"></td>
-                  <td class="text-light"></td>
-                </tr>
-              </tbody>
-            </table>
-            <a href="https://www.bancoestado.cl/transa/login_pers.asp?negocio=MODPAGO">   <button  >Pagar
-            
-            </button>
-              
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/sidebars.js"></script>
+    <script src="assets/js/validardatos.js"></script>
+    <script src="assets/js/validarRUT.js"></script>
 
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/features.css" rel="stylesheet">
+    <link href="assets/css/sidebars.css" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="features.css" rel="stylesheet">
+  </head>
+
+  <body id="bodyprinci" style="height: 1080px; overflow-x: hidden; overflow-y: hidden;">
+    <main>
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="back" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+        </symbol>
+      </svg>
+      <?php
+      if ($_SESSION['tipo'] == "3") //Paciente
+      {
+      ?>
+        <!-- Inicio SlideBar-->
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: auto; height: auto;">
+          <span class="fs-4">Podología Marticorena</span>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="../principaal.php" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#back" />
+                </svg>
+                Volver
+              </a>
+            </li>
+          </ul>
+          <footer class="container">
+            <p>Copyright 2022 Podología Marticorena</p>
+          </footer>
+          <hr>
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <strong><?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?></strong>
             </a>
-         
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+              <!--<li><a class="dropdown-item" href="#">Profile</a></li>-->
+              <li><a class="dropdown-item" href="../cerrarsesion.php">Cerrar Sesión</a></li>
+            </ul>
           </div>
-          <div class="col-sm-2"></div>
         </div>
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Fin SlideBar-->
 
-</body>
+        <!--Inicio Body-->
+        <div class="container px-0 py-5" id="featured-3">
+          <h2 class="pb-2 border-bottom">Bienvenido(a): <?php echo $_SESSION['usuario']; ?> <?php echo $_SESSION['usuarioap']; ?> <p style="color: blue;">(Pagar)</p>
+          </h2>
 
-</html>
+          <div id="formulario_cancelar">
+            <div class="container p-3 my-1 border">
+
+
+              <div class="container p-5 my-5 border">
+                <h4>Detalles</h4>
+                <div id="grilla" class="overflow-scroll">
+                  <table class="table table-striped">
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Hora de inicio</th>
+                      <th>Hora final</th>
+                      <th>valor</th>
+                    
+
+                    </tr>
+                    <?php
+                    $sql2 = "SELECT atencion.*
+                , horas.horadeinicio, horas.horafinal, usuario.Id, usuario.run,
+                 usuario.nombre, usuario.apellido 
+                 FROM usuario 
+                 INNER JOIN atencion ON atencion.id_paciente = usuario.Id 
+                 INNER JOIN horas ON atencion.horas_id = horas.Id
+                 WHERE atencion.id_paciente =" . $_SESSION['usuarioid'];
+
+                    $resultt = mysqli_query(conexion(), $sql2);
+                    while ($datospe = mysqli_fetch_array($resultt)) {
+                      if ($datospe['estado'] == 1) {
+                        ?>
+                            <tr>
+                            <td><?php echo $datospe['fecha_atencion']; ?></td>
+                            <td><?php echo $datospe['horadeinicio']; ?></td>
+                            <td><?php echo $datospe['horafinal']; ?></td>
+  
+                            <td><?php echo $datospe['valor']; ?></td>
+                            </tr>
+                        <?php
+                  
+                          }
+                        }
+                        ?>
+                </div>
+
+
+
+              </div>
+            </div>
+
+          </div>
+          <!--Fin Body-->
+        <?php
+      }
+        ?>
+    </main>
+  </body>
+
+  </html>
 <?php
 } else {
-  header('Location:../../login/penka.php');
+  header('Location:../login/Login.php');
 }
 ?>
