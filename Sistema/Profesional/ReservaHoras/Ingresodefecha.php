@@ -46,10 +46,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
       </div>
 
-                        <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
-                        <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
-                        <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
-                        <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
+                     
  
       <div class="form-date-group">
         <div class="modal-body">
