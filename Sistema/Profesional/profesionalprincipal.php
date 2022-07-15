@@ -134,6 +134,7 @@ if (isset($_SESSION['usuario'])) {
                 Administrar Pacientes
               </a>
             </li>
+            <!--
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
@@ -142,6 +143,7 @@ if (isset($_SESSION['usuario'])) {
                 Ingresos
               </a>
             </li>
+            -->
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>

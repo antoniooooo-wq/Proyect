@@ -195,6 +195,7 @@ if (isset($_SESSION['usuario'])) {
                 Administrar Pacientes
               </a>
             </li>
+            <!--
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
@@ -203,6 +204,7 @@ if (isset($_SESSION['usuario'])) {
                 Ingresos
               </a>
             </li>
+             -->
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>
@@ -297,7 +299,7 @@ if (isset($_SESSION['usuario'])) {
                         }
 
                         ?>
-                      </td>   
+                      </td>
                     </tr>
                   <?php
                   }
@@ -323,7 +325,15 @@ if (isset($_SESSION['usuario'])) {
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="../Sistema/Ingresodefecha.php<?php echo $datos['usuarioid']; ?>" class="nav-link active" aria-current="page">
+              <a href="principaal.php" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#homes" />
+                </svg>
+                Panel Principal
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../Sistema/Ingresodefecha.php<?php echo $datos['usuarioid']; ?>" class="nav-link text-white" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#Plus" />
                 </svg>
@@ -331,7 +341,7 @@ if (isset($_SESSION['usuario'])) {
               </a>
             </li>
             <li>
-              <a href="Paciente/cancelarhora.php" class="nav-link text-red">
+              <a href="Paciente/cancelarhora.php" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#cancel" />
                 </svg>
