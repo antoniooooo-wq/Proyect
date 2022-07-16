@@ -29,7 +29,7 @@ function enviarDatos() {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() ,
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&id_paciente='+ $("#idusu").val(),
             success: function (response) {          
                 if(response==1)
                 {           
