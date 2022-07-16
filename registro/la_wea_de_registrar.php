@@ -15,6 +15,8 @@
     id_tipo_usuario='3'";
 
    mysqli_query(conexion(), $sql);
+   echo $sql;
+   die;
 
    header("Location:../../Proyect/login/index.php");
 
