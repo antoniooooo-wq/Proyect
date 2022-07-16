@@ -44,13 +44,13 @@ if (isset($_SESSION['usuario'])) {
           <input type="date" name="fecha" id="fecha" required>
         </div>
       </div>
-
+<!--
                         <h6>id paciente Session: <?php echo $_SESSION['usuarioid']; ?></h6>
                         <h6>id paciente datos: <?php echo $datos['Id']; ?></h6>
                         <h6>id paciente datosusu: <?php echo $datosusu['Id']; ?></h6>
                         <h6>id paciente GET idusu: <?php echo $_GET['idusu']; ?></h6>
                         <h6>id paciente GET Id: <?php echo $_GET['Id']; ?></h6>
-
+-->
       <div class="form-date-group">
         <div class="modal-body">
           <label>Seleccione la hora de su cita: </label><label id="info" name="info" class="ml-14"></label><br>
