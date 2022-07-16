@@ -2,13 +2,12 @@
 
 
 include("../functions/setup.php");
-session_start();
 
-$sql = "INSERT INTO atencion SET fecha_atencion='" . $_POST['fecha'] . "',horas_id='" . $_POST['hora'] ."',id_paciente='" . $_SESSION['usuarioid']."',estado='0'";
-mysqli_query(conexion(), $sql);
+$sql = "INSERT INTO atencion SET fecha_atencion='" . $_POST['fecha'] . "',horas_id='" . $_POST['hora'] ."',id_paciente='".$_POST['id_paciente']. "', estado='0'";
+  mysqli_query(conexion(), $sql);
 
-/*
-$consulta = "SELECT
+  
+$consulta           = "SELECT
 `horas`.`horadeinicio`,
 `usuario`.`nombre`,
 `usuario`.`apellido`,
@@ -20,11 +19,13 @@ FROM
 INNER JOIN `atencion` ON `usuario`.`Id` = `atencion`.`id_paciente`
 INNER JOIN `horas` ON `atencion`.`horas_id` = `horas`.`Id`
 WHERE
-`atencion`.`id_paciente` =".$_SESSION['usuarioid']." AND `atencion`.`fecha_atencion` = '".$_POST['fecha']."'";
+`atencion`.`id_paciente` =".$_POST['id_paciente']." AND `atencion`.`fecha_atencion` = '".$_POST['fecha']."'";
 
 $queryconsulta      = mysqli_query(conexion(), $consulta);
 $cantidadConsulta   = mysqli_num_rows($queryconsulta);
 $dataConsulta       = mysqli_fetch_array($queryconsulta);
+
+
 
 $cuerpo = '
     <style>
@@ -33,6 +34,7 @@ $cuerpo = '
         padding: 0;
         box-sizing: border-box;
     }
+    -
     body {
         font-family: "Roboto", sans-serif;
         font-size: 16px;
@@ -109,6 +111,7 @@ $cuerpo .= '
 
     
     
+    
     $destinatario = $dataConsulta['email']; 
     $asunto       = "Confirmación de Hora - Podología Marticorena";
    // $cuerpo="nombre:".$dataConsulta['nombre']." ".$dataConsulta['apellido'];
@@ -117,7 +120,12 @@ $cuerpo .= '
     $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; ; 
     $headers .= "From: ricardo@rpino.cl"; //Cambiar por nombre de dominio -.-
 
-*/
+    if(mail($destinatario,$asunto,$cuerpo,$headers))
+    {
+        echo "1";
+    }
+
+
 
 
 ?>
