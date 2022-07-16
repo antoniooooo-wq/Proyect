@@ -28,13 +28,14 @@ function enviarDatos() {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&id_paciente='+ $("#idusu").val(),
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() ,
             success: function (response) {          
-                if(response==1)
-                {           
-                  alert("Hora Registrada Exitosamente");
-                   window.location.href = "https://rpino.cl/Prueba/Sistema/principaal.php";
-                }
+              //  if(response==1)
+               // {        
+                 response;
+                  alert("Hora registrada Exitosamente");
+                   window.location.href = "http://localhost/PodologiaGit/Proyect/Sistema/principaal.php";
+               // }
           }
         });
 }
