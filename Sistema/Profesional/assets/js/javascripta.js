@@ -32,6 +32,8 @@ function enviarDatos() {
                 
                   if(response==1)
                   {           
+                 
+                    
                     alert("Hora Registrada Exitosamente");
                      window.location.href = "https://rpino.cl/Prueba/Sistema/Profesional/administrarpacientes.php";
                   }
