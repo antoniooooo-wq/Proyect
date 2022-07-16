@@ -334,7 +334,7 @@ if (isset($_SESSION['usuario'])) {
             </li>
             <li class="nav-item">
             <input type="hidden" id="idusu" name="idusu" value="<?php echo $_SESSION['usuarioid'] ?>">
-              <a href="../Sistema/Ingresodefecha.php?=<?php echo $_SESSION['usuarioid']; ?>" class="nav-link text-white" aria-current="page">
+              <a href="../Sistema/Ingresodefecha.php?idusu=<?php echo $_SESSION['usuarioid']; ?>" class="nav-link text-white" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#Plus" />
                 </svg>
