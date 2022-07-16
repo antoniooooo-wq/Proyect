@@ -6,6 +6,9 @@ $(document).ready(function () {
     $('#fecha').blur(function () {
         fecha();
     });
+    $("#guardar").click(function () {
+        enviarDatos();
+    });
 
 });
 
@@ -20,33 +23,21 @@ function fecha() {
     });
 }
 
-
-    $(document).on("ready", function () {
-
-        enviarDatos();
-    });
-
 function enviarDatos() {
-    $("#guardar").click(function () {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&id_paciente'+ $("#idusu").val(),
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&id_paciente='+ $("#idusu").val(),
             success: function (response) {
-                if (response) {
-                    window.alert(data)            
-                    window.location.href = "../administrarpacientes.php";
-                }
-
+                
+                  if(response==1)
+                  {           
+                    alert("Hora Registrada Exitosamente");
+                     window.location.href = "https://rpino.cl/Prueba/Sistema/Profesional/administrarpacientes.php";
+                  }
             }
-
-
         });
-
-
-    });
 }
-
 
 
 

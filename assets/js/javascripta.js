@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
     $('#ContenedorJquery').hide();
     $('#noesta').hide();
@@ -6,7 +8,9 @@ $(document).ready(function () {
     $('#fecha').blur(function () {
         fecha();
     });
-
+    $("#guardar").click(function () {
+        enviarDatos();
+    });
 });
 
 function fecha() {
@@ -20,47 +24,19 @@ function fecha() {
     });
 }
 
-
-
-function validarDatos() {
-
-    document.formFechas.guardar.value = guardar;
-
-    if (document.formFechas.fecha.value == "") {
-        alert("Debe seleccionar una Fecha");
-        return false;
-    }
-    if (document.formFechas.hora.value == "null") {
-        alert("Debe seleccionar una Hora");
-        return false;
-    }
-
-}
-
-    $(document).on("ready", function () {
-
-        enviarDatos();
-    });
-
 function enviarDatos() {
-    $("#guardar").click(function () {
         $.ajax({
             type: "POST",
             url: "producto.php",
-            data: 'fecha=' + $("#fecha").val() + '&hora=' + $("#hora").val() + '&idusu=' + $("#idusu").val(),
-            success: function (response) {
-                if (response) {
-                    window.alert("Hora registrada Exitosamente")
-                    window.location.href = "../Sistema/principaal.php";
+            data: 'fecha=' + $("#fecha").val() + '&hora=' + $(" #hora").val() + '&id_paciente='+ $("#idusu").val(),
+            success: function (response) {          
+                if(response==1)
+                {           
+                  alert("Hora Registrada Exitosamente");
+                   window.location.href = "https://rpino.cl/Prueba/Sistema/principaal.php";
                 }
-
-            }
-
-
+          }
         });
-
-
-    });
 }
 
 

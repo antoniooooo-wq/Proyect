@@ -1,6 +1,6 @@
 <?php
 include('../functions/setup.php');
-$correo             = trim($_REQUEST['email']); //Quitamos algun espacion en blanco
+$correo             = trim($_REQUEST['email']); //Quitamos algun espacio en blanco
 $consulta           = "SELECT * FROM usuario WHERE email ='".$correo."'";
 $queryconsulta      = mysqli_query(conexion(), $consulta);
 $cantidadConsulta   = mysqli_num_rows($queryconsulta);

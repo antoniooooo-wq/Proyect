@@ -64,8 +64,18 @@ WHERE
           </td>
 
           <td>
-          <a href="ReservaHoras/Ingresodefecha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/reloj.png"></a>
-          </td>
+            <?php
+              if ($datos['estado'] == 0) {
+              ?>
+                <h6>No Disponible</h6>
+              <?php
+              } else {
+              ?>
+                 <a href="ReservaHoras/Ingresodefecha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/reloj.png"></a>
+              <?php
+              }
+              ?>     
+            </td>
           <td>
             <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
           </td>
@@ -127,7 +137,17 @@ WHERE
               ?>
             </td>
             <td>
-              <a href="ReservaHoras/Ingresodefecha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/reloj.png"></a>
+            <?php
+              if ($datos['estado'] == 0) {
+              ?>
+                <h6>No Disponible</h6>
+              <?php
+              } else {
+              ?>
+                 <a href="ReservaHoras/Ingresodefecha.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/reloj.png"></a>
+              <?php
+              }
+              ?>     
             </td>
             <td>
               <a href="profesionalprincipal.php?idusu=<?php echo $datos['Id']; ?>"><img src="assets/images/updated.png"></a>
