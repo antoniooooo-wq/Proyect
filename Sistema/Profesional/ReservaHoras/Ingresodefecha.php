@@ -26,7 +26,7 @@ if (isset($_SESSION['usuario'])) {
 
   </head>
 
-  <body id="bodyprinci">
+  <body id="bodyprinci" style="background-color: blueviolet ;">
     <div id="javascript_header"></div>
     <form class="form-inline" method="post" action="fechas.php" name="formFechas" id="formFechas">
       <div class="form__header">

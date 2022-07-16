@@ -333,7 +333,8 @@ if (isset($_SESSION['usuario'])) {
               </a>
             </li>
             <li class="nav-item">
-              <a href="../Sistema/Ingresodefecha.php<?php echo $datos['usuarioid']; ?>" class="nav-link text-white" aria-current="page">
+            <input type="hidden" id="idusu" name="idusu" value="<?php echo $_SESSION['usuarioid'] ?>">
+              <a href="../Sistema/Ingresodefecha.php?=<?php echo $_SESSION['usuarioid']; ?>" class="nav-link text-white" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#Plus" />
                 </svg>
@@ -348,7 +349,7 @@ if (isset($_SESSION['usuario'])) {
                 Cancelar Hora
               </a>
             </li>
-          
+          <!--
             <li>
               <a href="../Sistema/Pago/Portaldepago.php<?php echo $datos['usuarioid']; ?>" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
@@ -357,7 +358,7 @@ if (isset($_SESSION['usuario'])) {
                 Portal de Pagos
               </a>
             </li>
-            
+    -->
           </ul>
           <footer class="container">
             <p>Copyright 2022 Podología Marticorena</p>
